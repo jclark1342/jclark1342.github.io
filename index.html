@@ -238,6 +238,12 @@
         padding: clamp(54px, 8vw, 100px) clamp(18px, 4vw, 56px);
       }
 
+      #projects,
+      #modes,
+      #contact {
+        scroll-margin-top: 72px;
+      }
+
       #projects {
         padding-top: 28px;
       }
@@ -477,6 +483,39 @@
         font-size: 1.08rem;
       }
 
+      .contact-methods {
+        display: grid;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .contact-link {
+        display: grid;
+        gap: 4px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid rgba(255, 250, 240, 0.18);
+        text-decoration: none;
+      }
+
+      .contact-link span {
+        color: rgba(255, 250, 240, 0.58);
+        font-size: 0.74rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .contact-link strong {
+        color: var(--cream);
+        font-size: 1.08rem;
+      }
+
+      .contact-link:hover strong,
+      .contact-link:focus-visible strong {
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+      }
+
       .contact .button {
         border-color: rgba(255, 250, 240, 0.7);
         color: var(--cream);
@@ -486,6 +525,12 @@
         border-color: var(--cream);
         background: var(--cream);
         color: var(--ink);
+      }
+
+      .contact-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
       }
 
       .empty-state {
@@ -983,15 +1028,27 @@
       <section class="section contact" id="contact" aria-labelledby="contact-title">
         <div class="section-inner">
           <div>
-            <p class="section-kicker">Archive</p>
-            <h2 id="contact-title">Full portfolio materials</h2>
+            <p class="section-kicker">Contact</p>
+            <h2 id="contact-title">Let&apos;s talk product design.</h2>
             <p>
-              The site highlights a focused set of web-ready images from the content
-              archive while keeping the larger PDFs available for deeper review.
+              Reach out for design, fabrication, prototyping, visual, or studio
+              opportunities. Full portfolio materials are available below for deeper review.
             </p>
+            <div class="contact-methods" aria-label="Contact methods">
+              <a class="contact-link" href="mailto:jackjamesclark@gmail.com">
+                <span>Email</span>
+                <strong>jackjamesclark@gmail.com</strong>
+              </a>
+              <a class="contact-link" href="tel:+19857058668">
+                <span>Phone</span>
+                <strong>(985) 705-8668</strong>
+              </a>
+            </div>
           </div>
-          <div class="pdf-links">
-            <a class="button primary" href="assets/portfolio/docs/portfolio-2026.pdf">Portfolio PDF</a>
+          <div class="contact-actions">
+            <a class="button primary" href="mailto:jackjamesclark@gmail.com">Email John</a>
+            <a class="button" href="tel:+19857058668">Call</a>
+            <a class="button" href="assets/portfolio/docs/portfolio-2026.pdf">Portfolio PDF</a>
             <a class="button" href="assets/portfolio/docs/resume-2026.pdf">Resume</a>
             <a class="button" href="assets/portfolio/docs/portfolio-2025.pdf">2025 Portfolio</a>
           </div>
