@@ -3,26 +3,1048 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>hey everyone :)</title>
+    <title>John Clark Product Design Portfolio</title>
+    <meta
+      name="description"
+      content="Product design portfolio spanning furniture, soft goods, CAD, drawings, photography, and sculptural form studies."
+    >
     <style>
+      :root {
+        color-scheme: light;
+        --paper: #f5f0e8;
+        --ink: #171717;
+        --muted: #666057;
+        --line: rgba(23, 23, 23, 0.16);
+        --clay: #c66f49;
+        --teal: #497b7d;
+        --sage: #bcc6a5;
+        --blue: #314d68;
+        --cream: #fffaf0;
+        --shadow: 0 18px 45px rgba(22, 21, 18, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
-        min-height: 100vh;
+        background: var(--paper);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background: #ddd4c8;
+      }
+
+      a {
+        color: inherit;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.2em;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 14px clamp(18px, 4vw, 56px);
+        border-bottom: 1px solid var(--line);
+        background: rgba(245, 240, 232, 0.92);
+        backdrop-filter: blur(14px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        min-width: max-content;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .brand span {
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      .nav a {
+        text-decoration: none;
+      }
+
+      .nav a:hover,
+      .nav a:focus-visible {
+        color: var(--ink);
+      }
+
+      .hero {
         display: grid;
-        place-items: center;
-        background: pink;
-        font-family: Arial, sans-serif;
+        min-height: 82vh;
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 42px;
+        min-height: 82vh;
+        padding: clamp(42px, 8vw, 96px) clamp(22px, 5vw, 72px) 44px;
+      }
+
+      .eyebrow {
+        margin: 0 0 18px;
+        color: var(--clay);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
       }
 
       h1 {
+        max-width: 780px;
+        margin-bottom: 28px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 4.8rem;
+        font-weight: 500;
+        line-height: 0.94;
+        letter-spacing: 0;
+      }
+
+      .lede {
+        max-width: 680px;
+        margin-bottom: 34px;
+        color: #3e3830;
+        font-size: 1.24rem;
+      }
+
+      .hero-actions,
+      .pdf-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .button,
+      .filter-button {
+        min-height: 42px;
+        border: 1px solid var(--ink);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--ink);
+        cursor: pointer;
+        font: inherit;
+        font-size: 0.9rem;
+        font-weight: 800;
+        line-height: 1;
+        text-decoration: none;
+        transition:
+          background 160ms ease,
+          color 160ms ease,
+          transform 160ms ease,
+          border-color 160ms ease;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 18px;
+      }
+
+      .button.primary,
+      .filter-button.is-active {
+        background: var(--ink);
+        color: var(--cream);
+      }
+
+      .button:hover,
+      .button:focus-visible,
+      .filter-button:hover,
+      .filter-button:focus-visible {
+        transform: translateY(-1px);
+      }
+
+      .hero-meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        padding-top: 30px;
+        border-top: 1px solid var(--line);
+      }
+
+      .hero-meta strong {
+        display: block;
+        font-size: 2.45rem;
+        line-height: 1;
+      }
+
+      .hero-meta span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .hero-visual {
+        min-height: 82vh;
+        border-left: 1px solid var(--line);
+        background: #101010;
+      }
+
+      .hero-visual img {
+        object-fit: cover;
+        filter: saturate(0.92) contrast(1.02);
+      }
+
+      .section {
+        padding: clamp(54px, 8vw, 100px) clamp(18px, 4vw, 56px);
+      }
+
+      #projects {
+        padding-top: 28px;
+      }
+
+      .section-inner {
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1fr);
+        gap: 36px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+
+      .section-kicker {
         margin: 0;
-        color: #7a1746;
-        font-size: clamp(2.5rem, 8vw, 6rem);
-        font-weight: 700;
+        color: var(--teal);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 4rem;
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .section-head p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .filters {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin: 0 0 34px;
+      }
+
+      .filter-group {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 250, 240, 0.52);
+      }
+
+      .filter-label {
+        margin: 0 0 12px;
+        color: var(--muted);
+        font-size: 0.74rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .filter-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .filter-button {
+        padding: 0 14px;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .project-card {
+        grid-column: span 4;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--cream);
+        box-shadow: var(--shadow);
+      }
+
+      .project-card.is-featured {
+        grid-column: span 8;
+      }
+
+      .project-card[hidden] {
+        display: none;
+      }
+
+      .project-media {
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        background: #d9d1c5;
+      }
+
+      .project-card.is-featured .project-media {
+        aspect-ratio: 16 / 9;
+      }
+
+      .project-body {
+        padding: 18px;
+      }
+
+      .project-topline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 14px;
+        color: var(--muted);
+        font-size: 0.73rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .project-topline span:last-child {
+        color: var(--clay);
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 2rem;
+        font-weight: 500;
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .project-body p {
+        margin-bottom: 16px;
+        color: #4a433b;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 0 10px;
+        border: 1px solid rgba(23, 23, 23, 0.18);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 0.75rem;
+        font-weight: 800;
+      }
+
+      .modes {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .mode {
+        min-height: 230px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--cream);
+      }
+
+      .mode:nth-child(1) {
+        border-top: 6px solid var(--clay);
+      }
+
+      .mode:nth-child(2) {
+        border-top: 6px solid var(--teal);
+      }
+
+      .mode:nth-child(3) {
+        border-top: 6px solid var(--blue);
+      }
+
+      .mode:nth-child(4) {
+        border-top: 6px solid var(--sage);
+      }
+
+      .mode h3 {
+        margin-bottom: 12px;
+        font-size: 1.8rem;
+      }
+
+      .mode p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .image-strip {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr 1fr;
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .strip-image {
+        min-height: 340px;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: #d8d0c4;
+      }
+
+      .strip-image:nth-child(2) {
+        min-height: 460px;
+      }
+
+      .contact {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.42fr);
+        gap: 34px;
+        align-items: end;
+        border-top: 1px solid var(--line);
+        background: #1b1b19;
+        color: var(--cream);
+      }
+
+      .contact .section-inner {
+        display: contents;
+      }
+
+      .contact p {
+        max-width: 740px;
+        color: rgba(255, 250, 240, 0.78);
+        font-size: 1.08rem;
+      }
+
+      .contact .button {
+        border-color: rgba(255, 250, 240, 0.7);
+        color: var(--cream);
+      }
+
+      .contact .button.primary {
+        border-color: var(--cream);
+        background: var(--cream);
+        color: var(--ink);
+      }
+
+      .empty-state {
+        display: none;
+        padding: 30px;
+        border: 1px dashed var(--line);
+        border-radius: 8px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      .empty-state.is-visible {
+        display: block;
+      }
+
+      @media (max-width: 1050px) {
+        h1 {
+          font-size: 4.4rem;
+        }
+
+        h2 {
+          font-size: 3.25rem;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy,
+        .hero-visual {
+          min-height: auto;
+        }
+
+        .hero-visual {
+          min-height: 54vh;
+          border-left: 0;
+          border-top: 1px solid var(--line);
+        }
+
+        .project-card,
+        .project-card.is-featured {
+          grid-column: span 6;
+        }
+
+        .modes {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .image-strip {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .strip-image:nth-child(3) {
+          grid-column: span 2;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .site-header {
+          position: static;
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .nav {
+          justify-content: flex-start;
+          width: 100%;
+          overflow-x: auto;
+          padding-bottom: 4px;
+        }
+
+        .hero-copy {
+          padding: 28px 22px 34px;
+        }
+
+        .hero-visual {
+          order: -1;
+          min-height: 220px;
+        }
+
+        .lede {
+          margin-bottom: 24px;
+          font-size: 1rem;
+        }
+
+        .hero-actions {
+          gap: 8px;
+        }
+
+        .button,
+        .filter-button {
+          min-height: 38px;
+          font-size: 0.84rem;
+        }
+
+        .button {
+          padding: 0 13px;
+        }
+
+        .hero-meta {
+          display: none;
+        }
+
+        .hero-meta,
+        .section-head,
+        .filters,
+        .contact {
+          grid-template-columns: 1fr;
+        }
+
+        .project-card,
+        .project-card.is-featured {
+          grid-column: span 12;
+        }
+
+        .modes,
+        .image-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .strip-image,
+        .strip-image:nth-child(2),
+        .strip-image:nth-child(3) {
+          grid-column: auto;
+          min-height: 310px;
+        }
+
+        h1 {
+          margin-bottom: 20px;
+          font-size: 2.7rem;
+        }
+
+        h2 {
+          font-size: 2.45rem;
+        }
+
+        h3 {
+          font-size: 1.65rem;
+        }
       }
     </style>
   </head>
   <body>
-    <h1>hey everyone :)</h1>
+    <header class="site-header">
+      <div class="brand">John Clark <span>Product Design</span></div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#modes">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <div>
+            <p class="eyebrow">Portfolio 2026</p>
+            <h1 id="page-title">Product design across objects, images, and built form.</h1>
+            <p class="lede">
+              Furniture, soft goods, CAD studies, drawings, photography, and sculptural
+              experiments shaped through material testing and iteration.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#projects">View Work</a>
+              <a class="button" href="assets/portfolio/docs/portfolio-2026.pdf">Portfolio PDF</a>
+              <a class="button" href="assets/portfolio/docs/resume-2026.pdf">Resume</a>
+            </div>
+          </div>
+          <div class="hero-meta" aria-label="Portfolio summary">
+            <div>
+              <strong>06</strong>
+              <span>Project Groups</span>
+            </div>
+            <div>
+              <strong>04</strong>
+              <span>Work Forms</span>
+            </div>
+            <div>
+              <strong>01</strong>
+              <span>Process Archive</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img
+            src="assets/portfolio/images/projector-room.png"
+            alt="Illustrated projector concept casting light across an interior space."
+          >
+        </div>
+      </section>
+
+      <section class="section" id="projects" aria-labelledby="projects-title">
+        <div class="section-inner">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Selected Projects</p>
+              <h2 id="projects-title">Project categories</h2>
+            </div>
+            <p>
+              The archive is grouped by project and by form of work, with each card
+              carrying both tags so the portfolio can be browsed from either direction.
+            </p>
+          </div>
+
+          <div class="filters" aria-label="Portfolio filters">
+            <div class="filter-group" data-filter-group="project">
+              <p class="filter-label">Projects</p>
+              <div class="filter-row">
+                <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+                <button class="filter-button" type="button" data-filter="bag" aria-pressed="false">Soft Goods</button>
+                <button class="filter-button" type="button" data-filter="furniture" aria-pressed="false">Furniture</button>
+                <button class="filter-button" type="button" data-filter="dryer" aria-pressed="false">Hair Dryer</button>
+                <button class="filter-button" type="button" data-filter="projector" aria-pressed="false">Projector</button>
+                <button class="filter-button" type="button" data-filter="vessels" aria-pressed="false">Vessels</button>
+              </div>
+            </div>
+            <div class="filter-group" data-filter-group="form">
+              <p class="filter-label">Forms of Work</p>
+              <div class="filter-row">
+                <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+                <button class="filter-button" type="button" data-filter="drawings" aria-pressed="false">Drawings</button>
+                <button class="filter-button" type="button" data-filter="models" aria-pressed="false">3D Models</button>
+                <button class="filter-button" type="button" data-filter="photography" aria-pressed="false">Photography</button>
+                <button class="filter-button" type="button" data-filter="sculptural" aria-pressed="false">Sculptural</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-grid" id="project-grid">
+            <article class="project-card is-featured" data-project="bag" data-forms="drawings models photography sculptural">
+              <div class="project-media">
+                <img
+                  src="assets/portfolio/images/soft-goods-open.jpg"
+                  alt="Open green and orange soft goods prototype filled with clothing."
+                >
+              </div>
+              <div class="project-body">
+                <div class="project-topline">
+                  <span>Soft Goods</span>
+                  <span>Capstone</span>
+                </div>
+                <h3>Expandable Bag System</h3>
+                <p>
+                  A soft-goods project focused on volume, access, lining, patterning,
+                  and the translation from sketches to sewn prototypes.
+                </p>
+                <div class="tag-row" aria-label="Project tags">
+                  <span class="tag">Drawings</span>
+                  <span class="tag">Models</span>
+                  <span class="tag">Photography</span>
+                  <span class="tag">Sculptural</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card" data-project="furniture" data-forms="photography sculptural">
+              <div class="project-media">
+                <img
+                  src="assets/portfolio/images/furniture-table.jpg"
+                  alt="Square wooden table prototype photographed in a workshop."
+                >
+              </div>
+              <div class="project-body">
+                <div class="project-topline">
+                  <span>Furniture</span>
+                  <span>Woodshop</span>
+                </div>
+                <h3>Table Construction</h3>
+                <p>
+                  A furniture study in proportion, joinery, clamping, and the way
+                  exposed construction details become part of the final object.
+                </p>
+                <div class="tag-row" aria-label="Project tags">
+                  <span class="tag">Photography</span>
+                  <span class="tag">Sculptural</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card" data-project="dryer" data-forms="drawings models">
+              <div class="project-media">
+                <img
+                  src="assets/portfolio/images/hair-dryer-render.jpg"
+                  alt="Neutral 3D render of a compact hair dryer form."
+                >
+              </div>
+              <div class="project-body">
+                <div class="project-topline">
+                  <span>Hair Dryer</span>
+                  <span>CAD</span>
+                </div>
+                <h3>Product Form Study</h3>
+                <p>
+                  A compact appliance concept developed through CAD surfacing,
+                  internal layout, rendering, and ergonomic form decisions.
+                </p>
+                <div class="tag-row" aria-label="Project tags">
+                  <span class="tag">3D Models</span>
+                  <span class="tag">Drawings</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card" data-project="projector" data-forms="drawings models">
+              <div class="project-media">
+                <img
+                  src="assets/portfolio/images/projector-process-board.jpg"
+                  alt="Tall process board for a projector concept with sketches, renderings, and diagrams."
+                >
+              </div>
+              <div class="project-body">
+                <div class="project-topline">
+                  <span>Projector</span>
+                  <span>Process Board</span>
+                </div>
+                <h3>Reel Display Console</h3>
+                <p>
+                  A presentation-focused projector concept tying together early
+                  sketches, form-factor exploration, and polished render language.
+                </p>
+                <div class="tag-row" aria-label="Project tags">
+                  <span class="tag">Drawings</span>
+                  <span class="tag">3D Models</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card" data-project="vessels" data-forms="drawings models sculptural">
+              <div class="project-media">
+                <img
+                  src="assets/portfolio/images/vessel-render.jpg"
+                  alt="Rendered sculptural vessel composed of repeated cylindrical forms."
+                >
+              </div>
+              <div class="project-body">
+                <div class="project-topline">
+                  <span>Vessels</span>
+                  <span>Form</span>
+                </div>
+                <h3>Vessel Studies</h3>
+                <p>
+                  Sculptural objects and vessel sketches exploring repeated tubes,
+                  soft volumes, and how a product silhouette can behave like sculpture.
+                </p>
+                <div class="tag-row" aria-label="Project tags">
+                  <span class="tag">Sculptural</span>
+                  <span class="tag">3D Models</span>
+                  <span class="tag">Drawings</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card" data-project="bag" data-forms="drawings">
+              <div class="project-media">
+                <img
+                  src="assets/portfolio/images/bag-sketches.jpg"
+                  alt="Loose pencil sketches showing soft-goods pocket and construction ideas."
+                >
+              </div>
+              <div class="project-body">
+                <div class="project-topline">
+                  <span>Soft Goods</span>
+                  <span>Sketches</span>
+                </div>
+                <h3>Bag Construction Notes</h3>
+                <p>
+                  Scanned studies for compartments, seams, panels, and the transition
+                  from a flexible body into useful storage details.
+                </p>
+                <div class="tag-row" aria-label="Project tags">
+                  <span class="tag">Drawings</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card" data-project="vessels" data-forms="drawings sculptural">
+              <div class="project-media">
+                <img
+                  src="assets/portfolio/images/vessel-sketch.jpg"
+                  alt="Pencil sketch of a vessel made from clustered cylindrical forms."
+                >
+              </div>
+              <div class="project-body">
+                <div class="project-topline">
+                  <span>Vessels</span>
+                  <span>Sketch</span>
+                </div>
+                <h3>Clustered Volume Drawing</h3>
+                <p>
+                  A drawing category for fast spatial studies, repeated forms, and
+                  object ideas that start as gesture before becoming modeled work.
+                </p>
+                <div class="tag-row" aria-label="Project tags">
+                  <span class="tag">Drawings</span>
+                  <span class="tag">Sculptural</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card" data-project="photography" data-forms="photography">
+              <div class="project-media">
+                <img
+                  src="assets/portfolio/images/photo-night-study.jpg"
+                  alt="Black and white nighttime photograph with a distant illuminated skyline."
+                >
+              </div>
+              <div class="project-body">
+                <div class="project-topline">
+                  <span>Photography</span>
+                  <span>Archive</span>
+                </div>
+                <h3>Night Negative Study</h3>
+                <p>
+                  Photographic work used as a parallel practice in framing, contrast,
+                  atmosphere, and the visual language around objects and spaces.
+                </p>
+                <div class="tag-row" aria-label="Project tags">
+                  <span class="tag">Photography</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <p class="empty-state" id="empty-state">No projects match that category pairing.</p>
+        </div>
+      </section>
+
+      <section class="section" id="modes" aria-labelledby="modes-title">
+        <div class="section-inner">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Forms of Work</p>
+              <h2 id="modes-title">Material ways in</h2>
+            </div>
+            <p>
+              The portfolio treats product design as a loop between hand drawing,
+              digital modeling, photographic observation, and sculptural making.
+            </p>
+          </div>
+
+          <div class="modes">
+            <article class="mode">
+              <h3>Drawings</h3>
+              <p>
+                Scans, process boards, ideation pages, construction notes, and
+                proportion studies that map decisions before the object is fixed.
+              </p>
+            </article>
+            <article class="mode">
+              <h3>3D Models</h3>
+              <p>
+                CAD forms, render boards, Rhino and SolidWorks explorations, and
+                digital studies used to test volume, assembly, and surface.
+              </p>
+            </article>
+            <article class="mode">
+              <h3>Photography</h3>
+              <p>
+                Documentation, darkroom-style image work, fabrication photos, and
+                visual studies that frame objects in context.
+              </p>
+            </article>
+            <article class="mode">
+              <h3>Sculptural</h3>
+              <p>
+                Objects, vessels, furniture, soft prototypes, and form experiments
+                where the piece is understood through weight, texture, and presence.
+              </p>
+            </article>
+          </div>
+
+          <div class="image-strip" aria-label="Additional work images">
+            <div class="strip-image">
+              <img
+                src="assets/portfolio/images/furniture-clamps.jpg"
+                alt="Wooden table prototype being clamped during fabrication."
+              >
+            </div>
+            <div class="strip-image">
+              <img
+                src="assets/portfolio/images/soft-goods-round.jpg"
+                alt="Circular orange and green bag prototype photographed from above."
+              >
+            </div>
+            <div class="strip-image">
+              <img
+                src="assets/portfolio/images/cad-four-view.jpg"
+                alt="Four-view CAD screenshot of a simple white geometric form."
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact" aria-labelledby="contact-title">
+        <div class="section-inner">
+          <div>
+            <p class="section-kicker">Archive</p>
+            <h2 id="contact-title">Full portfolio materials</h2>
+            <p>
+              The site highlights a focused set of web-ready images from the content
+              archive while keeping the larger PDFs available for deeper review.
+            </p>
+          </div>
+          <div class="pdf-links">
+            <a class="button primary" href="assets/portfolio/docs/portfolio-2026.pdf">Portfolio PDF</a>
+            <a class="button" href="assets/portfolio/docs/resume-2026.pdf">Resume</a>
+            <a class="button" href="assets/portfolio/docs/portfolio-2025.pdf">2025 Portfolio</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const filters = {
+        project: "all",
+        form: "all"
+      };
+
+      const cards = Array.from(document.querySelectorAll(".project-card"));
+      const emptyState = document.querySelector("#empty-state");
+
+      function updateCards() {
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+          const projectMatch =
+            filters.project === "all" || card.dataset.project === filters.project;
+          const forms = card.dataset.forms.split(" ");
+          const formMatch = filters.form === "all" || forms.includes(filters.form);
+          const shouldShow = projectMatch && formMatch;
+
+          card.hidden = !shouldShow;
+          if (shouldShow) {
+            visibleCount += 1;
+          }
+        });
+
+        emptyState.classList.toggle("is-visible", visibleCount === 0);
+      }
+
+      document.querySelectorAll(".filter-group").forEach((group) => {
+        const groupName = group.dataset.filterGroup;
+        const buttons = Array.from(group.querySelectorAll(".filter-button"));
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            filters[groupName] = button.dataset.filter;
+
+            buttons.forEach((item) => {
+              const isActive = item === button;
+              item.classList.toggle("is-active", isActive);
+              item.setAttribute("aria-pressed", String(isActive));
+            });
+
+            updateCards();
+          });
+        });
+      });
+    </script>
   </body>
 </html>
