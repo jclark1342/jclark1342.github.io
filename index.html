@@ -503,7 +503,7 @@
 
       .image-strip {
         display: grid;
-        grid-template-columns: 1.2fr 0.8fr 1fr;
+        grid-template-columns: 1.05fr 0.95fr;
         gap: 18px;
         margin-top: 18px;
       }
@@ -722,10 +722,6 @@
         .image-strip {
           grid-template-columns: 1fr 1fr;
         }
-
-        .strip-image:nth-child(3) {
-          grid-column: span 2;
-        }
       }
 
       @media (max-width: 760px) {
@@ -801,8 +797,7 @@
         }
 
         .strip-image,
-        .strip-image:nth-child(2),
-        .strip-image:nth-child(3) {
+        .strip-image:nth-child(2) {
           grid-column: auto;
           min-height: 310px;
         }
@@ -1292,12 +1287,6 @@
               <img
                 src="assets/portfolio/images/photography/filmfoto-glass-roof.jpg"
                 alt="Black and white film photo of illuminated glass architecture at night."
-              >
-            </div>
-            <div class="strip-image">
-              <img
-                src="assets/portfolio/images/cad-four-view.jpg"
-                alt="Four-view CAD screenshot of a simple white geometric form."
               >
             </div>
           </div>
