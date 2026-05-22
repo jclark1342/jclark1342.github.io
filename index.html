@@ -6,7 +6,7 @@
     <title>John Clark Product Design Portfolio</title>
     <meta
       name="description"
-      content="Product design portfolio spanning furniture, soft goods, CAD, drawings, photography, and sculptural form studies."
+      content="Product design portfolio spanning furniture, soft goods, CAD, drawings, digital paintings, photography, and sculptural form studies."
     >
     <style>
       :root {
@@ -239,6 +239,7 @@
       }
 
       #projects,
+      #paintings,
       #modes,
       #contact {
         scroll-margin-top: 72px;
@@ -406,7 +407,7 @@
 
       .modes {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(5, minmax(0, 1fr));
         gap: 18px;
       }
 
@@ -432,6 +433,10 @@
 
       .mode:nth-child(4) {
         border-top: 6px solid var(--sage);
+      }
+
+      .mode:nth-child(5) {
+        border-top: 6px solid var(--blue);
       }
 
       .mode h3 {
@@ -461,6 +466,88 @@
 
       .strip-image:nth-child(2) {
         min-height: 460px;
+      }
+
+      .painting-showcase {
+        position: relative;
+        display: flex;
+        min-height: clamp(460px, 48vw, 680px);
+        align-items: flex-end;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #1b1b19;
+      }
+
+      .painting-showcase img {
+        position: absolute;
+        inset: 0;
+        filter: saturate(0.95) contrast(0.98);
+      }
+
+      .painting-showcase::after {
+        position: absolute;
+        inset: 0;
+        content: "";
+        background:
+          linear-gradient(
+            90deg,
+            rgba(23, 23, 23, 0.86) 0%,
+            rgba(23, 23, 23, 0.48) 48%,
+            rgba(23, 23, 23, 0.14) 100%
+          );
+      }
+
+      .painting-showcase-copy {
+        position: relative;
+        z-index: 1;
+        max-width: 780px;
+        padding: clamp(26px, 5vw, 58px);
+        color: var(--cream);
+      }
+
+      .painting-showcase-copy .section-kicker {
+        color: rgba(255, 250, 240, 0.72);
+      }
+
+      .painting-showcase-copy h2 {
+        margin-bottom: 18px;
+      }
+
+      .painting-showcase-copy p {
+        margin-bottom: 0;
+        color: rgba(255, 250, 240, 0.82);
+        font-size: 1.08rem;
+      }
+
+      .painting-categories {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .painting-category {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--cream);
+        box-shadow: var(--shadow);
+      }
+
+      .painting-category-media {
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        background: #d9d1c5;
+      }
+
+      .painting-category-body {
+        padding: 18px;
+      }
+
+      .painting-category-body p {
+        margin-bottom: 0;
+        color: var(--muted);
       }
 
       .contact {
@@ -575,7 +662,8 @@
           grid-column: span 6;
         }
 
-        .modes {
+        .modes,
+        .painting-categories {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
@@ -647,8 +735,17 @@
         }
 
         .modes,
+        .painting-categories,
         .image-strip {
           grid-template-columns: 1fr;
+        }
+
+        .painting-showcase {
+          min-height: 430px;
+        }
+
+        .painting-showcase::after {
+          background: rgba(23, 23, 23, 0.58);
         }
 
         .strip-image,
@@ -678,6 +775,7 @@
       <div class="brand">John Clark <span>Product Design</span></div>
       <nav class="nav" aria-label="Primary">
         <a href="#projects">Projects</a>
+        <a href="#paintings">Paintings</a>
         <a href="#modes">Work</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -690,8 +788,9 @@
             <p class="eyebrow">Portfolio 2026</p>
             <h1 id="page-title">Product design across objects, images, and built form.</h1>
             <p class="lede">
-              Furniture, soft goods, CAD studies, drawings, photography, and sculptural
-              experiments shaped through material testing and iteration.
+              Furniture, soft goods, CAD studies, drawings, digital painting,
+              photography, and sculptural experiments shaped through material
+              testing and iteration.
             </p>
             <div class="hero-actions">
               <a class="button primary" href="#projects">View Work</a>
@@ -701,11 +800,11 @@
           </div>
           <div class="hero-meta" aria-label="Portfolio summary">
             <div>
-              <strong>06</strong>
+              <strong>07</strong>
               <span>Project Groups</span>
             </div>
             <div>
-              <strong>04</strong>
+              <strong>05</strong>
               <span>Work Forms</span>
             </div>
             <div>
@@ -745,6 +844,7 @@
                 <button class="filter-button" type="button" data-filter="dryer" aria-pressed="false">Hair Dryer</button>
                 <button class="filter-button" type="button" data-filter="projector" aria-pressed="false">Projector</button>
                 <button class="filter-button" type="button" data-filter="vessels" aria-pressed="false">Vessels</button>
+                <button class="filter-button" type="button" data-filter="digital-paintings" aria-pressed="false">Digital Paintings</button>
               </div>
             </div>
             <div class="filter-group" data-filter-group="form">
@@ -753,6 +853,7 @@
                 <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
                 <button class="filter-button" type="button" data-filter="drawings" aria-pressed="false">Drawings</button>
                 <button class="filter-button" type="button" data-filter="models" aria-pressed="false">3D Models</button>
+                <button class="filter-button" type="button" data-filter="paintings" aria-pressed="false">Digital Painting</button>
                 <button class="filter-button" type="button" data-filter="photography" aria-pressed="false">Photography</button>
                 <button class="filter-button" type="button" data-filter="sculptural" aria-pressed="false">Sculptural</button>
               </div>
@@ -952,9 +1053,162 @@
                 </div>
               </div>
             </article>
+
+            <article class="project-card" data-project="digital-paintings" data-forms="paintings drawings">
+              <div class="project-media">
+                <img
+                  src="assets/portfolio/images/digital-paintings/digital-landscape-studies.jpg"
+                  alt="Digital painting collage of landscapes, water, trees, and architectural atmosphere studies."
+                >
+              </div>
+              <div class="project-body">
+                <div class="project-topline">
+                  <span>Digital Paintings</span>
+                  <span>Landscapes</span>
+                </div>
+                <h3>Atmosphere Studies</h3>
+                <p>
+                  Finished landscape paintings grouped around weather, shoreline,
+                  forest paths, and architectural spaces.
+                </p>
+                <div class="tag-row" aria-label="Project tags">
+                  <span class="tag">Digital Painting</span>
+                  <span class="tag">Drawings</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card" data-project="digital-paintings" data-forms="paintings drawings">
+              <div class="project-media">
+                <img
+                  src="assets/portfolio/images/digital-paintings/digital-fragrance-studies.jpg"
+                  alt="Digital painting collage of fragrance bottle form studies on colored grounds."
+                >
+              </div>
+              <div class="project-body">
+                <div class="project-topline">
+                  <span>Digital Paintings</span>
+                  <span>Bottles</span>
+                </div>
+                <h3>Fragrance Bottle Studies</h3>
+                <p>
+                  Color and transparency studies using bottle silhouettes, caps,
+                  glow, and product-scale proportion.
+                </p>
+                <div class="tag-row" aria-label="Project tags">
+                  <span class="tag">Digital Painting</span>
+                  <span class="tag">Drawings</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card" data-project="digital-paintings" data-forms="paintings drawings">
+              <div class="project-media">
+                <img
+                  src="assets/portfolio/images/digital-paintings/digital-figure-studies.jpg"
+                  alt="Digital painting collage of wearable figure and fashion form studies."
+                >
+              </div>
+              <div class="project-body">
+                <div class="project-topline">
+                  <span>Digital Paintings</span>
+                  <span>Figures</span>
+                </div>
+                <h3>Figure and Wearable Studies</h3>
+                <p>
+                  More resolved figure-based paintings where gesture, clothing,
+                  transparency, and object language overlap.
+                </p>
+                <div class="tag-row" aria-label="Project tags">
+                  <span class="tag">Digital Painting</span>
+                  <span class="tag">Drawings</span>
+                </div>
+              </div>
+            </article>
           </div>
 
           <p class="empty-state" id="empty-state">No projects match that category pairing.</p>
+        </div>
+      </section>
+
+      <section class="section" id="paintings" aria-labelledby="paintings-title">
+        <div class="section-inner">
+          <div class="painting-showcase">
+            <img
+              src="assets/portfolio/images/digital-paintings/digital-process-collage.jpg"
+              alt="Collage of unfinished digital painting sketches, bottle studies, figure drawings, and object explorations."
+            >
+            <div class="painting-showcase-copy">
+              <p class="section-kicker">Digital Paintings</p>
+              <h2 id="paintings-title">Color studies, products, figures, and atmosphere.</h2>
+              <p>
+                The more finished paintings are grouped by subject matter, while
+                exploratory and unfinished studies become a large process collage.
+              </p>
+            </div>
+          </div>
+
+          <div class="painting-categories" aria-label="Digital painting categories">
+            <article class="painting-category">
+              <div class="painting-category-media">
+                <img
+                  src="assets/portfolio/images/digital-paintings/digital-landscape-studies.jpg"
+                  alt="Grouped digital landscape paintings with water, trees, hills, and architectural studies."
+                >
+              </div>
+              <div class="painting-category-body">
+                <div class="project-topline">
+                  <span>Subject</span>
+                  <span>Landscape</span>
+                </div>
+                <h3>Landscapes</h3>
+                <p>
+                  The strongest atmospheric pieces use terrain, forest, water,
+                  and architecture as studies in color and spatial mood.
+                </p>
+              </div>
+            </article>
+
+            <article class="painting-category">
+              <div class="painting-category-media">
+                <img
+                  src="assets/portfolio/images/digital-paintings/digital-fragrance-studies.jpg"
+                  alt="Grouped fragrance bottle paintings showing translucent forms and product silhouettes."
+                >
+              </div>
+              <div class="painting-category-body">
+                <div class="project-topline">
+                  <span>Subject</span>
+                  <span>Fragrance</span>
+                </div>
+                <h3>Fragrance Bottles</h3>
+                <p>
+                  Bottle studies focus on reflection, translucency, symmetry,
+                  and the graphic read of small product forms.
+                </p>
+              </div>
+            </article>
+
+            <article class="painting-category">
+              <div class="painting-category-media">
+                <img
+                  src="assets/portfolio/images/digital-paintings/digital-figure-studies.jpg"
+                  alt="Grouped figure and wearable digital paintings with garments and object-like silhouettes."
+                >
+              </div>
+              <div class="painting-category-body">
+                <div class="project-topline">
+                  <span>Subject</span>
+                  <span>Figure</span>
+                </div>
+                <h3>Figure Studies</h3>
+                <p>
+                  Wearable-form paintings connect garment silhouettes, body
+                  gesture, material transparency, and object-like presence.
+                </p>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -967,7 +1221,8 @@
             </div>
             <p>
               The portfolio treats product design as a loop between hand drawing,
-              digital modeling, photographic observation, and sculptural making.
+              digital modeling, digital painting, photographic observation, and
+              sculptural making.
             </p>
           </div>
 
@@ -998,6 +1253,13 @@
               <p>
                 Objects, vessels, furniture, soft prototypes, and form experiments
                 where the piece is understood through weight, texture, and presence.
+              </p>
+            </article>
+            <article class="mode">
+              <h3>Digital Painting</h3>
+              <p>
+                Landscape paintings, fragrance bottle studies, and wearable figure
+                work used to explore color, atmosphere, transparency, and form.
               </p>
             </article>
           </div>
