@@ -550,6 +550,71 @@
         color: var(--muted);
       }
 
+      .painting-subhead {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+        gap: 28px;
+        align-items: end;
+        margin: clamp(44px, 7vw, 88px) 0 22px;
+      }
+
+      .painting-subhead h3 {
+        margin-bottom: 0;
+        font-size: 2.4rem;
+      }
+
+      .painting-subhead p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .landscape-gallery {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: clamp(22px, 4vw, 58px);
+      }
+
+      .landscape-piece {
+        grid-column: span 6;
+      }
+
+      .landscape-piece:nth-child(1),
+      .landscape-piece:nth-child(4) {
+        grid-column: span 5;
+      }
+
+      .landscape-piece:nth-child(2),
+      .landscape-piece:nth-child(3) {
+        grid-column: span 7;
+      }
+
+      .landscape-piece img {
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--cream);
+        object-fit: contain;
+      }
+
+      .fragrance-grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: clamp(12px, 2vw, 28px);
+      }
+
+      .fragrance-tile {
+        aspect-ratio: 1;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--tile-bg, var(--cream));
+      }
+
+      .fragrance-tile img {
+        background: var(--tile-bg, var(--cream));
+      }
+
       .contact {
         display: grid;
         grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.42fr);
@@ -667,6 +732,10 @@
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
+        .fragrance-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
         .image-strip {
           grid-template-columns: 1fr 1fr;
         }
@@ -724,6 +793,7 @@
 
         .hero-meta,
         .section-head,
+        .painting-subhead,
         .filters,
         .contact {
           grid-template-columns: 1fr;
@@ -746,6 +816,18 @@
 
         .painting-showcase::after {
           background: rgba(23, 23, 23, 0.58);
+        }
+
+        .landscape-piece,
+        .landscape-piece:nth-child(1),
+        .landscape-piece:nth-child(2),
+        .landscape-piece:nth-child(3),
+        .landscape-piece:nth-child(4) {
+          grid-column: span 12;
+        }
+
+        .fragrance-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .strip-image,
@@ -1208,6 +1290,164 @@
                 </p>
               </div>
             </article>
+          </div>
+
+          <div class="painting-subhead">
+            <div>
+              <p class="section-kicker">Landscape Studies</p>
+              <h3>Open space and atmosphere</h3>
+            </div>
+            <p>
+              The landscape pieces are shown larger here, with more room between
+              each image so the color, horizon, and brushwork can carry the page.
+            </p>
+          </div>
+
+          <div class="landscape-gallery" aria-label="Digital landscape paintings">
+            <div class="landscape-piece">
+              <img
+                src="assets/portfolio/images/digital-paintings/landscape-meadow.jpg"
+                alt="Soft green meadow digital painting with pale sky and field grasses."
+              >
+            </div>
+            <div class="landscape-piece">
+              <img
+                src="assets/portfolio/images/digital-paintings/landscape-night-hills.jpg"
+                alt="Digital landscape painting with blue night grid lights and red hills."
+              >
+            </div>
+            <div class="landscape-piece">
+              <img
+                src="assets/portfolio/images/digital-paintings/landscape-forest-path.jpg"
+                alt="Digital painting of a pale forest path surrounded by tall trees."
+              >
+            </div>
+            <div class="landscape-piece">
+              <img
+                src="assets/portfolio/images/digital-paintings/landscape-coast.jpg"
+                alt="Digital painting of blue water, shoreline, and distant green hills."
+              >
+            </div>
+            <div class="landscape-piece">
+              <img
+                src="assets/portfolio/images/digital-paintings/landscape-hill-path.jpg"
+                alt="Digital painting of a green hill path under a warm pale sky."
+              >
+            </div>
+            <div class="landscape-piece">
+              <img
+                src="assets/portfolio/images/digital-paintings/landscape-structure.jpg"
+                alt="Digital architectural landscape painting of a light blue structure."
+              >
+            </div>
+          </div>
+
+          <div class="painting-subhead">
+            <div>
+              <p class="section-kicker">Fragrance Bottles</p>
+              <h3>Square color-field studies</h3>
+            </div>
+            <p>
+              Each bottle sits in a square filled with its sampled source
+              background color, scaled around the subject and aligned to a shared
+              bottom margin.
+            </p>
+          </div>
+
+          <div class="fragrance-grid" aria-label="Fragrance bottle digital painting studies">
+            <div class="fragrance-tile" style="--tile-bg: #52112f;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/sheer-yellow.jpg" alt="Sheer yellow fragrance bottle study on burgundy background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #c6b5a3;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/amber-low-bottle.jpg" alt="Low amber fragrance bottle study on taupe background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ded7de;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/faceted-bottle.jpg" alt="Faceted fragrance bottle study on pale lavender background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #e8e5c6;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/green-cap-bottle.jpg" alt="Green-capped fragrance bottle study on pale yellow background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #f2ebd9;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/blue-cap-sketch.jpg" alt="Blue cap fragrance bottle sketch on warm paper background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/outline-bottle.jpg" alt="Outline fragrance bottle sketch on white background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #a2ad8d;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/soft-amber-bottle.jpg" alt="Soft amber fragrance bottle study on sage background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #998699;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/tall-lilac-bottle.jpg" alt="Tall lilac fragrance bottle study on muted purple background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/thin-outline-bottle.jpg" alt="Thin outline fragrance bottle sketch on white background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #887a33;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/lace-bottle.jpg" alt="Dark lace fragrance bottle study on olive background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #d3f0f4;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/brown-bottle.jpg" alt="Brown fragrance bottle study on pale blue background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #afafbb;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/block-bottle.jpg" alt="Blocky fragrance bottle study on gray lavender background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #b7afa4;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/green-rect-bottle.jpg" alt="Green rectangular fragrance bottle study on gray taupe background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/striped-bottle.jpg" alt="Striped green fragrance bottle study on white background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ff8d44;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/stacked-orange-bottle.jpg" alt="Stacked fragrance bottle study on orange background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ff8d44;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/orange-bottle.jpg" alt="Low fragrance bottle study on orange background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/oval-sketch-bottle.jpg" alt="Oval fragrance bottle sketch on white background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/profile-sketch-bottle.jpg" alt="Profile fragrance bottle sketch on white background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/spiral-sketch-bottle.jpg" alt="Spiral fragrance bottle sketch on white background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #cc4b61;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/pink-ground-bottle.jpg" alt="Small fragrance bottle study on pink background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #85c034;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/green-ground-bottle.jpg" alt="Green fragrance bottle study on bright green background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/label-bottle.jpg" alt="Labeled fragrance bottle study on white background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/wireframe-bottle.jpg" alt="Wireframe fragrance bottle sketch on white background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/blue-rect-bottle.jpg" alt="Blue rectangular fragrance bottle study on white background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/blue-round-bottle.jpg" alt="Blue round fragrance bottle study on white background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #273244;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/dark-ground-bottle.jpg" alt="Faceted fragrance bottle study on dark blue background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/yellow-line-bottle.jpg" alt="Pale yellow line fragrance bottle sketch on white background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #152508;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/tall-green-bottle.jpg" alt="Tall green fragrance bottle study on dark green background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #6bc1b6;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/teal-nozzle-bottle.jpg" alt="Nozzle fragrance bottle study on teal background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ff5c5d;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/coral-nozzle-bottle.jpg" alt="Nozzle fragrance bottle study on coral background.">
+            </div>
+            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
+              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/blue-green-bottle.jpg" alt="Blue-green fragrance bottle study on white background.">
+            </div>
           </div>
         </div>
       </section>
