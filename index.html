@@ -11,16 +11,17 @@
     <style>
       :root {
         color-scheme: light;
-        --paper: #f5f0e8;
-        --ink: #171717;
-        --muted: #666057;
-        --line: rgba(23, 23, 23, 0.16);
-        --clay: #c66f49;
-        --teal: #497b7d;
-        --sage: #bcc6a5;
-        --blue: #314d68;
-        --cream: #fffaf0;
-        --shadow: 0 18px 45px rgba(22, 21, 18, 0.12);
+        --paper: #edf3f0;
+        --ink: #17202b;
+        --muted: #59686b;
+        --line: rgba(23, 32, 43, 0.16);
+        --clay: #ee7d3e;
+        --teal: #4f8f95;
+        --sage: #c8d7b9;
+        --blue: #527f9a;
+        --cream: #fff8e8;
+        --sky: #bad8e1;
+        --shadow: 0 18px 45px rgba(23, 32, 43, 0.13);
       }
 
       * {
@@ -46,7 +47,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        background: #ddd4c8;
+        background: #d2dddc;
       }
 
       a {
@@ -65,7 +66,7 @@
         gap: 24px;
         padding: 14px clamp(18px, 4vw, 56px);
         border-bottom: 1px solid var(--line);
-        background: rgba(245, 240, 232, 0.92);
+        background: rgba(237, 243, 240, 0.92);
         backdrop-filter: blur(14px);
       }
 
@@ -149,7 +150,7 @@
       .lede {
         max-width: 680px;
         margin-bottom: 34px;
-        color: #3e3830;
+        color: #344447;
         font-size: 1.24rem;
       }
 
@@ -193,6 +194,15 @@
         color: var(--cream);
       }
 
+      .button.primary:hover,
+      .button.primary:focus-visible,
+      .filter-button.is-active:hover,
+      .filter-button.is-active:focus-visible {
+        background: var(--clay);
+        border-color: var(--clay);
+        color: var(--ink);
+      }
+
       .button:hover,
       .button:focus-visible,
       .filter-button:hover,
@@ -226,7 +236,7 @@
       .hero-visual {
         min-height: 82vh;
         border-left: 1px solid var(--line);
-        background: #101010;
+        background: #102836;
       }
 
       .hero-visual img {
@@ -297,7 +307,7 @@
         padding: 18px;
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: rgba(255, 250, 240, 0.52);
+        background: rgba(255, 248, 232, 0.68);
       }
 
       .filter-label {
@@ -342,10 +352,47 @@
         display: none;
       }
 
+      .project-card-link,
+      .painting-category-link {
+        display: block;
+        height: 100%;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .project-card-link:hover img,
+      .project-card-link:focus-visible img,
+      .painting-category-link:hover img,
+      .painting-category-link:focus-visible img {
+        transform: scale(1.015);
+      }
+
+      .project-card-link:focus-visible,
+      .painting-category-link:focus-visible {
+        outline: 3px solid var(--teal);
+        outline-offset: -3px;
+      }
+
       .project-media {
         aspect-ratio: 4 / 3;
         overflow: hidden;
-        background: #d9d1c5;
+        background: #cedcdd;
+      }
+
+      .project-media img,
+      .painting-category-media img {
+        transition: transform 180ms ease;
+      }
+
+      .project-media.is-contained,
+      .painting-category-media.is-contained {
+        background: var(--tile-bg, #cedcdd);
+      }
+
+      .project-media.is-contained img,
+      .painting-category-media.is-contained img {
+        object-fit: contain;
+        background: var(--tile-bg, #cedcdd);
       }
 
       .project-card.is-featured .project-media {
@@ -384,7 +431,7 @@
 
       .project-body p {
         margin-bottom: 16px;
-        color: #4a433b;
+        color: #39484b;
       }
 
       .tag-row {
@@ -398,8 +445,9 @@
         align-items: center;
         min-height: 28px;
         padding: 0 10px;
-        border: 1px solid rgba(23, 23, 23, 0.18);
+        border: 1px solid rgba(23, 32, 43, 0.18);
         border-radius: 999px;
+        background: rgba(237, 243, 240, 0.56);
         color: var(--muted);
         font-size: 0.75rem;
         font-weight: 800;
@@ -461,7 +509,7 @@
         overflow: hidden;
         border-radius: 8px;
         border: 1px solid var(--line);
-        background: #d8d0c4;
+        background: #cfdbdc;
       }
 
       .strip-image:nth-child(2) {
@@ -476,7 +524,7 @@
         overflow: hidden;
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: #1b1b19;
+        background: #102836;
       }
 
       .painting-showcase img {
@@ -492,9 +540,9 @@
         background:
           linear-gradient(
             90deg,
-            rgba(23, 23, 23, 0.86) 0%,
-            rgba(23, 23, 23, 0.48) 48%,
-            rgba(23, 23, 23, 0.14) 100%
+            rgba(16, 40, 54, 0.9) 0%,
+            rgba(16, 40, 54, 0.54) 48%,
+            rgba(238, 125, 62, 0.18) 100%
           );
       }
 
@@ -538,7 +586,7 @@
       .painting-category-media {
         aspect-ratio: 4 / 3;
         overflow: hidden;
-        background: #d9d1c5;
+        background: #cedcdd;
       }
 
       .painting-category-body {
@@ -550,78 +598,13 @@
         color: var(--muted);
       }
 
-      .painting-subhead {
-        display: grid;
-        grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
-        gap: 28px;
-        align-items: end;
-        margin: clamp(44px, 7vw, 88px) 0 22px;
-      }
-
-      .painting-subhead h3 {
-        margin-bottom: 0;
-        font-size: 2.4rem;
-      }
-
-      .painting-subhead p {
-        margin-bottom: 0;
-        color: var(--muted);
-      }
-
-      .landscape-gallery {
-        display: grid;
-        grid-template-columns: repeat(12, minmax(0, 1fr));
-        gap: clamp(22px, 4vw, 58px);
-      }
-
-      .landscape-piece {
-        grid-column: span 6;
-      }
-
-      .landscape-piece:nth-child(1),
-      .landscape-piece:nth-child(4) {
-        grid-column: span 5;
-      }
-
-      .landscape-piece:nth-child(2),
-      .landscape-piece:nth-child(3) {
-        grid-column: span 7;
-      }
-
-      .landscape-piece img {
-        width: 100%;
-        height: auto;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--cream);
-        object-fit: contain;
-      }
-
-      .fragrance-grid {
-        display: grid;
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-        gap: clamp(12px, 2vw, 28px);
-      }
-
-      .fragrance-tile {
-        aspect-ratio: 1;
-        overflow: hidden;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--tile-bg, var(--cream));
-      }
-
-      .fragrance-tile img {
-        background: var(--tile-bg, var(--cream));
-      }
-
       .contact {
         display: grid;
         grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.42fr);
         gap: 34px;
         align-items: end;
         border-top: 1px solid var(--line);
-        background: #1b1b19;
+        background: #102836;
         color: var(--cream);
       }
 
@@ -732,10 +715,6 @@
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
-        .fragrance-grid {
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-
         .image-strip {
           grid-template-columns: 1fr 1fr;
         }
@@ -793,7 +772,6 @@
 
         .hero-meta,
         .section-head,
-        .painting-subhead,
         .filters,
         .contact {
           grid-template-columns: 1fr;
@@ -815,19 +793,7 @@
         }
 
         .painting-showcase::after {
-          background: rgba(23, 23, 23, 0.58);
-        }
-
-        .landscape-piece,
-        .landscape-piece:nth-child(1),
-        .landscape-piece:nth-child(2),
-        .landscape-piece:nth-child(3),
-        .landscape-piece:nth-child(4) {
-          grid-column: span 12;
-        }
-
-        .fragrance-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          background: rgba(16, 40, 54, 0.62);
         }
 
         .strip-image,
@@ -1137,75 +1103,81 @@
             </article>
 
             <article class="project-card" data-project="digital-paintings" data-forms="paintings drawings">
-              <div class="project-media">
-                <img
-                  src="assets/portfolio/images/digital-paintings/digital-landscape-studies.jpg"
-                  alt="Digital painting collage of landscapes, water, trees, and architectural atmosphere studies."
-                >
-              </div>
-              <div class="project-body">
-                <div class="project-topline">
-                  <span>Digital Paintings</span>
-                  <span>Landscapes</span>
+              <a class="project-card-link" href="paintings-landscapes.html" aria-label="Open landscape digital painting gallery">
+                <div class="project-media">
+                  <img
+                    src="assets/portfolio/images/digital-paintings/landscape-meadow.jpg"
+                    alt="Soft green meadow digital painting with pale sky and field grasses."
+                  >
                 </div>
-                <h3>Atmosphere Studies</h3>
-                <p>
-                  Finished landscape paintings grouped around weather, shoreline,
-                  forest paths, and architectural spaces.
-                </p>
-                <div class="tag-row" aria-label="Project tags">
-                  <span class="tag">Digital Painting</span>
-                  <span class="tag">Drawings</span>
+                <div class="project-body">
+                  <div class="project-topline">
+                    <span>Digital Paintings</span>
+                    <span>Landscapes</span>
+                  </div>
+                  <h3>Atmosphere Studies</h3>
+                  <p>
+                    Finished landscape paintings grouped around weather, shoreline,
+                    forest paths, and architectural spaces.
+                  </p>
+                  <div class="tag-row" aria-label="Project tags">
+                    <span class="tag">Digital Painting</span>
+                    <span class="tag">Drawings</span>
+                  </div>
                 </div>
-              </div>
+              </a>
             </article>
 
             <article class="project-card" data-project="digital-paintings" data-forms="paintings drawings">
-              <div class="project-media">
-                <img
-                  src="assets/portfolio/images/digital-paintings/digital-fragrance-studies.jpg"
-                  alt="Digital painting collage of fragrance bottle form studies on colored grounds."
-                >
-              </div>
-              <div class="project-body">
-                <div class="project-topline">
-                  <span>Digital Paintings</span>
-                  <span>Bottles</span>
+              <a class="project-card-link" href="paintings-fragrance.html" aria-label="Open fragrance bottle digital painting gallery">
+                <div class="project-media is-contained" style="--tile-bg: #52112f;">
+                  <img
+                    src="assets/portfolio/images/digital-paintings/fragrance-bottles/sheer-yellow.jpg"
+                    alt="Sheer yellow fragrance bottle study on burgundy background."
+                  >
                 </div>
-                <h3>Fragrance Bottle Studies</h3>
-                <p>
-                  Color and transparency studies using bottle silhouettes, caps,
-                  glow, and product-scale proportion.
-                </p>
-                <div class="tag-row" aria-label="Project tags">
-                  <span class="tag">Digital Painting</span>
-                  <span class="tag">Drawings</span>
+                <div class="project-body">
+                  <div class="project-topline">
+                    <span>Digital Paintings</span>
+                    <span>Bottles</span>
+                  </div>
+                  <h3>Fragrance Bottle Studies</h3>
+                  <p>
+                    Color and transparency studies using bottle silhouettes, caps,
+                    glow, and product-scale proportion.
+                  </p>
+                  <div class="tag-row" aria-label="Project tags">
+                    <span class="tag">Digital Painting</span>
+                    <span class="tag">Drawings</span>
+                  </div>
                 </div>
-              </div>
+              </a>
             </article>
 
             <article class="project-card" data-project="digital-paintings" data-forms="paintings drawings">
-              <div class="project-media">
-                <img
-                  src="assets/portfolio/images/digital-paintings/digital-figure-studies.jpg"
-                  alt="Digital painting collage of wearable figure and fashion form studies."
-                >
-              </div>
-              <div class="project-body">
-                <div class="project-topline">
-                  <span>Digital Paintings</span>
-                  <span>Figures</span>
+              <a class="project-card-link" href="paintings-figures.html" aria-label="Open figure and wearable digital painting gallery">
+                <div class="project-media is-contained" style="--tile-bg: #152508;">
+                  <img
+                    src="assets/portfolio/images/digital-paintings/figures/leather-fringe.jpg"
+                    alt="Digital figure painting with a dark wearable form on a deep green background."
+                  >
                 </div>
-                <h3>Figure and Wearable Studies</h3>
-                <p>
-                  More resolved figure-based paintings where gesture, clothing,
-                  transparency, and object language overlap.
-                </p>
-                <div class="tag-row" aria-label="Project tags">
-                  <span class="tag">Digital Painting</span>
-                  <span class="tag">Drawings</span>
+                <div class="project-body">
+                  <div class="project-topline">
+                    <span>Digital Paintings</span>
+                    <span>Figures</span>
+                  </div>
+                  <h3>Figure and Wearable Studies</h3>
+                  <p>
+                    More resolved figure-based paintings where gesture, clothing,
+                    transparency, and object language overlap.
+                  </p>
+                  <div class="tag-row" aria-label="Project tags">
+                    <span class="tag">Digital Painting</span>
+                    <span class="tag">Drawings</span>
+                  </div>
                 </div>
-              </div>
+              </a>
             </article>
           </div>
 
@@ -1232,222 +1204,70 @@
 
           <div class="painting-categories" aria-label="Digital painting categories">
             <article class="painting-category">
-              <div class="painting-category-media">
-                <img
-                  src="assets/portfolio/images/digital-paintings/digital-landscape-studies.jpg"
-                  alt="Grouped digital landscape paintings with water, trees, hills, and architectural studies."
-                >
-              </div>
-              <div class="painting-category-body">
-                <div class="project-topline">
-                  <span>Subject</span>
-                  <span>Landscape</span>
+              <a class="painting-category-link" href="paintings-landscapes.html" aria-label="Open landscape digital painting gallery">
+                <div class="painting-category-media">
+                  <img
+                    src="assets/portfolio/images/digital-paintings/landscape-meadow.jpg"
+                    alt="Soft green meadow digital painting with pale sky and field grasses."
+                  >
                 </div>
-                <h3>Landscapes</h3>
-                <p>
-                  The strongest atmospheric pieces use terrain, forest, water,
-                  and architecture as studies in color and spatial mood.
-                </p>
-              </div>
+                <div class="painting-category-body">
+                  <div class="project-topline">
+                    <span>Subject</span>
+                    <span>Landscape</span>
+                  </div>
+                  <h3>Landscapes</h3>
+                  <p>
+                    The strongest atmospheric pieces use terrain, forest, water,
+                    and architecture as studies in color and spatial mood.
+                  </p>
+                </div>
+              </a>
             </article>
 
             <article class="painting-category">
-              <div class="painting-category-media">
-                <img
-                  src="assets/portfolio/images/digital-paintings/digital-fragrance-studies.jpg"
-                  alt="Grouped fragrance bottle paintings showing translucent forms and product silhouettes."
-                >
-              </div>
-              <div class="painting-category-body">
-                <div class="project-topline">
-                  <span>Subject</span>
-                  <span>Fragrance</span>
+              <a class="painting-category-link" href="paintings-fragrance.html" aria-label="Open fragrance bottle digital painting gallery">
+                <div class="painting-category-media is-contained" style="--tile-bg: #52112f;">
+                  <img
+                    src="assets/portfolio/images/digital-paintings/fragrance-bottles/sheer-yellow.jpg"
+                    alt="Sheer yellow fragrance bottle study on burgundy background."
+                  >
                 </div>
-                <h3>Fragrance Bottles</h3>
-                <p>
-                  Bottle studies focus on reflection, translucency, symmetry,
-                  and the graphic read of small product forms.
-                </p>
-              </div>
+                <div class="painting-category-body">
+                  <div class="project-topline">
+                    <span>Subject</span>
+                    <span>Fragrance</span>
+                  </div>
+                  <h3>Fragrance Bottles</h3>
+                  <p>
+                    Bottle studies focus on reflection, translucency, symmetry,
+                    and the graphic read of small product forms.
+                  </p>
+                </div>
+              </a>
             </article>
 
             <article class="painting-category">
-              <div class="painting-category-media">
-                <img
-                  src="assets/portfolio/images/digital-paintings/digital-figure-studies.jpg"
-                  alt="Grouped figure and wearable digital paintings with garments and object-like silhouettes."
-                >
-              </div>
-              <div class="painting-category-body">
-                <div class="project-topline">
-                  <span>Subject</span>
-                  <span>Figure</span>
+              <a class="painting-category-link" href="paintings-figures.html" aria-label="Open figure and wearable digital painting gallery">
+                <div class="painting-category-media is-contained" style="--tile-bg: #152508;">
+                  <img
+                    src="assets/portfolio/images/digital-paintings/figures/leather-fringe.jpg"
+                    alt="Digital figure painting with a dark wearable form on a deep green background."
+                  >
                 </div>
-                <h3>Figure Studies</h3>
-                <p>
-                  Wearable-form paintings connect garment silhouettes, body
-                  gesture, material transparency, and object-like presence.
-                </p>
-              </div>
+                <div class="painting-category-body">
+                  <div class="project-topline">
+                    <span>Subject</span>
+                    <span>Figure</span>
+                  </div>
+                  <h3>Figure Studies</h3>
+                  <p>
+                    Wearable-form paintings connect garment silhouettes, body
+                    gesture, material transparency, and object-like presence.
+                  </p>
+                </div>
+              </a>
             </article>
-          </div>
-
-          <div class="painting-subhead">
-            <div>
-              <p class="section-kicker">Landscape Studies</p>
-              <h3>Open space and atmosphere</h3>
-            </div>
-            <p>
-              The landscape pieces are shown larger here, with more room between
-              each image so the color, horizon, and brushwork can carry the page.
-            </p>
-          </div>
-
-          <div class="landscape-gallery" aria-label="Digital landscape paintings">
-            <div class="landscape-piece">
-              <img
-                src="assets/portfolio/images/digital-paintings/landscape-meadow.jpg"
-                alt="Soft green meadow digital painting with pale sky and field grasses."
-              >
-            </div>
-            <div class="landscape-piece">
-              <img
-                src="assets/portfolio/images/digital-paintings/landscape-night-hills.jpg"
-                alt="Digital landscape painting with blue night grid lights and red hills."
-              >
-            </div>
-            <div class="landscape-piece">
-              <img
-                src="assets/portfolio/images/digital-paintings/landscape-forest-path.jpg"
-                alt="Digital painting of a pale forest path surrounded by tall trees."
-              >
-            </div>
-            <div class="landscape-piece">
-              <img
-                src="assets/portfolio/images/digital-paintings/landscape-coast.jpg"
-                alt="Digital painting of blue water, shoreline, and distant green hills."
-              >
-            </div>
-            <div class="landscape-piece">
-              <img
-                src="assets/portfolio/images/digital-paintings/landscape-hill-path.jpg"
-                alt="Digital painting of a green hill path under a warm pale sky."
-              >
-            </div>
-            <div class="landscape-piece">
-              <img
-                src="assets/portfolio/images/digital-paintings/landscape-structure.jpg"
-                alt="Digital architectural landscape painting of a light blue structure."
-              >
-            </div>
-          </div>
-
-          <div class="painting-subhead">
-            <div>
-              <p class="section-kicker">Fragrance Bottles</p>
-              <h3>Square color-field studies</h3>
-            </div>
-            <p>
-              Each bottle sits in a square filled with its sampled source
-              background color, scaled around the subject and aligned to a shared
-              bottom margin.
-            </p>
-          </div>
-
-          <div class="fragrance-grid" aria-label="Fragrance bottle digital painting studies">
-            <div class="fragrance-tile" style="--tile-bg: #52112f;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/sheer-yellow.jpg" alt="Sheer yellow fragrance bottle study on burgundy background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #c6b5a3;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/amber-low-bottle.jpg" alt="Low amber fragrance bottle study on taupe background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ded7de;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/faceted-bottle.jpg" alt="Faceted fragrance bottle study on pale lavender background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #e8e5c6;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/green-cap-bottle.jpg" alt="Green-capped fragrance bottle study on pale yellow background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #f2ebd9;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/blue-cap-sketch.jpg" alt="Blue cap fragrance bottle sketch on warm paper background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/outline-bottle.jpg" alt="Outline fragrance bottle sketch on white background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #a2ad8d;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/soft-amber-bottle.jpg" alt="Soft amber fragrance bottle study on sage background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #998699;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/tall-lilac-bottle.jpg" alt="Tall lilac fragrance bottle study on muted purple background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/thin-outline-bottle.jpg" alt="Thin outline fragrance bottle sketch on white background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #887a33;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/lace-bottle.jpg" alt="Dark lace fragrance bottle study on olive background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #d3f0f4;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/brown-bottle.jpg" alt="Brown fragrance bottle study on pale blue background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #afafbb;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/block-bottle.jpg" alt="Blocky fragrance bottle study on gray lavender background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #b7afa4;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/green-rect-bottle.jpg" alt="Green rectangular fragrance bottle study on gray taupe background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/striped-bottle.jpg" alt="Striped green fragrance bottle study on white background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ff8d44;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/stacked-orange-bottle.jpg" alt="Stacked fragrance bottle study on orange background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ff8d44;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/orange-bottle.jpg" alt="Low fragrance bottle study on orange background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/oval-sketch-bottle.jpg" alt="Oval fragrance bottle sketch on white background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/profile-sketch-bottle.jpg" alt="Profile fragrance bottle sketch on white background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/spiral-sketch-bottle.jpg" alt="Spiral fragrance bottle sketch on white background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #cc4b61;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/pink-ground-bottle.jpg" alt="Small fragrance bottle study on pink background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #85c034;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/green-ground-bottle.jpg" alt="Green fragrance bottle study on bright green background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/label-bottle.jpg" alt="Labeled fragrance bottle study on white background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/wireframe-bottle.jpg" alt="Wireframe fragrance bottle sketch on white background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/blue-rect-bottle.jpg" alt="Blue rectangular fragrance bottle study on white background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/blue-round-bottle.jpg" alt="Blue round fragrance bottle study on white background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #273244;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/dark-ground-bottle.jpg" alt="Faceted fragrance bottle study on dark blue background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/yellow-line-bottle.jpg" alt="Pale yellow line fragrance bottle sketch on white background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #152508;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/tall-green-bottle.jpg" alt="Tall green fragrance bottle study on dark green background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #6bc1b6;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/teal-nozzle-bottle.jpg" alt="Nozzle fragrance bottle study on teal background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ff5c5d;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/coral-nozzle-bottle.jpg" alt="Nozzle fragrance bottle study on coral background.">
-            </div>
-            <div class="fragrance-tile" style="--tile-bg: #ffffff;">
-              <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/blue-green-bottle.jpg" alt="Blue-green fragrance bottle study on white background.">
-            </div>
           </div>
         </div>
       </section>
