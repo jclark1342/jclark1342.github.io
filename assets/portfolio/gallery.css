@@ -219,6 +219,36 @@ h1 {
   background: var(--tile-bg, var(--cream));
 }
 
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(18px, 3vw, 42px);
+  align-items: start;
+}
+
+.photo-piece {
+  grid-column: span 6;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #102836;
+  box-shadow: var(--shadow);
+}
+
+.photo-piece.is-wide {
+  grid-column: span 8;
+}
+
+.photo-piece.is-tall {
+  grid-column: span 4;
+}
+
+.photo-piece img {
+  height: auto;
+  object-fit: contain;
+  background: #102836;
+}
+
 .page-footer {
   display: flex;
   justify-content: space-between;
@@ -247,6 +277,12 @@ h1 {
   .fragrance-grid,
   .figure-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .photo-piece,
+  .photo-piece.is-wide,
+  .photo-piece.is-tall {
+    grid-column: span 6;
   }
 }
 
@@ -285,6 +321,12 @@ h1 {
   .fragrance-grid,
   .figure-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .photo-piece,
+  .photo-piece.is-wide,
+  .photo-piece.is-tall {
+    grid-column: span 12;
   }
 
   .page-footer {

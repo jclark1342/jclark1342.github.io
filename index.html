@@ -6,7 +6,7 @@
     <title>John Clark Product Design Portfolio</title>
     <meta
       name="description"
-      content="Product design portfolio spanning furniture, soft goods, CAD, drawings, digital paintings, photography, and sculptural form studies."
+      content="Product design portfolio spanning furniture, CAD, drawings, digital paintings, photography, and sculptural form studies."
     >
     <style>
       :root {
@@ -836,9 +836,9 @@
             <p class="eyebrow">Portfolio 2026</p>
             <h1 id="page-title">Product design across objects, images, and built form.</h1>
             <p class="lede">
-              Furniture, soft goods, CAD studies, drawings, digital painting,
-              photography, and sculptural experiments shaped through material
-              testing and iteration.
+              Furniture, CAD studies, drawings, digital painting, photography,
+              and sculptural experiments shaped through material testing and
+              iteration.
             </p>
             <div class="hero-actions">
               <a class="button primary" href="#projects">View Work</a>
@@ -848,7 +848,7 @@
           </div>
           <div class="hero-meta" aria-label="Portfolio summary">
             <div>
-              <strong>07</strong>
+              <strong>06</strong>
               <span>Project Groups</span>
             </div>
             <div>
@@ -887,7 +887,6 @@
               <p class="filter-label">Projects</p>
               <div class="filter-row">
                 <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
-                <button class="filter-button" type="button" data-filter="bag" aria-pressed="false">Soft Goods</button>
                 <button class="filter-button" type="button" data-filter="furniture" aria-pressed="false">Furniture</button>
                 <button class="filter-button" type="button" data-filter="dryer" aria-pressed="false">Hair Dryer</button>
                 <button class="filter-button" type="button" data-filter="projector" aria-pressed="false">Projector</button>
@@ -909,33 +908,7 @@
           </div>
 
           <div class="project-grid" id="project-grid">
-            <article class="project-card is-featured" data-project="bag" data-forms="drawings models photography sculptural">
-              <div class="project-media">
-                <img
-                  src="assets/portfolio/images/soft-goods-open.jpg"
-                  alt="Open green and orange soft goods prototype filled with clothing."
-                >
-              </div>
-              <div class="project-body">
-                <div class="project-topline">
-                  <span>Soft Goods</span>
-                  <span>Capstone</span>
-                </div>
-                <h3>Expandable Bag System</h3>
-                <p>
-                  A soft-goods project focused on volume, access, lining, patterning,
-                  and the translation from sketches to sewn prototypes.
-                </p>
-                <div class="tag-row" aria-label="Project tags">
-                  <span class="tag">Drawings</span>
-                  <span class="tag">Models</span>
-                  <span class="tag">Photography</span>
-                  <span class="tag">Sculptural</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="project-card" data-project="furniture" data-forms="photography sculptural">
+            <article class="project-card is-featured" data-project="furniture" data-forms="photography sculptural">
               <div class="project-media">
                 <img
                   src="assets/portfolio/images/furniture-table.jpg"
@@ -1022,34 +995,11 @@
                 <h3>Vessel Studies</h3>
                 <p>
                   Sculptural objects and vessel sketches exploring repeated tubes,
-                  soft volumes, and how a product silhouette can behave like sculpture.
+                  rounded volumes, and how a product silhouette can behave like sculpture.
                 </p>
                 <div class="tag-row" aria-label="Project tags">
                   <span class="tag">Sculptural</span>
                   <span class="tag">3D Models</span>
-                  <span class="tag">Drawings</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="project-card" data-project="bag" data-forms="drawings">
-              <div class="project-media">
-                <img
-                  src="assets/portfolio/images/bag-sketches.jpg"
-                  alt="Loose pencil sketches showing soft-goods pocket and construction ideas."
-                >
-              </div>
-              <div class="project-body">
-                <div class="project-topline">
-                  <span>Soft Goods</span>
-                  <span>Sketches</span>
-                </div>
-                <h3>Bag Construction Notes</h3>
-                <p>
-                  Scanned studies for compartments, seams, panels, and the transition
-                  from a flexible body into useful storage details.
-                </p>
-                <div class="tag-row" aria-label="Project tags">
                   <span class="tag">Drawings</span>
                 </div>
               </div>
@@ -1080,26 +1030,28 @@
             </article>
 
             <article class="project-card" data-project="photography" data-forms="photography">
-              <div class="project-media">
-                <img
-                  src="assets/portfolio/images/photo-night-study.jpg"
-                  alt="Black and white nighttime photograph with a distant illuminated skyline."
-                >
-              </div>
-              <div class="project-body">
-                <div class="project-topline">
-                  <span>Photography</span>
-                  <span>Archive</span>
+              <a class="project-card-link" href="photography.html" aria-label="Open film photography gallery">
+                <div class="project-media">
+                  <img
+                    src="assets/portfolio/images/photography/filmfoto-waterfront-lamps.jpg"
+                    alt="Black and white film photo of bright waterfront lamps and a night walkway."
+                  >
                 </div>
-                <h3>Night Negative Study</h3>
-                <p>
-                  Photographic work used as a parallel practice in framing, contrast,
-                  atmosphere, and the visual language around objects and spaces.
-                </p>
-                <div class="tag-row" aria-label="Project tags">
-                  <span class="tag">Photography</span>
+                <div class="project-body">
+                  <div class="project-topline">
+                    <span>Photography</span>
+                    <span>Film</span>
+                  </div>
+                  <h3>Film Photo Studies</h3>
+                  <p>
+                    Black and white film photographs used as a parallel practice
+                    in framing, contrast, atmosphere, and spatial observation.
+                  </p>
+                  <div class="tag-row" aria-label="Project tags">
+                    <span class="tag">Photography</span>
+                  </div>
                 </div>
-              </div>
+              </a>
             </article>
 
             <article class="project-card" data-project="digital-paintings" data-forms="paintings drawings">
@@ -1155,11 +1107,11 @@
             </article>
 
             <article class="project-card" data-project="digital-paintings" data-forms="paintings drawings">
-              <a class="project-card-link" href="paintings-figures.html" aria-label="Open figure and wearable digital painting gallery">
-                <div class="project-media is-contained" style="--tile-bg: #152508;">
+              <a class="project-card-link" href="paintings-figures.html" aria-label="Open figure drawing gallery">
+                <div class="project-media is-contained" style="--tile-bg: #f3ddd9;">
                   <img
-                    src="assets/portfolio/images/digital-paintings/figures/leather-fringe.jpg"
-                    alt="Digital figure painting with a dark wearable form on a deep green background."
+                    src="assets/portfolio/images/digital-paintings/figures/drawings/figure-line-study.jpg"
+                    alt="Loose digital figure line drawing on a pale pink background."
                   >
                 </div>
                 <div class="project-body">
@@ -1167,10 +1119,10 @@
                     <span>Digital Paintings</span>
                     <span>Figures</span>
                   </div>
-                  <h3>Figure and Wearable Studies</h3>
+                  <h3>Figure Drawing Studies</h3>
                   <p>
-                    More resolved figure-based paintings where gesture, clothing,
-                    transparency, and object language overlap.
+                    Drawing-led figure studies where gesture, pose, proportion,
+                    and wearable silhouettes are worked out through line.
                   </p>
                   <div class="tag-row" aria-label="Project tags">
                     <span class="tag">Digital Painting</span>
@@ -1248,11 +1200,11 @@
             </article>
 
             <article class="painting-category">
-              <a class="painting-category-link" href="paintings-figures.html" aria-label="Open figure and wearable digital painting gallery">
-                <div class="painting-category-media is-contained" style="--tile-bg: #152508;">
+              <a class="painting-category-link" href="paintings-figures.html" aria-label="Open figure drawing gallery">
+                <div class="painting-category-media is-contained" style="--tile-bg: #f3ddd9;">
                   <img
-                    src="assets/portfolio/images/digital-paintings/figures/leather-fringe.jpg"
-                    alt="Digital figure painting with a dark wearable form on a deep green background."
+                    src="assets/portfolio/images/digital-paintings/figures/drawings/figure-line-study.jpg"
+                    alt="Loose digital figure line drawing on a pale pink background."
                   >
                 </div>
                 <div class="painting-category-body">
@@ -1260,10 +1212,10 @@
                     <span>Subject</span>
                     <span>Figure</span>
                   </div>
-                  <h3>Figure Studies</h3>
+                  <h3>Figure Drawings</h3>
                   <p>
-                    Wearable-form paintings connect garment silhouettes, body
-                    gesture, material transparency, and object-like presence.
+                    Figure drawings lead this section, using gesture, pose, and
+                    proportion as the base for later wearable-form ideas.
                   </p>
                 </div>
               </a>
@@ -1311,8 +1263,8 @@
             <article class="mode">
               <h3>Sculptural</h3>
               <p>
-                Objects, vessels, furniture, soft prototypes, and form experiments
-                where the piece is understood through weight, texture, and presence.
+                Objects, vessels, furniture, and form experiments where the piece
+                is understood through weight, texture, and presence.
               </p>
             </article>
             <article class="mode">
@@ -1333,8 +1285,8 @@
             </div>
             <div class="strip-image">
               <img
-                src="assets/portfolio/images/soft-goods-round.jpg"
-                alt="Circular orange and green bag prototype photographed from above."
+                src="assets/portfolio/images/photography/filmfoto-glass-roof.jpg"
+                alt="Black and white film photo of illuminated glass architecture at night."
               >
             </div>
             <div class="strip-image">
