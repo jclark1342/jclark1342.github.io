@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Work | John Clark</title>
+    <meta
+      name="description"
+      content="Selected art and design work by John Clark, including furniture, product concepts, photography, vessels, and figure studies."
+    >
+    <link rel="stylesheet" href="assets/portfolio/gallery.css">
+    <style>
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .work-card {
+        grid-column: span 4;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #142f3a;
+        box-shadow: var(--shadow);
+      }
+
+      .work-card.is-wide {
+        grid-column: span 8;
+      }
+
+      .work-card a {
+        display: block;
+        height: 100%;
+        text-decoration: none;
+      }
+
+      .work-card img {
+        aspect-ratio: 4 / 3;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .work-card.is-wide img {
+        aspect-ratio: 16 / 9;
+      }
+
+      .work-card-body {
+        padding: 18px;
+      }
+
+      .work-card-body p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .work-card span {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--clay);
+        font-size: 0.74rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 0 0 10px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 2rem;
+        font-weight: 500;
+        line-height: 1.05;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .category-card {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #142f3a;
+        box-shadow: var(--shadow);
+      }
+
+      .category-card a {
+        display: block;
+        height: 100%;
+        text-decoration: none;
+      }
+
+      .category-card img {
+        aspect-ratio: 4 / 3;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .category-card.is-contained img {
+        object-fit: contain;
+        background: var(--tile-bg, #102836);
+      }
+
+      .category-card-body {
+        padding: 18px;
+      }
+
+      .category-card-body span {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--clay);
+        font-size: 0.74rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .category-card-body p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      @media (max-width: 1050px) {
+        .work-card,
+        .work-card.is-wide {
+          grid-column: span 6;
+        }
+
+        .category-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .work-card,
+        .work-card.is-wide {
+          grid-column: span 12;
+        }
+
+        .category-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html">John Clark <span>Art &amp; Design</span></a>
+      <nav class="nav" aria-label="Primary">
+        <a href="work.html">Work</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero" aria-labelledby="work-title">
+        <div>
+          <p class="section-kicker">Selected Work</p>
+          <h1 id="work-title">Objects, images, form.</h1>
+        </div>
+        <p>
+          Furniture, product concepts, drawings, paintings, photographs, and
+          sculptural studies sit together as one body of work.
+        </p>
+      </section>
+
+      <section class="gallery-section" aria-label="Selected work">
+        <div class="gallery-shell work-grid">
+          <article class="work-card is-wide">
+            <img src="assets/portfolio/images/furniture-table.jpg" alt="Square wooden table prototype photographed in a workshop.">
+            <div class="work-card-body">
+              <span>Woodshop</span>
+              <h2>Table Construction</h2>
+              <p>A furniture study in proportion, joinery, clamping, and exposed construction details.</p>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <img src="assets/portfolio/images/hair-dryer-render.jpg" alt="Neutral 3D render of a compact hair dryer form.">
+            <div class="work-card-body">
+              <span>CAD</span>
+              <h2>Product Form Study</h2>
+              <p>A compact appliance concept developed through CAD surfacing and rendering.</p>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <img src="assets/portfolio/images/projector-process-board.jpg" alt="Tall process board for a projector concept.">
+            <div class="work-card-body">
+              <span>Process</span>
+              <h2>Reel Display Console</h2>
+              <p>Sketches, form-factor exploration, and polished render language for a projector concept.</p>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <a href="paintings-fragrance.html">
+              <img src="assets/portfolio/images/vessel-render.jpg" alt="Rendered sculptural vessel composed of repeated cylindrical forms.">
+              <div class="work-card-body">
+                <span>Objects</span>
+                <h2>Vessels &amp; Bottles</h2>
+                <p>Sculptural vessels and bottle studies focused on silhouette and repeated volume.</p>
+              </div>
+            </a>
+          </article>
+
+          <article class="work-card">
+            <a href="photography.html">
+              <img src="assets/portfolio/images/photography/filmfoto-waterfront-lamps.jpg" alt="Black and white film photo of waterfront lamps.">
+              <div class="work-card-body">
+                <span>Photography</span>
+                <h2>Film Photo Studies</h2>
+                <p>Black and white film photographs focused on framing, contrast, and atmosphere.</p>
+              </div>
+            </a>
+          </article>
+
+          <article class="work-card">
+            <a href="paintings-figures.html">
+              <img src="assets/portfolio/images/digital-paintings/figures/drawings/figure-line-study.jpg" alt="Loose digital figure line drawing on a pale pink background.">
+              <div class="work-card-body">
+                <span>Drawing</span>
+                <h2>Figure Drawing Studies</h2>
+                <p>Gesture, pose, proportion, and wearable silhouettes worked through line.</p>
+              </div>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section class="gallery-section" id="paintings" aria-labelledby="paintings-title">
+        <div class="gallery-shell">
+          <section class="page-hero" aria-labelledby="paintings-title">
+            <div>
+              <p class="section-kicker">Digital Paintings</p>
+              <h1 id="paintings-title">Studies by subject.</h1>
+            </div>
+            <p>
+              Finished digital paintings grouped by subject matter, with
+              landscapes, vessels, drapery, and figure drawings separated into
+              their own galleries.
+            </p>
+          </section>
+
+          <div class="category-grid" aria-label="Digital painting categories">
+            <article class="category-card">
+              <a href="paintings-landscapes.html">
+                <img src="assets/portfolio/images/digital-paintings/landscape-dark-forest.jpg" alt="Dark digital forest painting with tall trunks and a narrow stream.">
+                <div class="category-card-body">
+                  <span>Landscape</span>
+                  <h2>Landscapes</h2>
+                  <p>Terrain, forest, water, and architecture as color and spatial mood.</p>
+                </div>
+              </a>
+            </article>
+
+            <article class="category-card is-contained" style="--tile-bg: #ff5c5d;">
+              <a href="paintings-fragrance.html">
+                <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/coral-nozzle-bottle.jpg" alt="Bulbous top bottle study with a narrow base on a coral background.">
+                <div class="category-card-body">
+                  <span>Objects</span>
+                  <h2>Vessels &amp; Bottles</h2>
+                  <p>Small object silhouettes, translucency, reflection, and product-scale proportion.</p>
+                </div>
+              </a>
+            </article>
+
+            <article class="category-card is-contained" style="--tile-bg: #c6b5a3;">
+              <a href="paintings-objects.html">
+                <img src="assets/portfolio/images/digital-paintings/object-studies/amber-low-form.jpg" alt="Amber drapery form study on a taupe background.">
+                <div class="category-card-body">
+                  <span>Drapery</span>
+                  <h2>Drapery</h2>
+                  <p>Translucent folded forms, soft edges, and fabric as sculptural object.</p>
+                </div>
+              </a>
+            </article>
+
+            <article class="category-card is-contained" style="--tile-bg: #fee9e4;">
+              <a href="paintings-figures.html">
+                <img src="assets/portfolio/images/digital-paintings/figures/drawings/figure-line-study.jpg" alt="Loose digital figure line drawing on a pale pink background.">
+                <div class="category-card-body">
+                  <span>Figure</span>
+                  <h2>Figure Drawings</h2>
+                  <p>Gesture, pose, proportion, and wearable-form ideas worked through line.</p>
+                </div>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

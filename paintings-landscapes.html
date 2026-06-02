@@ -10,14 +10,12 @@
     >
     <link rel="stylesheet" href="assets/portfolio/gallery.css">
   </head>
-  <body>
+  <body class="landscape-gallery-page">
     <header class="site-header">
-      <a class="brand" href="index.html">John Clark <span>Product Design</span></a>
+      <a class="brand" href="index.html">John Clark <span>Art &amp; Design</span></a>
       <nav class="nav" aria-label="Primary">
-        <a href="index.html#projects">Projects</a>
-        <a href="index.html#paintings">Paintings</a>
-        <a href="index.html#modes">Work</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="work.html">Work</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </header>
 
@@ -34,51 +32,113 @@
       </section>
 
       <section class="gallery-section" aria-label="Landscape digital paintings">
-        <div class="gallery-shell landscape-gallery">
-          <div class="landscape-piece">
+        <div class="gallery-shell landscape-gallery" data-lightbox-gallery>
+          <div class="landscape-piece is-featured">
+            <img
+              src="assets/portfolio/images/digital-paintings/landscape-dark-forest.jpg"
+              alt="Dark digital forest painting with tall trunks and a narrow stream through the center."
+            >
+          </div>
+          <div class="landscape-piece is-wide">
             <img
               src="assets/portfolio/images/digital-paintings/landscape-meadow.jpg"
               alt="Soft green meadow digital painting with pale sky and field grasses."
             >
           </div>
-          <div class="landscape-piece">
+          <div class="landscape-piece is-small">
             <img
               src="assets/portfolio/images/digital-paintings/landscape-night-hills.jpg"
               alt="Digital landscape painting with blue night grid lights and red hills."
             >
           </div>
-          <div class="landscape-piece">
+          <div class="landscape-piece is-center">
             <img
               src="assets/portfolio/images/digital-paintings/landscape-forest-path.jpg"
               alt="Digital painting of a pale forest path surrounded by tall trees."
             >
           </div>
-          <div class="landscape-piece">
+          <div class="landscape-piece is-wide">
             <img
               src="assets/portfolio/images/digital-paintings/landscape-coast.jpg"
               alt="Digital painting of blue water, shoreline, and distant green hills."
             >
           </div>
-          <div class="landscape-piece">
+          <div class="landscape-piece is-center">
             <img
               src="assets/portfolio/images/digital-paintings/landscape-hill-path.jpg"
               alt="Digital painting of a green hill path under a warm pale sky."
             >
           </div>
-          <div class="landscape-piece">
-            <img
-              src="assets/portfolio/images/digital-paintings/landscape-structure.jpg"
-              alt="Digital architectural landscape painting of a light blue structure."
-            >
-          </div>
         </div>
       </section>
+
+      <div class="gallery-lightbox" id="landscape-lightbox" aria-hidden="true">
+        <button class="gallery-lightbox-close" type="button" aria-label="Close full screen image">Close</button>
+        <img alt="">
+      </div>
     </main>
 
     <footer class="page-footer">
-      <a href="index.html#paintings">Back to painting categories</a>
-      <a href="paintings-fragrance.html">Fragrance bottles</a>
+      <a href="work.html#paintings">Paintings</a>
+      <a href="paintings-fragrance.html">Vessels</a>
+      <a href="paintings-objects.html">Drapery</a>
       <a href="paintings-figures.html">Figures</a>
     </footer>
+
+    <script>
+      const gallery = document.querySelector("[data-lightbox-gallery]");
+      const lightbox = document.querySelector("#landscape-lightbox");
+      const lightboxImage = lightbox.querySelector("img");
+      const closeButton = lightbox.querySelector(".gallery-lightbox-close");
+      let activeTile = null;
+
+      function openLightbox(image, tile) {
+        activeTile = tile;
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+        lightbox.setAttribute("aria-hidden", "false");
+        lightbox.classList.add("is-open");
+        document.body.classList.add("is-lightbox-open");
+        closeButton.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("is-lightbox-open");
+        lightboxImage.removeAttribute("src");
+        if (activeTile) {
+          activeTile.focus();
+          activeTile = null;
+        }
+      }
+
+      gallery.querySelectorAll(".landscape-piece").forEach((tile) => {
+        const image = tile.querySelector("img");
+        tile.setAttribute("role", "button");
+        tile.setAttribute("tabindex", "0");
+        tile.setAttribute("aria-label", `Open ${image.alt} full screen`);
+
+        tile.addEventListener("click", () => openLightbox(image, tile));
+        tile.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openLightbox(image, tile);
+          }
+        });
+      });
+
+      closeButton.addEventListener("click", closeLightbox);
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+          closeLightbox();
+        }
+      });
+    </script>
   </body>
 </html>
