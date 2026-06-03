@@ -22,6 +22,14 @@
         --blue: #6ea6c4;
         --cream: #fff8e8;
         --shadow: 0 22px 58px rgba(0, 0, 0, 0.32);
+        --display-font:
+          "Akzidenz-Grotesk", "Akzidenz Grotesk",
+          "AkzidenzGroteskBQ", "Akzidenz-Grotesk BQ",
+          "Berthold Akzidenz Grotesk", "Helvetica Neue", Helvetica, Arial,
+          sans-serif;
+        --serif-font:
+          "Roboto Slab", "Rockwell", "Egyptian Slate", "Clarendon",
+          "Courier Prime", Georgia, serif;
       }
 
       * {
@@ -32,9 +40,7 @@
         margin: 0;
         background: var(--paper);
         color: var(--ink);
-        font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
+        font-family: var(--display-font);
         line-height: 1.5;
       }
 
@@ -49,8 +55,7 @@
         z-index: 20;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 24px;
+        justify-content: flex-start;
         padding: 14px clamp(18px, 4vw, 56px);
         border-bottom: 1px solid var(--line);
         background: rgba(11, 31, 40, 0.9);
@@ -72,25 +77,6 @@
         font-size: 0.7rem;
         font-weight: 700;
         text-transform: uppercase;
-      }
-
-      .nav {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 18px;
-        color: var(--muted);
-        font-size: 0.84rem;
-        font-weight: 700;
-      }
-
-      .nav a {
-        text-decoration: none;
-      }
-
-      .nav a:hover,
-      .nav a:focus-visible {
-        color: var(--ink);
       }
 
       main {
@@ -131,9 +117,7 @@
       .eyebrow {
         margin: 0 0 18px;
         color: var(--clay);
-        font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
+        font-family: var(--display-font);
         font-size: 0.68rem;
         font-weight: 900;
         letter-spacing: 0.1em;
@@ -150,9 +134,7 @@
       h1 {
         max-width: 1040px;
         margin-bottom: 22px;
-        font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
+        font-family: var(--display-font);
         font-size: clamp(2.45rem, 6.2vw, 5.9rem);
         font-weight: 900;
         letter-spacing: 0;
@@ -163,8 +145,9 @@
         max-width: 720px;
         margin-bottom: 0;
         color: var(--cream);
-        font-family: Georgia, "Times New Roman", serif;
+        font-family: var(--serif-font);
         font-size: clamp(1rem, 1.7vw, 1.2rem);
+        font-weight: 200;
         line-height: 1.5;
       }
 
@@ -191,10 +174,10 @@
 
       .work-tabs {
         display: grid;
-        gap: 22px;
-        min-height: 42vh;
+        gap: 18px;
+        min-height: 34vh;
         align-content: start;
-        padding: clamp(48px, 8vw, 104px) clamp(24px, 7vw, 112px);
+        padding: clamp(32px, 5vw, 72px) clamp(18px, 5vw, 72px);
         border-top: 1px solid var(--line);
         background: #081921;
       }
@@ -209,8 +192,9 @@
       .tab-list {
         display: flex;
         flex-wrap: wrap;
-        gap: 22px;
+        gap: clamp(26px, 5vw, 72px);
         align-items: center;
+        justify-content: center;
         padding: 0 0 18px;
         border-bottom: 1px solid var(--line);
       }
@@ -242,7 +226,7 @@
       }
 
       .work-content {
-        padding-top: clamp(42px, 7vw, 88px);
+        padding-top: clamp(24px, 4vw, 46px);
       }
 
       .work-content[hidden] {
@@ -251,11 +235,11 @@
 
       .work-content {
         display: grid;
-        gap: clamp(40px, 7vw, 82px);
+        gap: clamp(22px, 4vw, 44px);
       }
 
       .work-panels {
-        padding-top: clamp(42px, 7vw, 88px);
+        padding-top: clamp(22px, 4vw, 46px);
       }
 
       .work-panels:empty {
@@ -264,16 +248,14 @@
 
       .work-content-head {
         display: grid;
-        grid-template-columns: minmax(200px, 0.34fr) minmax(0, 1fr);
-        gap: clamp(28px, 5vw, 72px);
+        grid-template-columns: minmax(160px, 0.28fr) minmax(0, 1fr);
+        gap: clamp(18px, 3vw, 42px);
       }
 
       .work-content-head h2 {
         margin: 0;
-        font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
-        font-size: clamp(2.2rem, 4.6vw, 4rem);
+        font-family: var(--display-font);
+        font-size: clamp(1.75rem, 3.4vw, 3rem);
         font-weight: 900;
         line-height: 0.96;
       }
@@ -282,8 +264,33 @@
         max-width: 760px;
         margin-bottom: 0;
         color: var(--muted);
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 0.96rem;
+        font-family: var(--serif-font);
+        font-size: 0.9rem;
+        font-weight: 200;
+      }
+
+      .work-section-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .work-section-head h3 {
+        margin-bottom: 0;
+        font-family: var(--display-font);
+        font-size: 1rem;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .work-section-head p {
+        max-width: 520px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-family: var(--serif-font);
+        font-size: 0.82rem;
+        font-weight: 200;
       }
 
       .work-card-grid {
@@ -347,9 +354,7 @@
       .work-card-body h3,
       .work-subsection h3 {
         margin: 0 0 10px;
-        font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
+        font-family: var(--display-font);
         font-size: 1.45rem;
         font-weight: 900;
         line-height: 1.05;
@@ -358,20 +363,120 @@
       .work-card-body p {
         margin-bottom: 0;
         color: var(--muted);
-        font-family: Georgia, "Times New Roman", serif;
+        font-family: var(--serif-font);
         font-size: 0.92rem;
+        font-weight: 200;
       }
 
       .work-subsections {
         display: grid;
-        gap: clamp(34px, 6vw, 74px);
+        gap: clamp(18px, 3vw, 36px);
       }
 
       .work-subsection {
         display: grid;
-        gap: 18px;
-        padding-top: clamp(22px, 4vw, 42px);
+        gap: 12px;
+        padding-top: clamp(14px, 2vw, 24px);
         border-top: 1px solid var(--line);
+      }
+
+      .compact-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+        gap: 10px;
+      }
+
+      .media-tile {
+        display: block;
+        min-width: 0;
+        overflow: hidden;
+        aspect-ratio: 1;
+        border: 1px solid rgba(255, 248, 232, 0.12);
+        border-radius: 0;
+        background: var(--tile-bg, #102836);
+        cursor: zoom-in;
+        padding: 0;
+      }
+
+      .media-tile.is-landscape {
+        aspect-ratio: 4 / 3;
+      }
+
+      .media-tile.is-wide {
+        grid-column: span 2;
+        aspect-ratio: 16 / 9;
+      }
+
+      .media-tile.is-contained {
+        padding: clamp(8px, 1vw, 14px);
+      }
+
+      .media-tile img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background: var(--tile-bg, #102836);
+        transition: transform 160ms ease;
+      }
+
+      .media-tile.is-contained img {
+        object-fit: contain;
+      }
+
+      .media-tile.is-fit img {
+        object-fit: contain;
+      }
+
+      .media-tile:hover img,
+      .media-tile:focus-visible img {
+        transform: scale(1.035);
+      }
+
+      .media-tile:focus-visible {
+        outline: 2px solid var(--clay);
+        outline-offset: 2px;
+      }
+
+      .image-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        display: grid;
+        place-items: center;
+        padding: clamp(18px, 4vw, 58px);
+        background: rgba(4, 15, 20, 0.92);
+      }
+
+      .image-lightbox[hidden] {
+        display: none;
+      }
+
+      .image-lightbox img {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 94vw;
+        max-height: 88vh;
+        object-fit: contain;
+        background: #102836;
+        box-shadow: var(--shadow);
+      }
+
+      .lightbox-close {
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        min-height: 38px;
+        border: 1px solid rgba(255, 248, 232, 0.5);
+        border-radius: 0;
+        background: transparent;
+        color: var(--cream);
+        cursor: pointer;
+        font: inherit;
+        font-size: 0.82rem;
+        font-weight: 900;
+        padding: 0 12px;
       }
 
       .side {
@@ -414,8 +519,9 @@
       .contact-block p {
         margin-bottom: 0;
         color: var(--muted);
-        font-family: Georgia, "Times New Roman", serif;
+        font-family: var(--serif-font);
         font-size: 0.92rem;
+        font-weight: 200;
       }
 
       .contact-link {
@@ -532,11 +638,6 @@
           flex-direction: column;
         }
 
-        .nav {
-          justify-content: flex-start;
-          width: 100%;
-        }
-
         .intro,
         .side-card {
           padding: 28px 22px;
@@ -557,16 +658,20 @@
         .work-card.is-wide {
           grid-column: span 1;
         }
+
+        .media-tile.is-wide {
+          grid-column: span 1;
+        }
+
+        .work-section-head {
+          display: grid;
+        }
       }
     </style>
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="index.html">John Clark <span>Art &amp; Design</span></a>
-          <nav class="nav" aria-label="Primary">
-        <a href="#work">Work</a>
-        <a href="#contact">Contact</a>
-      </nav>
     </header>
 
     <main>
@@ -609,7 +714,6 @@
             </div>
 
             <div class="actions" aria-label="Primary links">
-              <a class="button primary" href="#work">Work</a>
               <a class="button" href="mailto:jackjamesclark@gmail.com">Email</a>
               <a class="button" href="assets/portfolio/docs/portfolio-2026.pdf">Portfolio</a>
             </div>
@@ -620,198 +724,300 @@
       <section class="work-tabs" id="work" aria-label="Work sections">
         <div class="work-tabs-inner">
           <nav class="tab-list" aria-label="Work section tabs">
-            <button class="tab-button" type="button" data-work-tab="objects" aria-controls="work-objects" aria-expanded="false">Objects</button>
-            <button class="tab-button" type="button" data-work-tab="paintings" aria-controls="work-paintings" aria-expanded="false">Paintings</button>
-            <button class="tab-button" type="button" data-work-tab="photo" aria-controls="work-photo" aria-expanded="false">Photo</button>
-            <button class="tab-button" type="button" data-work-tab="process" aria-controls="work-process" aria-expanded="false">Process</button>
+            <button class="tab-button" type="button" data-work-tab="design" aria-controls="work-design" aria-expanded="false">Design</button>
+            <button class="tab-button" type="button" data-work-tab="art" aria-controls="work-art" aria-expanded="false">Art</button>
           </nav>
           <div class="work-panels">
-            <section class="work-content" id="work-objects" data-work-panel="objects" hidden>
+            <section class="work-content" id="work-design" data-work-panel="design" hidden>
               <div class="work-content-head">
-                <h2>Objects</h2>
-                <p>Furniture, vessels, and sculptural forms shaped through proportion, structure, and material tests.</p>
-              </div>
-              <div class="work-card-grid">
-                <article class="work-card">
-                  <img src="assets/portfolio/images/furniture-table.jpg" alt="Wood table under construction in a shop.">
-                  <div class="work-card-body">
-                    <span>Furniture</span>
-                    <h3>Table Construction</h3>
-                    <p>Joinery, proportion, and exposed construction details.</p>
-                  </div>
-                </article>
-                <article class="work-card">
-                  <img src="assets/portfolio/images/furniture-clamps.jpg" alt="Wood furniture parts clamped together in progress.">
-                  <div class="work-card-body">
-                    <span>Woodshop</span>
-                    <h3>Making Details</h3>
-                    <p>Clamping, exposed structure, and material decisions in progress.</p>
-                  </div>
-                </article>
-                <article class="work-card is-wide">
-                  <img src="assets/portfolio/images/vessel-render.jpg" alt="Gray clustered vessel form render.">
-                  <div class="work-card-body">
-                    <span>Sculptural Form</span>
-                    <h3>Vessels and Volumes</h3>
-                    <p>Repeated tubes, rounded silhouettes, and container language between object and sculpture.</p>
-                  </div>
-                </article>
-              </div>
-            </section>
-
-            <section class="work-content" id="work-paintings" data-work-panel="paintings" hidden>
-              <div class="work-content-head">
-                <h2>Paintings</h2>
-                <p>Digital studies grouped by subject, from landscape atmosphere to figure drawing and object form.</p>
+                <h2>Design</h2>
+                <p>Furniture, product concepts, vessels, and process work organized by project.</p>
               </div>
               <div class="work-subsections">
                 <section class="work-subsection">
-                  <span class="work-subsection-label">Landscape</span>
-                  <div class="work-card-grid">
-                    <article class="work-card is-wide">
-                      <img src="assets/portfolio/images/digital-paintings/landscape-dark-forest.jpg" alt="Dark digital forest painting with tall trunks and a narrow stream.">
-                      <div class="work-card-body">
-                        <h3>Landscapes</h3>
-                        <p>Terrain, forest, water, and architecture as color and mood.</p>
-                      </div>
-                    </article>
-                    <article class="work-card">
-                      <img src="assets/portfolio/images/digital-paintings/landscape-coast.jpg" alt="Digital painting of waves and coastline.">
-                    </article>
-                    <article class="work-card">
-                      <img src="assets/portfolio/images/digital-paintings/landscape-hill-path.jpg" alt="Digital painting of a green hill path at sunset.">
-                    </article>
+                  <div class="work-section-head">
+                    <h3>Table Construction</h3>
+                    <p>Woodshop images showing the object through structure, assembly, and surface.</p>
+                  </div>
+                  <div class="compact-gallery">
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand table construction image">
+                      <img src="assets/portfolio/images/furniture-table.jpg" alt="Wood table under construction in a shop.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand furniture clamping image">
+                      <img src="assets/portfolio/images/furniture-clamps.jpg" alt="Wood furniture parts clamped together in progress.">
+                    </button>
                   </div>
                 </section>
 
                 <section class="work-subsection">
-                  <span class="work-subsection-label">Vessels</span>
-                  <div class="work-card-grid">
-                    <article class="work-card is-contained" style="--tile-bg: #ff5c5d;">
-                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/coral-nozzle-bottle.jpg" alt="Fragrance bottle study on a coral red background.">
-                      <div class="work-card-body">
-                        <h3>Fragrance</h3>
-                        <p>Small product forms focused on reflection, translucency, and silhouette.</p>
-                      </div>
-                    </article>
-                    <article class="work-card is-contained" style="--tile-bg: #69c7d0;">
-                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/teal-nozzle-bottle.jpg" alt="Fragrance bottle study on a teal background.">
-                    </article>
-                    <article class="work-card is-contained" style="--tile-bg: #234c74;">
-                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/blue-round-bottle.jpg" alt="Round blue fragrance bottle study.">
-                    </article>
-                    <article class="work-card">
+                  <div class="work-section-head">
+                    <h3>Reel Display Console</h3>
+                    <p>Process board, room render, and form studies for a compact display object.</p>
+                  </div>
+                  <div class="compact-gallery">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand projector sketch scan">
+                      <img src="assets/portfolio/images/projector-sketch-scan.jpg" alt="Scanned projector sketch sheet for the reel display console.">
+                    </button>
+                    <button class="media-tile is-wide is-fit" type="button" style="--tile-bg: #ffffff;" aria-label="Expand projector exploded assembly render">
+                      <img src="assets/portfolio/images/projector-exploded-render.jpg" alt="Exploded assembly render of the reel display console components.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand projector room render image">
+                      <img src="assets/portfolio/images/projector-room.png" alt="Projector concept render in a room.">
+                    </button>
+                  </div>
+                </section>
+
+                <section class="work-subsection">
+                  <div class="work-section-head">
+                    <h3>Vessel Studies</h3>
+                    <p>Repeated tubes and rounded forms between product object and sculpture.</p>
+                  </div>
+                  <div class="compact-gallery">
+                    <button class="media-tile is-wide" type="button" aria-label="Expand sculptural vessel render">
                       <img src="assets/portfolio/images/vessel-render.jpg" alt="Gray clustered vessel form render.">
-                      <div class="work-card-body">
-                        <h3>Sculptural Vessels</h3>
-                        <p>Rounded volumes and repeated forms between object and sculpture.</p>
-                      </div>
-                    </article>
+                    </button>
                   </div>
                 </section>
 
                 <section class="work-subsection">
-                  <span class="work-subsection-label">Drapery</span>
-                  <div class="work-card-grid">
-                    <article class="work-card is-contained" style="--tile-bg: #c6b5a3;">
+                  <div class="work-section-head">
+                    <h3>Fragrance Bottles</h3>
+                    <p>Small object silhouettes studied through cap, body, color, and transparency.</p>
+                  </div>
+                  <div class="compact-gallery">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ff5c5d;" aria-label="Expand coral bottle study">
+                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/coral-nozzle-bottle.jpg" alt="Fragrance bottle study on a coral red background.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #69c7d0;" aria-label="Expand teal bottle study">
+                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/teal-nozzle-bottle.jpg" alt="Fragrance bottle study on a teal background.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #234c74;" aria-label="Expand round blue bottle study">
+                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/blue-round-bottle.jpg" alt="Round blue fragrance bottle study.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b0557c;" aria-label="Expand pink bottle study">
+                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/pink-ground-bottle.jpg" alt="Fragrance bottle study on a pink background.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #0e3d44;" aria-label="Expand dark ground bottle study">
+                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/dark-ground-bottle.jpg" alt="Fragrance bottle study on a dark background.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #112a05;" aria-label="Expand tall green bottle study">
+                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/tall-green-bottle.jpg" alt="Tall translucent fragrance bottle study on a dark green background.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ff853f;" aria-label="Expand orange bottle study">
+                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/orange-bottle.jpg" alt="Orange fragrance bottle study with a wide translucent form.">
+                    </button>
+                  </div>
+                </section>
+
+                <section class="work-subsection">
+                  <div class="work-section-head">
+                    <h3>Product Form Study</h3>
+                    <p>A rendered appliance form with attention to proportion, split line, and hand-scale object language.</p>
+                  </div>
+                  <div class="compact-gallery">
+                    <button class="media-tile is-wide" type="button" aria-label="Expand hair dryer front render">
+                      <img src="assets/portfolio/images/hair-dryer-front-render.jpg" alt="Hair dryer product render with the form centered on a gray background.">
+                    </button>
+                    <button class="media-tile is-wide is-fit" type="button" style="--tile-bg: #ffffff;" aria-label="Expand hair dryer render">
+                      <img src="assets/portfolio/images/hair-dryer-render.jpg" alt="Hair dryer product render on a blue background.">
+                    </button>
+                  </div>
+                </section>
+              </div>
+            </section>
+
+            <section class="work-content" id="work-art" data-work-panel="art" hidden>
+              <div class="work-content-head">
+                <h2>Art</h2>
+                <p>Digital paintings, figure drawings, drapery studies, and Filmfoto work organized by series.</p>
+              </div>
+              <div class="work-subsections">
+                <section class="work-subsection">
+                  <div class="work-section-head">
+                    <h3>Landscape</h3>
+                    <p>Terrain, forest, water, and architecture as color and spatial mood.</p>
+                  </div>
+                  <div class="compact-gallery">
+                    <button class="media-tile is-wide" type="button" aria-label="Expand dark forest painting">
+                      <img src="assets/portfolio/images/digital-paintings/landscape-dark-forest.jpg" alt="Dark digital forest painting with tall trunks and a narrow stream.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand night hills painting">
+                      <img src="assets/portfolio/images/digital-paintings/landscape-night-hills.jpg" alt="Digital landscape painting with red hills under a blue night sky.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand coast painting">
+                      <img src="assets/portfolio/images/digital-paintings/landscape-coast.jpg" alt="Digital painting of waves and coastline.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand hill path painting">
+                      <img src="assets/portfolio/images/digital-paintings/landscape-hill-path.jpg" alt="Digital painting of a green hill path at sunset.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand forest path painting">
+                      <img src="assets/portfolio/images/digital-paintings/landscape-forest-path.jpg" alt="Digital painting of a green forest path.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand meadow painting">
+                      <img src="assets/portfolio/images/digital-paintings/landscape-meadow.jpg" alt="Digital painting of a pale meadow landscape.">
+                    </button>
+                  </div>
+                </section>
+
+                <section class="work-subsection">
+                  <div class="work-section-head">
+                    <h3>Vessels</h3>
+                    <p>Bottle and vessel studies focused on silhouette, translucency, and repeated volume.</p>
+                  </div>
+                  <div class="compact-gallery">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ff5c5d;" aria-label="Expand coral bottle study">
+                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/coral-nozzle-bottle.jpg" alt="Fragrance bottle study on a coral red background.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #69c7d0;" aria-label="Expand teal bottle study">
+                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/teal-nozzle-bottle.jpg" alt="Fragrance bottle study on a teal background.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #234c74;" aria-label="Expand round blue bottle study">
+                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/blue-round-bottle.jpg" alt="Round blue fragrance bottle study.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b0557c;" aria-label="Expand pink bottle study">
+                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/pink-ground-bottle.jpg" alt="Fragrance bottle study on a pink background.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #0e3d44;" aria-label="Expand dark ground bottle study">
+                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/dark-ground-bottle.jpg" alt="Fragrance bottle study on a dark background.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #112a05;" aria-label="Expand tall green bottle study">
+                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/tall-green-bottle.jpg" alt="Tall translucent fragrance bottle study on a dark green background.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ff853f;" aria-label="Expand orange bottle study">
+                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/orange-bottle.jpg" alt="Orange fragrance bottle study with a wide translucent form.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand sculptural vessel render">
+                      <img src="assets/portfolio/images/vessel-render.jpg" alt="Gray clustered vessel form render.">
+                    </button>
+                  </div>
+                </section>
+
+                <section class="work-subsection">
+                  <div class="work-section-head">
+                    <h3>Drapery</h3>
+                    <p>Soft folded forms, translucent surfaces, and fabric-like objects.</p>
+                  </div>
+                  <div class="compact-gallery">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #c6b5a3;" aria-label="Expand amber drapery study">
                       <img src="assets/portfolio/images/digital-paintings/object-studies/amber-low-form.jpg" alt="Amber draped object study on a taupe background.">
-                      <div class="work-card-body">
-                        <h3>Drapery</h3>
-                        <p>Soft folds, translucent surfaces, and object-adjacent shapes.</p>
-                      </div>
-                    </article>
-                    <article class="work-card is-contained" style="--tile-bg: #b8c7d8;">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b8c7d8;" aria-label="Expand faceted drapery study">
                       <img src="assets/portfolio/images/digital-paintings/object-studies/faceted-drapery-form.jpg" alt="Faceted translucent drapery form study.">
-                    </article>
-                    <article class="work-card is-contained" style="--tile-bg: #a8b894;">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #a8b894;" aria-label="Expand green cap drapery study">
                       <img src="assets/portfolio/images/digital-paintings/object-studies/green-cap-drapery-form.jpg" alt="Green capped drapery form study.">
-                    </article>
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ded3dc;" aria-label="Expand lilac block drapery study">
+                      <img src="assets/portfolio/images/digital-paintings/object-studies/lilac-block-drapery-form.jpg" alt="Lilac block drapery form study.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #9f8b9f;" aria-label="Expand tall lilac drapery study">
+                      <img src="assets/portfolio/images/digital-paintings/object-studies/tall-lilac-drapery-form.jpg" alt="Tall lilac drapery form study.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #e9dfc9;" aria-label="Expand soft amber drapery study">
+                      <img src="assets/portfolio/images/digital-paintings/object-studies/soft-amber-drapery-form.jpg" alt="Soft amber drapery form study.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b9afa4;" aria-label="Expand brown drapery study">
+                      <img src="assets/portfolio/images/digital-paintings/object-studies/brown-drapery-form.jpg" alt="Brown drapery form study.">
+                    </button>
                   </div>
                 </section>
 
                 <section class="work-subsection">
-                  <span class="work-subsection-label">Figures</span>
-                  <div class="work-card-grid">
-                    <article class="work-card is-contained" style="--tile-bg: #fee9e4;">
+                  <div class="work-section-head">
+                    <h3>Figures</h3>
+                    <p>Drawing-led figure studies, gesture, pose, and wearable-form ideas.</p>
+                  </div>
+                  <div class="compact-gallery">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #fee9e4;" aria-label="Expand figure line study">
                       <img src="assets/portfolio/images/digital-paintings/figures/drawings/figure-line-study.jpg" alt="Loose figure drawing study on a pale background.">
-                      <div class="work-card-body">
-                        <h3>Figure Drawings</h3>
-                        <p>Gesture, pose, movement, and wearable-form ideas.</p>
-                      </div>
-                    </article>
-                    <article class="work-card is-contained" style="--tile-bg: #ffffff;">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand walking construction figure drawing">
                       <img src="assets/portfolio/images/digital-paintings/figures/drawings/walking-construction-figure.jpg" alt="Walking figure construction drawing.">
-                    </article>
-                    <article class="work-card is-contained" style="--tile-bg: #ffffff;">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand seated gesture figure drawing">
                       <img src="assets/portfolio/images/digital-paintings/figures/drawings/seated-gesture-study.jpg" alt="Seated gesture figure drawing.">
-                    </article>
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #fee9e4;" aria-label="Expand pale figure study">
+                      <img src="assets/portfolio/images/digital-paintings/figures/drawings/pale-figure-study.jpg" alt="Pale figure drawing study.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand studio figure drawing">
+                      <img src="assets/portfolio/images/digital-paintings/figures/drawings/studio-figure-drawing.jpg" alt="Studio figure drawing.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand motion figure drawing">
+                      <img src="assets/portfolio/images/digital-paintings/figures/drawings/motion-figure-drawing.jpg" alt="Motion figure drawing.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand running gesture drawing">
+                      <img src="assets/portfolio/images/digital-paintings/figures/drawings/running-gesture.jpg" alt="Running gesture figure drawing.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand leaning gesture drawing">
+                      <img src="assets/portfolio/images/digital-paintings/figures/drawings/leaning-gesture.jpg" alt="Leaning gesture figure drawing.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #4e4b12;" aria-label="Expand green ground figure drawing">
+                      <img src="assets/portfolio/images/digital-paintings/figures/drawings/green-ground-figure-drawing.jpg" alt="Figure drawing on an olive green ground.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand red construction figure drawing">
+                      <img src="assets/portfolio/images/digital-paintings/figures/drawings/red-construction-figure.jpg" alt="Red construction figure drawing.">
+                    </button>
                   </div>
                 </section>
-              </div>
-            </section>
 
-            <section class="work-content" id="work-photo" data-work-panel="photo" hidden>
-              <div class="work-content-head">
-                <h2>Photo</h2>
-                <p>Film and digital photographs focused on atmosphere, surface, framing, and everyday spaces.</p>
-              </div>
-              <div class="work-card-grid">
-                <article class="work-card">
-                  <img src="assets/portfolio/images/photography/filmfoto-waterfront-lamps.jpg" alt="Film photograph of waterfront lights and structures.">
-                  <div class="work-card-body">
-                    <span>Film</span>
-                    <h3>Atmosphere</h3>
-                    <p>Light, distance, and small visual decisions.</p>
+                <section class="work-subsection">
+                  <div class="work-section-head">
+                    <h3>Filmfoto</h3>
+                    <p>Film and digital photographs of interiors, architecture, reflection, and light.</p>
                   </div>
-                </article>
-                <article class="work-card">
-                  <img src="assets/portfolio/images/photography/filmfoto-room-reflection.jpg" alt="Interior photograph with reflected light.">
-                  <div class="work-card-body">
-                    <span>Interior</span>
-                    <h3>Surfaces</h3>
-                    <p>Rooms, reflections, and material texture.</p>
+                  <div class="compact-gallery">
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand waterfront lamps photograph">
+                      <img src="assets/portfolio/images/photography/filmfoto-waterfront-lamps.jpg" alt="Film photograph of waterfront lights and structures.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand room reflection photograph">
+                      <img src="assets/portfolio/images/photography/filmfoto-room-reflection.jpg" alt="Interior photograph with reflected light.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand glass roof photograph">
+                      <img src="assets/portfolio/images/photography/filmfoto-glass-roof.jpg" alt="Film photograph of glass roof structure.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand city reflection photograph">
+                      <img src="assets/portfolio/images/photography/filmfoto-city-reflection.jpg" alt="Film photograph with city reflections.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand kitchen sink photograph">
+                      <img src="assets/portfolio/images/photography/filmfoto-kitchen-sink.jpg" alt="Film photograph of a kitchen sink.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand desk screen photograph">
+                      <img src="assets/portfolio/images/photography/filmfoto-desk-screen.jpg" alt="Film photograph of a desk and screen.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand window portrait photograph">
+                      <img src="assets/portfolio/images/photography/filmfoto-window-portrait.jpg" alt="Film photograph near a window.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand studio desk photograph">
+                      <img src="assets/portfolio/images/photography/filmfoto-studio-desk.jpg" alt="Film photograph of a studio desk.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand flared architecture photograph">
+                      <img src="assets/portfolio/images/photography/filmfoto-flared-architecture.jpg" alt="Film photograph of flared architectural light.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand bookshelf photograph">
+                      <img src="assets/portfolio/images/photography/filmfoto-bookshelf.jpg" alt="Film photograph of a bookshelf.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand harbor dots photograph">
+                      <img src="assets/portfolio/images/photography/filmfoto-harbor-dots.jpg" alt="Film photograph of harbor lights.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand framed shelf photograph">
+                      <img src="assets/portfolio/images/photography/filmfoto-framed-shelf.jpg" alt="Film photograph of a framed shelf.">
+                    </button>
+                    <button class="media-tile is-landscape" type="button" aria-label="Expand plant light photograph">
+                      <img src="assets/portfolio/images/photography/filmfoto-plant-light.jpg" alt="Film photograph of plant light.">
+                    </button>
                   </div>
-                </article>
-                <article class="work-card">
-                  <img src="assets/portfolio/images/photography/filmfoto-glass-roof.jpg" alt="Film photograph of glass roof structure.">
-                </article>
-                <article class="work-card">
-                  <img src="assets/portfolio/images/photography/filmfoto-city-reflection.jpg" alt="Film photograph with city reflections.">
-                </article>
-              </div>
-            </section>
-
-            <section class="work-content" id="work-process" data-work-panel="process" hidden>
-              <div class="work-content-head">
-                <h2>Process</h2>
-                <p>Sketches, models, renders, and boards that show how ideas move toward form.</p>
-              </div>
-              <div class="work-card-grid">
-                <article class="work-card is-wide">
-                  <img src="assets/portfolio/images/projector-process-board.jpg" alt="Projector concept process board with sketches and render studies.">
-                  <div class="work-card-body">
-                    <span>Drawing</span>
-                    <h3>Projector Studies</h3>
-                    <p>Early sketching, form exploration, and presentation boards.</p>
-                  </div>
-                </article>
-                <article class="work-card">
-                  <img src="assets/portfolio/images/hair-dryer-render.jpg" alt="Hair dryer product render on a blue background.">
-                  <div class="work-card-body">
-                    <span>Render</span>
-                    <h3>Product Form</h3>
-                    <p>CAD surfacing, internal layout, and ergonomic decisions.</p>
-                  </div>
-                </article>
-                <article class="work-card">
-                  <img src="assets/portfolio/images/projector-room.png" alt="Projector concept render in a room.">
-                </article>
+                </section>
               </div>
             </section>
           </div>
         </div>
       </section>
     </main>
+    <div class="image-lightbox" hidden aria-modal="true" role="dialog" aria-label="Expanded image">
+      <button class="lightbox-close" type="button">Close</button>
+      <img src="" alt="">
+    </div>
     <script>
       const workTabs = document.querySelectorAll("[data-work-tab]");
       const workPanels = document.querySelectorAll("[data-work-panel]");
@@ -830,6 +1036,39 @@
             panel.hidden = panel.dataset.workPanel !== name;
           });
         });
+      });
+
+      const lightbox = document.querySelector(".image-lightbox");
+      const lightboxImage = lightbox.querySelector("img");
+      const lightboxClose = lightbox.querySelector(".lightbox-close");
+
+      document.querySelectorAll(".media-tile").forEach((tile) => {
+        tile.addEventListener("click", () => {
+          const image = tile.querySelector("img");
+          lightboxImage.src = image.currentSrc || image.src;
+          lightboxImage.alt = image.alt;
+          lightbox.hidden = false;
+          lightboxClose.focus();
+        });
+      });
+
+      const closeLightbox = () => {
+        lightbox.hidden = true;
+        lightboxImage.removeAttribute("src");
+        lightboxImage.alt = "";
+      };
+
+      lightboxClose.addEventListener("click", closeLightbox);
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !lightbox.hidden) {
+          closeLightbox();
+        }
       });
     </script>
   </body>
