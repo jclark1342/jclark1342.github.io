@@ -108,7 +108,7 @@
       }
 
       main {
-        min-height: calc(100vh - 57px);
+        min-height: calc((100vh - 57px) / 2);
       }
 
       .home {
@@ -124,10 +124,10 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: center;
         min-height: clamp(620px, calc(100vh - 57px), 860px);
         overflow: hidden;
-        padding: var(--home-pad-top) var(--home-pad-x) clamp(34px, 6vw, 72px);
+        padding: var(--home-pad-top) var(--home-pad-x) clamp(96px, 12vw, 158px);
       }
 
       .intro::before {
@@ -206,14 +206,18 @@
       }
 
       .home-entry-tiles {
+        --tab-height: clamp(58px, 6vw, 76px);
         position: relative;
+        z-index: 3;
         display: grid;
-        grid-template-columns: minmax(0, 1fr) clamp(52px, 7vw, 78px) minmax(0, 1fr);
-        gap: clamp(5px, 0.8vw, 10px);
-        padding: clamp(8px, 1.2vw, 14px) var(--home-pad-x) 0;
-        background:
-          var(--home-overlay),
-          url("assets/portfolio/images/projector-sketch-scan.jpg") center bottom / cover no-repeat;
+        grid-template-columns: minmax(0, 1fr) clamp(58px, 7vw, 84px) minmax(0, 1fr);
+        align-items: stretch;
+        gap: clamp(10px, 1.8vw, 24px);
+        margin-right: calc(-1 * var(--home-pad-x));
+        margin-left: calc(-1 * var(--home-pad-x));
+        margin-top: calc(-1 * clamp(62px, 6.2vw, 82px));
+        padding: clamp(8px, 1.2vw, 14px) 0 0;
+        background: transparent;
       }
 
       .home-entry-tile,
@@ -222,11 +226,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        min-height: 0;
+        min-height: var(--tab-height);
         overflow: hidden;
         padding: 15px clamp(18px, 3vw, 34px) 17px;
-        border: 1px solid rgba(255, 248, 232, 0.18);
-        border-bottom: 0;
+        border: 0;
         border-radius: 8px 8px 0 0;
         background: var(--home-tab-bg);
         color: var(--cream);
@@ -259,14 +262,21 @@
       .home-reset-tile {
         justify-content: center;
         padding: 0;
+        border-radius: 8px 8px 0 0;
+        background: var(--home-tab-bg);
       }
 
       .home-entry-tile[data-work-tab="design"] {
+        padding-left: calc(var(--home-pad-x) + clamp(18px, 3vw, 34px));
         background: var(--design-tab-bg);
+        clip-path: polygon(0 0, calc(100% - clamp(24px, 3.2vw, 40px)) 0, calc(100% - clamp(14px, 1.8vw, 22px)) clamp(8px, 1vw, 12px), 100% 100%, 0 100%);
       }
 
       .home-entry-tile[data-work-tab="art"] {
+        padding-left: clamp(28px, 4.4vw, 54px);
+        padding-right: calc(var(--home-pad-x) + clamp(18px, 3vw, 34px));
         background: var(--art-tab-bg);
+        clip-path: polygon(clamp(24px, 3.2vw, 40px) 0, 100% 0, 100% 100%, 0 100%, clamp(14px, 1.8vw, 22px) clamp(8px, 1vw, 12px));
       }
 
       .home-reset-tile::before {
@@ -325,13 +335,8 @@
         color: #ffffff;
       }
 
-      body:not([data-work-theme]) .home-reset-tile,
       .home-entry-tile.is-active {
         z-index: 2;
-        box-shadow:
-          0 2px 0 var(--active-tab-bg, var(--paper)),
-          0 -1px 0 rgba(255, 248, 232, 0.12) inset;
-        transform: translateY(2px);
       }
 
       body[data-work-theme] .home-reset-tile,
@@ -1016,7 +1021,7 @@
           --hero-image-fit: cover;
           --hero-image-position: center 32%;
           --hero-image-scale: 1.06;
-          padding: var(--home-pad-top) var(--home-pad-x) 32px;
+          padding: var(--home-pad-top) var(--home-pad-x) 96px;
           min-height: clamp(520px, 100vw, 640px);
         }
 
@@ -1032,7 +1037,7 @@
 
         .home-contact {
           gap: 8px;
-          min-height: 100vh;
+          min-height: 50vh;
           padding: 26px var(--home-pad-x) 30px;
         }
 
@@ -1046,13 +1051,26 @@
         }
 
         .home-entry-tiles {
+          --tab-height: 58px;
           grid-template-columns: minmax(0, 1fr) 54px minmax(0, 1fr);
-          gap: 5px;
-          padding: 8px var(--home-pad-x) 0;
+          gap: 8px;
+          margin-right: calc(-1 * var(--home-pad-x));
+          margin-left: calc(-1 * var(--home-pad-x));
+          margin-top: -58px;
+          padding: 8px 0 0;
         }
 
         .home-entry-tile {
           padding: 12px 14px 14px;
+        }
+
+        .home-entry-tile[data-work-tab="design"] {
+          padding-left: calc(var(--home-pad-x) + 14px);
+        }
+
+        .home-entry-tile[data-work-tab="art"] {
+          padding-left: 24px;
+          padding-right: calc(var(--home-pad-x) + 14px);
         }
 
         .home-entry-tile strong {
