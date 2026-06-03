@@ -12,9 +12,9 @@
   lightbox.setAttribute("role", "dialog");
   lightbox.setAttribute("aria-label", "Expanded gallery image");
   lightbox.innerHTML = `
-    <button class="lightbox-nav lightbox-nav-prev" type="button" aria-label="Previous image">←</button>
-    <button class="lightbox-nav lightbox-nav-next" type="button" aria-label="Next image">→</button>
-    <button class="gallery-lightbox-close" type="button" aria-label="Close full screen image">Close</button>
+    <button class="lightbox-nav lightbox-nav-prev" type="button" aria-label="Previous image">〈</button>
+    <button class="lightbox-nav lightbox-nav-next" type="button" aria-label="Next image">〉</button>
+    <button class="gallery-lightbox-close" type="button" aria-label="Close full screen image">×</button>
     <p class="lightbox-counter" aria-live="polite"></p>
     <img alt="">
   `;

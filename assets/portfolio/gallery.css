@@ -356,21 +356,25 @@ body.is-lightbox-open {
   position: fixed;
   top: clamp(14px, 3vw, 28px);
   right: clamp(14px, 3vw, 28px);
-  min-height: 42px;
-  padding: 0 16px;
-  border: 1px solid rgba(255, 248, 232, 0.72);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
   border-radius: 8px;
-  background: rgba(255, 248, 232, 0.92);
-  color: #102836;
+  background: rgba(255, 248, 232, 0.26);
+  color: var(--ink);
   cursor: pointer;
   font: inherit;
-  font-size: 0.86rem;
+  font-size: 1.45rem;
   font-weight: 900;
+  line-height: 0;
 }
 
 .gallery-lightbox-close:hover,
 .gallery-lightbox-close:focus-visible {
-  background: var(--clay);
+  background: rgba(255, 248, 232, 0.38);
   outline: 0;
 }
 
@@ -379,10 +383,11 @@ body.is-lightbox-open {
   right: clamp(14px, 3vw, 28px);
   bottom: clamp(14px, 3vw, 28px);
   margin: 0;
-  padding: 6px 10px;
-  border: 1px solid rgba(255, 248, 232, 0.42);
+  min-width: 56px;
+  padding: 10px 12px;
+  border: 0;
   border-radius: 8px;
-  background: rgba(15, 38, 48, 0.72);
+  background: rgba(255, 248, 232, 0.26);
   color: var(--ink);
   font-family: var(--display-font);
   font-size: 0.82rem;
@@ -393,22 +398,33 @@ body.is-lightbox-open {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  width: 46px;
-  height: 72px;
-  border: 1px solid rgba(255, 248, 232, 0.72);
+  width: 44px;
+  height: 44px;
+  border: 0;
   border-radius: 8px;
-  background: rgba(255, 248, 232, 0.92);
-  color: #102836;
+  background: rgba(255, 248, 232, 0.26);
+  color: var(--ink);
   cursor: pointer;
   font: inherit;
-  font-size: 1.4rem;
+  font-size: 0;
   font-weight: 900;
   line-height: 1;
 }
 
+.lightbox-nav::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 13px;
+  height: 13px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  content: "";
+}
+
 .lightbox-nav:hover,
 .lightbox-nav:focus-visible {
-  background: var(--clay);
+  background: rgba(255, 248, 232, 0.38);
   outline: 0;
 }
 
@@ -416,8 +432,16 @@ body.is-lightbox-open {
   left: clamp(14px, 3vw, 28px);
 }
 
+.lightbox-nav-prev::before {
+  transform: translate(-35%, -50%) rotate(-135deg);
+}
+
 .lightbox-nav-next {
   right: clamp(14px, 3vw, 28px);
+}
+
+.lightbox-nav-next::before {
+  transform: translate(-65%, -50%) rotate(45deg);
 }
 
 .gallery-lightbox .lightbox-nav,
@@ -550,7 +574,12 @@ body.is-lightbox-open {
 
   .lightbox-nav {
     width: 40px;
-    height: 58px;
+    height: 40px;
+  }
+
+  .lightbox-nav::before {
+    width: 11px;
+    height: 11px;
   }
 
   .photo-piece,
