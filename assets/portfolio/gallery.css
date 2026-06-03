@@ -190,25 +190,25 @@ h1 {
   box-shadow: var(--shadow);
 }
 
-.landscape-gallery-page.is-lightbox-open {
+body.is-lightbox-open {
   overflow: hidden;
 }
 
-.landscape-gallery-page .landscape-piece {
+.lightbox-gallery-item {
   cursor: zoom-in;
   transition:
     box-shadow 180ms ease,
     transform 180ms ease;
 }
 
-.landscape-gallery-page .landscape-piece:hover,
-.landscape-gallery-page .landscape-piece:focus-visible {
+.lightbox-gallery-item:hover,
+.lightbox-gallery-item:focus-visible {
   outline: 0;
   transform: translateY(-3px);
 }
 
-.landscape-gallery-page .landscape-piece:hover img,
-.landscape-gallery-page .landscape-piece:focus-visible img {
+.lightbox-gallery-item:hover img,
+.lightbox-gallery-item:focus-visible img {
   box-shadow:
     0 22px 54px rgba(23, 32, 43, 0.18),
     0 0 0 2px rgba(238, 125, 62, 0.62);
@@ -276,10 +276,6 @@ h1 {
   background: var(--tile-bg, var(--cream));
 }
 
-.figure-gallery-page.is-lightbox-open {
-  overflow: hidden;
-}
-
 .figure-gallery-page .gallery-section {
   padding-top: clamp(28px, 4vw, 56px);
 }
@@ -309,7 +305,6 @@ h1 {
   box-shadow:
     0 18px 42px rgba(0, 0, 0, 0.24),
     0 0 0 1px rgba(255, 248, 232, 0.08);
-  cursor: zoom-in;
   transition:
     box-shadow 180ms ease,
     transform 180ms ease;
@@ -331,54 +326,6 @@ h1 {
   background: var(--tile-bg, var(--cream));
 }
 
-.figure-lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(18px, 4vw, 56px);
-  background: rgba(16, 40, 54, 0.92);
-}
-
-.figure-lightbox.is-open {
-  display: flex;
-}
-
-.figure-lightbox img {
-  width: auto;
-  height: auto;
-  max-width: min(94vw, 1600px);
-  max-height: 88vh;
-  object-fit: contain;
-  border-radius: 8px;
-  background: var(--cream);
-  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.36);
-}
-
-.figure-lightbox-close {
-  position: fixed;
-  top: clamp(14px, 3vw, 28px);
-  right: clamp(14px, 3vw, 28px);
-  min-height: 42px;
-  padding: 0 16px;
-  border: 1px solid rgba(255, 248, 232, 0.72);
-  border-radius: 8px;
-  background: rgba(255, 248, 232, 0.92);
-  color: #102836;
-  cursor: pointer;
-  font: inherit;
-  font-size: 0.86rem;
-  font-weight: 900;
-}
-
-.figure-lightbox-close:hover,
-.figure-lightbox-close:focus-visible {
-  background: var(--clay);
-  outline: 0;
-}
-
 .gallery-lightbox {
   position: fixed;
   inset: 0;
@@ -397,7 +344,7 @@ h1 {
 .gallery-lightbox img {
   width: auto;
   height: auto;
-  max-width: min(94vw, 1600px);
+  max-width: min(88vw, 1600px);
   max-height: 88vh;
   object-fit: contain;
   border-radius: 8px;
@@ -425,6 +372,62 @@ h1 {
 .gallery-lightbox-close:focus-visible {
   background: var(--clay);
   outline: 0;
+}
+
+.lightbox-counter {
+  position: fixed;
+  right: clamp(14px, 3vw, 28px);
+  bottom: clamp(14px, 3vw, 28px);
+  margin: 0;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 248, 232, 0.42);
+  border-radius: 8px;
+  background: rgba(15, 38, 48, 0.72);
+  color: var(--ink);
+  font-family: var(--display-font);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.lightbox-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 72px;
+  border: 1px solid rgba(255, 248, 232, 0.72);
+  border-radius: 8px;
+  background: rgba(255, 248, 232, 0.92);
+  color: #102836;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.4rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.lightbox-nav:hover,
+.lightbox-nav:focus-visible {
+  background: var(--clay);
+  outline: 0;
+}
+
+.lightbox-nav-prev {
+  left: clamp(14px, 3vw, 28px);
+}
+
+.lightbox-nav-next {
+  right: clamp(14px, 3vw, 28px);
+}
+
+.gallery-lightbox .lightbox-nav,
+.image-lightbox .lightbox-nav {
+  z-index: 60;
+}
+
+.gallery-lightbox .lightbox-counter,
+.image-lightbox .lightbox-counter {
+  z-index: 60;
 }
 
 .photo-grid {
@@ -536,9 +539,18 @@ h1 {
     gap: 18px;
   }
 
-  .figure-lightbox,
   .gallery-lightbox {
     padding: 58px 14px 18px;
+  }
+
+  .gallery-lightbox img {
+    max-width: 82vw;
+    max-height: 78vh;
+  }
+
+  .lightbox-nav {
+    width: 40px;
+    height: 58px;
   }
 
   .photo-piece,

@@ -32,7 +32,7 @@
       </section>
 
       <section class="gallery-section" aria-label="Figure drawing digital paintings">
-        <div class="gallery-shell figure-grid" data-lightbox-gallery>
+        <div class="gallery-shell figure-grid" data-lightbox-gallery data-lightbox-item=".figure-tile">
           <div class="figure-tile" style="--tile-bg: #fee9e4;">
             <img src="assets/portfolio/images/digital-paintings/figures/drawings/figure-line-study.jpg" alt="Loose digital figure line drawing on a pale pink background.">
           </div>
@@ -80,11 +80,6 @@
           </div>
         </div>
       </section>
-
-      <div class="figure-lightbox" id="figure-lightbox" aria-hidden="true">
-        <button class="figure-lightbox-close" type="button" aria-label="Close full screen image">Close</button>
-        <img alt="">
-      </div>
     </main>
 
     <footer class="page-footer">
@@ -94,60 +89,6 @@
       <a href="paintings-objects.html">Drapery</a>
     </footer>
 
-    <script>
-      const gallery = document.querySelector("[data-lightbox-gallery]");
-      const lightbox = document.querySelector("#figure-lightbox");
-      const lightboxImage = lightbox.querySelector("img");
-      const closeButton = lightbox.querySelector(".figure-lightbox-close");
-      let activeTile = null;
-
-      function openLightbox(image, tile) {
-        activeTile = tile;
-        lightboxImage.src = image.currentSrc || image.src;
-        lightboxImage.alt = image.alt;
-        lightbox.setAttribute("aria-hidden", "false");
-        lightbox.classList.add("is-open");
-        document.body.classList.add("is-lightbox-open");
-        closeButton.focus();
-      }
-
-      function closeLightbox() {
-        lightbox.classList.remove("is-open");
-        lightbox.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("is-lightbox-open");
-        lightboxImage.removeAttribute("src");
-        if (activeTile) {
-          activeTile.focus();
-          activeTile = null;
-        }
-      }
-
-      gallery.querySelectorAll(".figure-tile").forEach((tile) => {
-        const image = tile.querySelector("img");
-        tile.setAttribute("role", "button");
-        tile.setAttribute("tabindex", "0");
-        tile.setAttribute("aria-label", `Open ${image.alt} full screen`);
-
-        tile.addEventListener("click", () => openLightbox(image, tile));
-        tile.addEventListener("keydown", (event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            openLightbox(image, tile);
-          }
-        });
-      });
-
-      closeButton.addEventListener("click", closeLightbox);
-      lightbox.addEventListener("click", (event) => {
-        if (event.target === lightbox) {
-          closeLightbox();
-        }
-      });
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
-          closeLightbox();
-        }
-      });
-    </script>
+    <script src="assets/portfolio/lightbox-gallery.js"></script>
   </body>
 </html>

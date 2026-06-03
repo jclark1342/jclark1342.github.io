@@ -85,8 +85,8 @@
 
       .home {
         display: grid;
-        min-height: calc(100vh - 57px);
-        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.45fr);
+        min-height: 0;
+        grid-template-columns: minmax(0, 1fr);
         border-bottom: 1px solid var(--line);
       }
 
@@ -95,9 +95,9 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        min-height: calc(100vh - 57px);
+        min-height: clamp(520px, 82vh, 760px);
         overflow: hidden;
-        padding: clamp(48px, 9vw, 128px) clamp(24px, 7vw, 112px);
+        padding: clamp(34px, 6vw, 82px) clamp(24px, 7vw, 112px);
       }
 
       .intro::before {
@@ -112,6 +112,154 @@
         position: relative;
         z-index: 2;
         max-width: 940px;
+      }
+
+      .intro h1 {
+        max-width: 920px;
+        margin-bottom: 14px;
+        font-size: clamp(2.25rem, 5vw, 5rem);
+      }
+
+      .home-contact {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        gap: 8px;
+        width: min(100%, 760px);
+        margin-top: clamp(18px, 3vw, 28px);
+        padding: 12px 0 0;
+        border-top: 1px solid rgba(255, 248, 232, 0.35);
+      }
+
+      .home-contact p {
+        max-width: 680px;
+        margin-bottom: 0;
+        color: rgba(255, 248, 232, 0.82);
+        font-family: var(--serif-font);
+        font-size: 0.88rem;
+        font-weight: 200;
+      }
+
+      .home-contact-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 18px;
+      }
+
+      .home-contact-links a {
+        color: var(--cream);
+        font-size: 0.78rem;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .home-contact-links a:hover,
+      .home-contact-links a:focus-visible {
+        text-decoration: underline;
+        text-underline-offset: 0.24em;
+      }
+
+      .home-entry-tiles {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 1fr));
+        gap: 10px;
+        width: min(100%, 420px);
+        margin-top: clamp(20px, 3.5vw, 34px);
+      }
+
+      .home-entry-tile {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        aspect-ratio: 1;
+        min-height: 0;
+        overflow: hidden;
+        padding: 16px;
+        border: 1px solid rgba(255, 248, 232, 0.5);
+        border-radius: 0;
+        background: rgba(4, 15, 20, 0.48);
+        color: var(--cream);
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
+        isolation: isolate;
+        transition:
+          border-color 180ms ease,
+          background 180ms ease,
+          transform 180ms ease;
+      }
+
+      .home-entry-tile::after {
+        position: absolute;
+        right: 14px;
+        bottom: 12px;
+        z-index: 2;
+        color: rgba(255, 248, 232, 0.78);
+        content: "↓";
+        font-size: 1.1rem;
+        font-weight: 900;
+        transform: translateY(-2px);
+        transition: transform 180ms ease;
+      }
+
+      .home-entry-tile img {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.28;
+        filter: grayscale(0.2) contrast(1.08);
+        transform: scale(1.02);
+        transition:
+          opacity 280ms ease,
+          transform 360ms ease;
+      }
+
+      .home-entry-tile strong {
+        position: relative;
+        z-index: 2;
+        font-size: clamp(1.25rem, 3vw, 2.2rem);
+        font-weight: 900;
+        line-height: 0.95;
+      }
+
+      .home-entry-tile:hover,
+      .home-entry-tile:focus-visible {
+        border-color: var(--cream);
+        background: rgba(4, 15, 20, 0.62);
+        outline: 0;
+        transform: translateY(-2px);
+      }
+
+      .home-entry-tile:hover::after,
+      .home-entry-tile:focus-visible::after {
+        transform: translateY(3px);
+      }
+
+      .home-entry-tile:hover img,
+      .home-entry-tile:focus-visible img,
+      .home-entry-tile.is-selected img {
+        opacity: 0.54;
+        transform: scale(1.1);
+      }
+
+      .home-entry-tiles.is-exiting .home-entry-tile:not(.is-selected) {
+        opacity: 0.42;
+      }
+
+      .home-entry-tile.is-selected {
+        border-color: var(--cream);
+        background: rgba(4, 15, 20, 0.72);
+      }
+
+      .home-entry-tile.is-active {
+        border-color: var(--cream);
+        background: rgba(4, 15, 20, 0.68);
+        box-shadow: inset 0 0 0 1px rgba(255, 248, 232, 0.45);
       }
 
       .eyebrow {
@@ -187,42 +335,6 @@
         max-width: 1320px;
         margin: 0 auto;
         gap: 18px;
-      }
-
-      .tab-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: clamp(26px, 5vw, 72px);
-        align-items: center;
-        justify-content: center;
-        padding: 0 0 18px;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .tab-button {
-        display: inline-flex;
-        min-height: 26px;
-        align-items: center;
-        justify-content: center;
-        border: 0;
-        border-radius: 0;
-        background: transparent;
-        color: var(--muted);
-        cursor: pointer;
-        font: inherit;
-        font-size: 0.84rem;
-        font-weight: 900;
-        text-decoration: none;
-        text-underline-offset: 0.22em;
-        transition:
-          color 160ms ease;
-      }
-
-      .tab-button:hover,
-      .tab-button:focus-visible,
-      .tab-button.is-active {
-        color: var(--clay);
-        text-decoration: underline;
       }
 
       .work-content {
@@ -515,6 +627,55 @@
         padding: 0 12px;
       }
 
+      .lightbox-nav {
+        position: fixed;
+        top: 50%;
+        z-index: 90;
+        width: 46px;
+        height: 72px;
+        border: 1px solid rgba(255, 248, 232, 0.5);
+        border-radius: 0;
+        background: rgba(11, 31, 40, 0.72);
+        color: var(--cream);
+        cursor: pointer;
+        font: inherit;
+        font-size: 1.4rem;
+        font-weight: 900;
+        line-height: 1;
+        transform: translateY(-50%);
+      }
+
+      .lightbox-nav-prev {
+        left: clamp(14px, 3vw, 28px);
+      }
+
+      .lightbox-nav-next {
+        right: clamp(14px, 3vw, 28px);
+      }
+
+      .lightbox-nav:hover,
+      .lightbox-nav:focus-visible,
+      .lightbox-close:hover,
+      .lightbox-close:focus-visible {
+        border-color: var(--clay);
+        outline: 0;
+      }
+
+      .lightbox-counter {
+        position: fixed;
+        right: clamp(14px, 3vw, 28px);
+        bottom: clamp(14px, 3vw, 28px);
+        z-index: 90;
+        margin: 0;
+        padding: 6px 10px;
+        border: 1px solid rgba(255, 248, 232, 0.42);
+        background: rgba(11, 31, 40, 0.72);
+        color: var(--cream);
+        font-family: var(--display-font);
+        font-size: 0.82rem;
+        font-weight: 900;
+      }
+
       .side {
         display: grid;
         align-content: stretch;
@@ -657,11 +818,6 @@
           grid-template-columns: 1fr;
         }
 
-        .side {
-          border-top: 1px solid var(--line);
-          border-left: 0;
-        }
-
         .work-content-head {
           grid-template-columns: 1fr;
         }
@@ -676,7 +832,50 @@
 
         .intro,
         .side-card {
-          padding: 28px 22px;
+          padding: 24px 22px;
+        }
+
+        .intro {
+          min-height: 0;
+        }
+
+        .intro h1 {
+          margin-bottom: 10px;
+          font-size: clamp(2.1rem, 10.8vw, 3.9rem);
+        }
+
+        .lede {
+          font-size: 0.98rem;
+          line-height: 1.34;
+        }
+
+        .home-contact {
+          gap: 6px;
+          margin-top: 16px;
+          padding-top: 10px;
+        }
+
+        .home-contact p {
+          font-size: 0.78rem;
+          line-height: 1.35;
+        }
+
+        .home-contact-links {
+          gap: 8px 14px;
+        }
+
+        .home-entry-tiles {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          width: min(100%, 330px);
+          margin-top: 18px;
+        }
+
+        .home-entry-tile {
+          padding: 12px;
+        }
+
+        .home-entry-tile strong {
+          font-size: clamp(1.05rem, 5vw, 1.45rem);
         }
 
         .actions {
@@ -719,6 +918,47 @@
             <p class="lede">A portfolio of art, design, drawing, photography, and form studies.</p>
           </div>
 
+          <div class="home-contact" id="contact" aria-label="Contact and availability">
+            <span class="status">Open to work</span>
+            <p>Available for ideation, design, fabrication, prototyping, visual, and studio opportunities.</p>
+            <div class="home-contact-links" aria-label="Contact links">
+              <a href="mailto:jackjamesclark@gmail.com">Email</a>
+              <a href="tel:+19857058668">(985) 705-8668</a>
+              <a href="assets/portfolio/docs/portfolio-2026.pdf">Portfolio</a>
+            </div>
+          </div>
+
+          <div class="home-entry-tiles" aria-label="Featured work sections">
+            <button
+              class="home-entry-tile"
+              type="button"
+              data-work-tab="design"
+              aria-controls="work-design"
+              aria-expanded="false"
+            >
+              <img
+                src="assets/portfolio/images/hair-dryer-render.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+              <strong>Design</strong>
+            </button>
+            <button
+              class="home-entry-tile"
+              type="button"
+              data-work-tab="art"
+              aria-controls="work-art"
+              aria-expanded="false"
+            >
+              <img
+                src="assets/portfolio/images/digital-paintings/landscape-night-hills.jpg"
+                alt=""
+                aria-hidden="true"
+              >
+              <strong>Art</strong>
+            </button>
+          </div>
+
           <div class="money-shot">
             <img
               src="assets/portfolio/images/projector-sketch-scan.jpg"
@@ -727,42 +967,10 @@
           </div>
 
         </div>
-
-        <aside class="side" id="contact" aria-label="Contact and availability">
-          <div class="side-card">
-            <div class="contact-block">
-              <span class="status">Open to work</span>
-              <p>
-                Available for ideation, design, fabrication, prototyping,
-                visual, and studio opportunities.
-              </p>
-            </div>
-
-            <div class="contact-block">
-              <a class="contact-link" href="mailto:jackjamesclark@gmail.com">
-                <span>Email</span>
-                <strong>jackjamesclark@gmail.com</strong>
-              </a>
-              <a class="contact-link" href="tel:+19857058668">
-                <span>Phone</span>
-                <strong>(985) 705-8668</strong>
-              </a>
-            </div>
-
-            <div class="actions" aria-label="Primary links">
-              <a class="button" href="mailto:jackjamesclark@gmail.com">Email</a>
-              <a class="button" href="assets/portfolio/docs/portfolio-2026.pdf">Portfolio</a>
-            </div>
-          </div>
-        </aside>
       </section>
 
       <section class="work-tabs" id="work" aria-label="Work sections">
         <div class="work-tabs-inner">
-          <nav class="tab-list" aria-label="Work section tabs">
-            <button class="tab-button" type="button" data-work-tab="design" aria-controls="work-design" aria-expanded="false">Design</button>
-            <button class="tab-button" type="button" data-work-tab="art" aria-controls="work-art" aria-expanded="false">Art</button>
-          </nav>
           <div class="work-panels">
             <section class="work-content" id="work-design" data-work-panel="design" hidden>
               <div class="work-content-head">
@@ -847,6 +1055,36 @@
 
                 <section class="work-subsection">
                   <div class="work-section-head">
+                    <h3>Drapery</h3>
+                    <p>Soft folded forms, translucent surfaces, and fabric-like objects.</p>
+                  </div>
+                  <div class="compact-gallery">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b0b3ba;" aria-label="Expand amber drapery study">
+                      <img src="assets/portfolio/images/digital-paintings/object-studies/amber-low-form.jpg" alt="Amber draped object study on a taupe background.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b9c6e2;" aria-label="Expand faceted drapery study">
+                      <img src="assets/portfolio/images/digital-paintings/object-studies/faceted-drapery-form.jpg" alt="Faceted translucent drapery form study.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #c1d2ca;" aria-label="Expand green cap drapery study">
+                      <img src="assets/portfolio/images/digital-paintings/object-studies/green-cap-drapery-form.jpg" alt="Green capped drapery form study.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #95a7c9;" aria-label="Expand lilac block drapery study">
+                      <img src="assets/portfolio/images/digital-paintings/object-studies/lilac-block-drapery-form.jpg" alt="Lilac block drapery form study.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #8b8db4;" aria-label="Expand tall lilac drapery study">
+                      <img src="assets/portfolio/images/digital-paintings/object-studies/tall-lilac-drapery-form.jpg" alt="Tall lilac drapery form study.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #9bb4af;" aria-label="Expand soft amber drapery study">
+                      <img src="assets/portfolio/images/digital-paintings/object-studies/soft-amber-drapery-form.jpg" alt="Soft amber drapery form study.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b9e3f2;" aria-label="Expand brown drapery study">
+                      <img src="assets/portfolio/images/digital-paintings/object-studies/brown-drapery-form.jpg" alt="Brown drapery form study.">
+                    </button>
+                  </div>
+                </section>
+
+                <section class="work-subsection">
+                  <div class="work-section-head">
                     <h3>Product Form Study</h3>
                     <p>A rendered appliance form with attention to proportion, split line, and hand-scale object language.</p>
                   </div>
@@ -862,7 +1100,7 @@
               </div>
             </section>
 
-            <section class="work-content" id="work-art" data-work-panel="art" hidden>
+            <section class="work-content" id="work-art" data-work-panel="art" data-gallery-scope="panel" hidden>
               <div class="work-content-head">
                 <h2>Art</h2>
                 <p>Digital paintings, figure drawings, drapery studies, and Filmfoto work organized by series.</p>
@@ -891,66 +1129,6 @@
                     </button>
                     <button class="media-tile is-side-crop" type="button" aria-label="Expand meadow painting">
                       <img src="assets/portfolio/images/digital-paintings/landscape-meadow.jpg" alt="Digital painting of a pale meadow landscape.">
-                    </button>
-                  </div>
-                </section>
-
-                <section class="work-subsection">
-                  <div class="work-section-head">
-                    <h3>Fragrance Bottles</h3>
-                    <p>Bottle and vessel studies focused on silhouette, translucency, and repeated volume.</p>
-                  </div>
-                  <div class="compact-gallery">
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ff5c5d;" aria-label="Expand coral bottle study">
-                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/coral-nozzle-bottle.jpg" alt="Fragrance bottle study on a coral red background.">
-                    </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #69c7d0;" aria-label="Expand teal bottle study">
-                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/teal-nozzle-bottle.jpg" alt="Fragrance bottle study on a teal background.">
-                    </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #234c74;" aria-label="Expand round blue bottle study">
-                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/blue-round-bottle.jpg" alt="Round blue fragrance bottle study.">
-                    </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b0557c;" aria-label="Expand pink bottle study">
-                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/pink-ground-bottle.jpg" alt="Fragrance bottle study on a pink background.">
-                    </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #0e3d44;" aria-label="Expand dark ground bottle study">
-                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/dark-ground-bottle.jpg" alt="Fragrance bottle study on a dark background.">
-                    </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #112a05;" aria-label="Expand tall green bottle study">
-                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/tall-green-bottle.jpg" alt="Tall translucent fragrance bottle study on a dark green background.">
-                    </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ff853f;" aria-label="Expand orange bottle study">
-                      <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/orange-bottle.jpg" alt="Orange fragrance bottle study with a wide translucent form.">
-                    </button>
-                  </div>
-                </section>
-
-                <section class="work-subsection">
-                  <div class="work-section-head">
-                    <h3>Drapery</h3>
-                    <p>Soft folded forms, translucent surfaces, and fabric-like objects.</p>
-                  </div>
-                  <div class="compact-gallery">
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b0b3ba;" aria-label="Expand amber drapery study">
-                      <img src="assets/portfolio/images/digital-paintings/object-studies/amber-low-form.jpg" alt="Amber draped object study on a taupe background.">
-                    </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b9c6e2;" aria-label="Expand faceted drapery study">
-                      <img src="assets/portfolio/images/digital-paintings/object-studies/faceted-drapery-form.jpg" alt="Faceted translucent drapery form study.">
-                    </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #c1d2ca;" aria-label="Expand green cap drapery study">
-                      <img src="assets/portfolio/images/digital-paintings/object-studies/green-cap-drapery-form.jpg" alt="Green capped drapery form study.">
-                    </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #95a7c9;" aria-label="Expand lilac block drapery study">
-                      <img src="assets/portfolio/images/digital-paintings/object-studies/lilac-block-drapery-form.jpg" alt="Lilac block drapery form study.">
-                    </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #8b8db4;" aria-label="Expand tall lilac drapery study">
-                      <img src="assets/portfolio/images/digital-paintings/object-studies/tall-lilac-drapery-form.jpg" alt="Tall lilac drapery form study.">
-                    </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #9bb4af;" aria-label="Expand soft amber drapery study">
-                      <img src="assets/portfolio/images/digital-paintings/object-studies/soft-amber-drapery-form.jpg" alt="Soft amber drapery form study.">
-                    </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b9e3f2;" aria-label="Expand brown drapery study">
-                      <img src="assets/portfolio/images/digital-paintings/object-studies/brown-drapery-form.jpg" alt="Brown drapery form study.">
                     </button>
                   </div>
                 </section>
@@ -1045,40 +1223,106 @@
       </section>
     </main>
     <div class="image-lightbox" hidden aria-modal="true" role="dialog" aria-label="Expanded image">
+      <button class="lightbox-nav lightbox-nav-prev" type="button" aria-label="Previous image">←</button>
+      <button class="lightbox-nav lightbox-nav-next" type="button" aria-label="Next image">→</button>
       <button class="lightbox-close" type="button">Close</button>
+      <p class="lightbox-counter" aria-live="polite"></p>
       <img src="" alt="">
     </div>
     <script>
       const workTabs = document.querySelectorAll("[data-work-tab]");
       const workPanels = document.querySelectorAll("[data-work-panel]");
+      const entryTileGroup = document.querySelector(".home-entry-tiles");
+
+      const selectWorkTab = (name) => {
+        workTabs.forEach((item) => {
+          const isActive = item.dataset.workTab === name;
+          item.classList.toggle("is-active", isActive);
+          item.setAttribute("aria-expanded", String(isActive));
+        });
+
+        workPanels.forEach((panel) => {
+          panel.hidden = panel.dataset.workPanel !== name;
+        });
+      };
 
       workTabs.forEach((tab) => {
         tab.addEventListener("click", () => {
+          const scrollTop = window.scrollY;
           const name = tab.dataset.workTab;
+          selectWorkTab(name);
+          window.requestAnimationFrame(() => {
+            window.scrollTo(0, scrollTop);
+          });
+          window.setTimeout(() => {
+            window.scrollTo(0, scrollTop);
+          }, 120);
 
+          entryTileGroup.classList.add("is-exiting");
           workTabs.forEach((item) => {
-            const isActive = item === tab;
-            item.classList.toggle("is-active", isActive);
-            item.setAttribute("aria-expanded", String(isActive));
+            item.classList.toggle("is-selected", item === tab);
           });
 
-          workPanels.forEach((panel) => {
-            panel.hidden = panel.dataset.workPanel !== name;
-          });
+          window.setTimeout(() => {
+            entryTileGroup.classList.remove("is-exiting");
+            tab.classList.remove("is-selected");
+          }, 520);
         });
       });
 
       const lightbox = document.querySelector(".image-lightbox");
       const lightboxImage = lightbox.querySelector("img");
       const lightboxClose = lightbox.querySelector(".lightbox-close");
+      const lightboxCounter = lightbox.querySelector(".lightbox-counter");
+      const prevButton = lightbox.querySelector(".lightbox-nav-prev");
+      const nextButton = lightbox.querySelector(".lightbox-nav-next");
+      let activeGallery = [];
+      let activeIndex = -1;
+      let activeTile = null;
+      let pointerStartX = null;
+
+      const resolveActiveImage = () => {
+        if (!activeGallery.length || activeIndex < 0) {
+          return;
+        }
+
+        const tile = activeGallery[activeIndex];
+        const image = tile.querySelector("img");
+        activeTile = tile;
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+        lightboxCounter.textContent = `${activeIndex + 1} / ${activeGallery.length}`;
+      };
+
+      const showImage = (index) => {
+        if (!activeGallery.length) {
+          return;
+        }
+
+        activeIndex = (index + activeGallery.length) % activeGallery.length;
+        resolveActiveImage();
+      };
+
+      const showNextImage = () => {
+        showImage(activeIndex + 1);
+      };
+
+      const showPreviousImage = () => {
+        showImage(activeIndex - 1);
+      };
+
+      const openLightbox = (tile) => {
+        const gallery = tile.closest("[data-gallery-scope='panel']") || tile.closest(".compact-gallery");
+        activeGallery = [...gallery.querySelectorAll(".media-tile")];
+        activeIndex = activeGallery.indexOf(tile);
+        showImage(activeIndex);
+        lightbox.hidden = false;
+        lightboxClose.focus();
+      };
 
       document.querySelectorAll(".media-tile").forEach((tile) => {
         tile.addEventListener("click", () => {
-          const image = tile.querySelector("img");
-          lightboxImage.src = image.currentSrc || image.src;
-          lightboxImage.alt = image.alt;
-          lightbox.hidden = false;
-          lightboxClose.focus();
+          openLightbox(tile);
         });
       });
 
@@ -1086,9 +1330,33 @@
         lightbox.hidden = true;
         lightboxImage.removeAttribute("src");
         lightboxImage.alt = "";
+        lightboxCounter.textContent = "";
       };
 
       lightboxClose.addEventListener("click", closeLightbox);
+      prevButton.addEventListener("click", showPreviousImage);
+      nextButton.addEventListener("click", showNextImage);
+      lightbox.addEventListener("pointerdown", (event) => {
+        pointerStartX = event.clientX;
+      });
+      lightbox.addEventListener("pointerup", (event) => {
+        if (pointerStartX === null) {
+          return;
+        }
+
+        const swipeDistance = event.clientX - pointerStartX;
+        pointerStartX = null;
+
+        if (Math.abs(swipeDistance) < 54) {
+          return;
+        }
+
+        if (swipeDistance > 0) {
+          showPreviousImage();
+        } else {
+          showNextImage();
+        }
+      });
       lightbox.addEventListener("click", (event) => {
         if (event.target === lightbox) {
           closeLightbox();
@@ -1096,8 +1364,22 @@
       });
 
       document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && !lightbox.hidden) {
+        if (lightbox.hidden) {
+          return;
+        }
+
+        if (event.key === "Escape") {
           closeLightbox();
+        }
+
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          showPreviousImage();
+        }
+
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          showNextImage();
         }
       });
     </script>
