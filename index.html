@@ -192,7 +192,7 @@
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0;
-        width: min(82vw, 520px);
+        width: min(70vw, 460px);
         margin-right: var(--intro-pad-x-neg);
         margin-left: var(--intro-pad-x-neg);
         margin-top: clamp(20px, 3.5vw, 34px);
@@ -202,10 +202,10 @@
         position: relative;
         display: flex;
         align-items: flex-end;
-        aspect-ratio: 1;
+        aspect-ratio: 16 / 10;
         min-height: 0;
         overflow: hidden;
-        padding: 16px;
+        padding: 14px;
         border: 1px solid rgba(255, 248, 232, 0.5);
         border-radius: 0;
         background: rgba(4, 15, 20, 0.48);
@@ -256,7 +256,7 @@
       .home-entry-tile strong {
         position: relative;
         z-index: 2;
-        font-size: clamp(1.25rem, 3vw, 2.2rem);
+        font-size: clamp(1.1rem, 2.4vw, 1.7rem);
         font-weight: 900;
         line-height: 0.95;
       }
@@ -565,6 +565,26 @@
         padding: clamp(8px, 1vw, 14px);
       }
 
+      .reel-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .reel-gallery .media-tile,
+      .reel-gallery .media-tile.is-wide,
+      .reel-gallery .media-tile.is-landscape {
+        grid-column: span 1;
+        aspect-ratio: 4 / 3;
+      }
+
+      .reel-gallery .media-tile.is-contained {
+        padding: 0;
+      }
+
+      .reel-gallery .media-tile.is-contained img,
+      .reel-gallery .media-tile.is-fit img {
+        object-fit: cover;
+      }
+
       #work-art .media-tile,
       #work-art .media-tile.is-landscape,
       #work-art .media-tile.is-side-crop,
@@ -578,6 +598,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: var(--image-position, center);
         background: var(--tile-bg, #102836);
         transition: transform 160ms ease;
       }
@@ -930,6 +951,7 @@
         }
 
         .home-entry-tiles {
+          width: min(86vw, 380px);
           margin-top: 18px;
         }
 
@@ -1057,7 +1079,7 @@
                     <p>Woodshop images showing the object through structure, assembly, and surface.</p>
                   </div>
                   <div class="compact-gallery">
-                    <button class="media-tile is-landscape" type="button" aria-label="Expand table construction image">
+                    <button class="media-tile is-landscape" type="button" style="--image-position: center 38%;" aria-label="Expand table construction image">
                       <img src="assets/portfolio/images/furniture-table.jpg" alt="Wood table under construction in a shop.">
                     </button>
                     <button class="media-tile is-landscape" type="button" aria-label="Expand furniture clamping image">
@@ -1071,7 +1093,7 @@
                     <h3>Reel Display Console</h3>
                     <p>Process board, room render, and form studies for a compact display object.</p>
                   </div>
-                  <div class="compact-gallery">
+                  <div class="compact-gallery reel-gallery">
                     <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand projector sketch scan">
                       <img src="assets/portfolio/images/projector-sketch-scan.jpg" alt="Scanned projector sketch sheet for the reel display console.">
                     </button>
@@ -1092,6 +1114,21 @@
                   <div class="compact-gallery">
                     <button class="media-tile is-wide" type="button" aria-label="Expand sculptural vessel render">
                       <img src="assets/portfolio/images/vessel-render.jpg" alt="Gray clustered vessel form render.">
+                    </button>
+                    <button class="media-tile is-wide" type="button" aria-label="Expand vessel render with utensil studies">
+                      <img src="assets/portfolio/images/vessel-render-new.png" alt="Gray vessel render holding a spoon and small rounded utensil form.">
+                    </button>
+                  </div>
+                </section>
+
+                <section class="work-subsection">
+                  <div class="work-section-head">
+                    <h3>Utensil Study</h3>
+                    <p>Fork form exploration focused on silhouette, proportion, and softened material language.</p>
+                  </div>
+                  <div class="compact-gallery">
+                    <button class="media-tile is-wide" type="button" style="--tile-bg: #f6f6f4;" aria-label="Expand fork utensil render">
+                      <img src="assets/portfolio/images/utensil-fork-top.jpg" alt="Pale fork utensil render shown from above.">
                     </button>
                   </div>
                 </section>
@@ -1165,8 +1202,17 @@
                     <button class="media-tile is-wide" type="button" aria-label="Expand hair dryer front render">
                       <img src="assets/portfolio/images/hair-dryer-front-render.jpg" alt="Hair dryer product render with the form centered on a gray background.">
                     </button>
-                    <button class="media-tile is-wide is-fit" type="button" style="--tile-bg: #ffffff;" aria-label="Expand hair dryer render">
+                    <button class="media-tile is-wide is-fit" type="button" style="--tile-bg: #dcecf9;" aria-label="Expand hair dryer render">
                       <img src="assets/portfolio/images/hair-dryer-render.jpg" alt="Hair dryer product render on a blue background.">
+                    </button>
+                    <button class="media-tile is-wide is-fit" type="button" style="--tile-bg: #ffffff;" aria-label="Expand hair dryer sketch page one">
+                      <img src="assets/portfolio/images/hair-dryer-sketch-page-1.jpg" alt="Hair dryer concept sketch page with many form studies.">
+                    </button>
+                    <button class="media-tile is-wide is-fit" type="button" style="--tile-bg: #ffffff;" aria-label="Expand hair dryer sketch page two">
+                      <img src="assets/portfolio/images/hair-dryer-sketch-page-2.jpg" alt="Hair dryer concept sketch page with translucent construction drawings.">
+                    </button>
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand hair dryer construction study">
+                      <img src="assets/portfolio/images/hair-dryer-screenshot-study.jpg" alt="Transparent hair dryer construction study render.">
                     </button>
                   </div>
                 </section>
