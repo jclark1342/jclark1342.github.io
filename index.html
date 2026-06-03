@@ -407,7 +407,12 @@
         aspect-ratio: 16 / 9;
       }
 
+      .media-tile.is-side-crop {
+        aspect-ratio: 5 / 4;
+      }
+
       .media-tile.is-contained {
+        border-color: var(--tile-bg, rgba(255, 248, 232, 0.12));
         padding: clamp(8px, 1vw, 14px);
       }
 
@@ -428,9 +433,23 @@
         object-fit: contain;
       }
 
+      .media-tile.is-side-crop img {
+        width: auto;
+        height: 100%;
+        max-width: none;
+        margin-left: 50%;
+        object-fit: initial;
+        transform: translateX(-50%);
+      }
+
       .media-tile:hover img,
       .media-tile:focus-visible img {
         transform: scale(1.035);
+      }
+
+      .media-tile.is-side-crop:hover img,
+      .media-tile.is-side-crop:focus-visible img {
+        transform: translateX(-50%) scale(1.035);
       }
 
       .media-tile:focus-visible {
@@ -838,22 +857,22 @@
                     <p>Terrain, forest, water, and architecture as color and spatial mood.</p>
                   </div>
                   <div class="compact-gallery">
-                    <button class="media-tile is-wide" type="button" aria-label="Expand dark forest painting">
+                    <button class="media-tile is-side-crop" type="button" aria-label="Expand dark forest painting">
                       <img src="assets/portfolio/images/digital-paintings/landscape-dark-forest.jpg" alt="Dark digital forest painting with tall trunks and a narrow stream.">
                     </button>
-                    <button class="media-tile is-landscape" type="button" aria-label="Expand night hills painting">
+                    <button class="media-tile is-side-crop" type="button" aria-label="Expand night hills painting">
                       <img src="assets/portfolio/images/digital-paintings/landscape-night-hills.jpg" alt="Digital landscape painting with red hills under a blue night sky.">
                     </button>
-                    <button class="media-tile is-landscape" type="button" aria-label="Expand coast painting">
+                    <button class="media-tile is-side-crop" type="button" aria-label="Expand coast painting">
                       <img src="assets/portfolio/images/digital-paintings/landscape-coast.jpg" alt="Digital painting of waves and coastline.">
                     </button>
-                    <button class="media-tile is-landscape" type="button" aria-label="Expand hill path painting">
+                    <button class="media-tile is-side-crop" type="button" aria-label="Expand hill path painting">
                       <img src="assets/portfolio/images/digital-paintings/landscape-hill-path.jpg" alt="Digital painting of a green hill path at sunset.">
                     </button>
-                    <button class="media-tile is-landscape" type="button" aria-label="Expand forest path painting">
+                    <button class="media-tile is-side-crop" type="button" aria-label="Expand forest path painting">
                       <img src="assets/portfolio/images/digital-paintings/landscape-forest-path.jpg" alt="Digital painting of a green forest path.">
                     </button>
-                    <button class="media-tile is-landscape" type="button" aria-label="Expand meadow painting">
+                    <button class="media-tile is-side-crop" type="button" aria-label="Expand meadow painting">
                       <img src="assets/portfolio/images/digital-paintings/landscape-meadow.jpg" alt="Digital painting of a pale meadow landscape.">
                     </button>
                   </div>
@@ -886,9 +905,6 @@
                     <button class="media-tile is-contained" type="button" style="--tile-bg: #ff853f;" aria-label="Expand orange bottle study">
                       <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/orange-bottle.jpg" alt="Orange fragrance bottle study with a wide translucent form.">
                     </button>
-                    <button class="media-tile is-landscape" type="button" aria-label="Expand sculptural vessel render">
-                      <img src="assets/portfolio/images/vessel-render.jpg" alt="Gray clustered vessel form render.">
-                    </button>
                   </div>
                 </section>
 
@@ -898,25 +914,25 @@
                     <p>Soft folded forms, translucent surfaces, and fabric-like objects.</p>
                   </div>
                   <div class="compact-gallery">
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #c6b5a3;" aria-label="Expand amber drapery study">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b0b3ba;" aria-label="Expand amber drapery study">
                       <img src="assets/portfolio/images/digital-paintings/object-studies/amber-low-form.jpg" alt="Amber draped object study on a taupe background.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b8c7d8;" aria-label="Expand faceted drapery study">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b9c6e2;" aria-label="Expand faceted drapery study">
                       <img src="assets/portfolio/images/digital-paintings/object-studies/faceted-drapery-form.jpg" alt="Faceted translucent drapery form study.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #a8b894;" aria-label="Expand green cap drapery study">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #c1d2ca;" aria-label="Expand green cap drapery study">
                       <img src="assets/portfolio/images/digital-paintings/object-studies/green-cap-drapery-form.jpg" alt="Green capped drapery form study.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ded3dc;" aria-label="Expand lilac block drapery study">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #95a7c9;" aria-label="Expand lilac block drapery study">
                       <img src="assets/portfolio/images/digital-paintings/object-studies/lilac-block-drapery-form.jpg" alt="Lilac block drapery form study.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #9f8b9f;" aria-label="Expand tall lilac drapery study">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #8b8db4;" aria-label="Expand tall lilac drapery study">
                       <img src="assets/portfolio/images/digital-paintings/object-studies/tall-lilac-drapery-form.jpg" alt="Tall lilac drapery form study.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #e9dfc9;" aria-label="Expand soft amber drapery study">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #9bb4af;" aria-label="Expand soft amber drapery study">
                       <img src="assets/portfolio/images/digital-paintings/object-studies/soft-amber-drapery-form.jpg" alt="Soft amber drapery form study.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b9afa4;" aria-label="Expand brown drapery study">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #b9e3f2;" aria-label="Expand brown drapery study">
                       <img src="assets/portfolio/images/digital-paintings/object-studies/brown-drapery-form.jpg" alt="Brown drapery form study.">
                     </button>
                   </div>
@@ -928,31 +944,31 @@
                     <p>Drawing-led figure studies, gesture, pose, and wearable-form ideas.</p>
                   </div>
                   <div class="compact-gallery">
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #fee9e4;" aria-label="Expand figure line study">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #d9d6e8;" aria-label="Expand figure line study">
                       <img src="assets/portfolio/images/digital-paintings/figures/drawings/figure-line-study.jpg" alt="Loose figure drawing study on a pale background.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand walking construction figure drawing">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #d9e9fa;" aria-label="Expand walking construction figure drawing">
                       <img src="assets/portfolio/images/digital-paintings/figures/drawings/walking-construction-figure.jpg" alt="Walking figure construction drawing.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand seated gesture figure drawing">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #d9e9fa;" aria-label="Expand seated gesture figure drawing">
                       <img src="assets/portfolio/images/digital-paintings/figures/drawings/seated-gesture-study.jpg" alt="Seated gesture figure drawing.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #fee9e4;" aria-label="Expand pale figure study">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #d9d6e8;" aria-label="Expand pale figure study">
                       <img src="assets/portfolio/images/digital-paintings/figures/drawings/pale-figure-study.jpg" alt="Pale figure drawing study.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand studio figure drawing">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #d9e9fa;" aria-label="Expand studio figure drawing">
                       <img src="assets/portfolio/images/digital-paintings/figures/drawings/studio-figure-drawing.jpg" alt="Studio figure drawing.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand motion figure drawing">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #d9e9fa;" aria-label="Expand motion figure drawing">
                       <img src="assets/portfolio/images/digital-paintings/figures/drawings/motion-figure-drawing.jpg" alt="Motion figure drawing.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand running gesture drawing">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #d9e9fa;" aria-label="Expand running gesture drawing">
                       <img src="assets/portfolio/images/digital-paintings/figures/drawings/running-gesture.jpg" alt="Running gesture figure drawing.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand leaning gesture drawing">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #d9e9fa;" aria-label="Expand leaning gesture drawing">
                       <img src="assets/portfolio/images/digital-paintings/figures/drawings/leaning-gesture.jpg" alt="Leaning gesture figure drawing.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #4e4b12;" aria-label="Expand green ground figure drawing">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #40584c;" aria-label="Expand green ground figure drawing">
                       <img src="assets/portfolio/images/digital-paintings/figures/drawings/green-ground-figure-drawing.jpg" alt="Figure drawing on an olive green ground.">
                     </button>
                     <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff;" aria-label="Expand red construction figure drawing">
