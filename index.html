@@ -416,6 +416,14 @@
         padding: clamp(8px, 1vw, 14px);
       }
 
+      #work-art .media-tile,
+      #work-art .media-tile.is-landscape,
+      #work-art .media-tile.is-side-crop,
+      #work-art .media-tile.is-wide {
+        grid-column: span 1;
+        aspect-ratio: 1;
+      }
+
       .media-tile img {
         display: block;
         width: 100%;
@@ -433,6 +441,10 @@
         object-fit: contain;
       }
 
+      .media-tile.is-rotated img {
+        transform: rotate(90deg) scale(1.34);
+      }
+
       .media-tile.is-side-crop img {
         width: auto;
         height: 100%;
@@ -445,6 +457,11 @@
       .media-tile:hover img,
       .media-tile:focus-visible img {
         transform: scale(1.035);
+      }
+
+      .media-tile.is-rotated:hover img,
+      .media-tile.is-rotated:focus-visible img {
+        transform: rotate(90deg) scale(1.38);
       }
 
       .media-tile.is-side-crop:hover img,
@@ -704,8 +721,8 @@
 
           <div class="money-shot">
             <img
-              src="assets/portfolio/images/digital-paintings/landscape-dark-forest.jpg"
-              alt="Dark digital forest painting with tall trunks and a narrow stream through the center."
+              src="assets/portfolio/images/projector-sketch-scan.jpg"
+              alt="Scanned projector process sheet with product sketches, diagrams, and layout studies."
             >
           </div>
 
@@ -880,7 +897,7 @@
 
                 <section class="work-subsection">
                   <div class="work-section-head">
-                    <h3>Vessels</h3>
+                    <h3>Fragrance Bottles</h3>
                     <p>Bottle and vessel studies focused on silhouette, translucency, and repeated volume.</p>
                   </div>
                   <div class="compact-gallery">
@@ -989,10 +1006,7 @@
                     <button class="media-tile is-landscape" type="button" aria-label="Expand room reflection photograph">
                       <img src="assets/portfolio/images/photography/filmfoto-room-reflection.jpg" alt="Interior photograph with reflected light.">
                     </button>
-                    <button class="media-tile is-landscape" type="button" aria-label="Expand glass roof photograph">
-                      <img src="assets/portfolio/images/photography/filmfoto-glass-roof.jpg" alt="Film photograph of glass roof structure.">
-                    </button>
-                    <button class="media-tile is-landscape" type="button" aria-label="Expand city reflection photograph">
+                    <button class="media-tile is-landscape is-rotated" type="button" aria-label="Expand city reflection photograph">
                       <img src="assets/portfolio/images/photography/filmfoto-city-reflection.jpg" alt="Film photograph with city reflections.">
                     </button>
                     <button class="media-tile is-landscape" type="button" aria-label="Expand kitchen sink photograph">
