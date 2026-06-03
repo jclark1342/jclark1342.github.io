@@ -11,9 +11,9 @@
     <style>
       :root {
         color-scheme: dark;
-        --paper: #0b1f28;
-        --panel: #132d38;
-        --panel-strong: #183745;
+        --paper: #0b2730;
+        --panel: #143742;
+        --panel-strong: #19444f;
         --ink: #fff8e8;
         --muted: #b5cad0;
         --line: rgba(255, 248, 232, 0.18);
@@ -21,9 +21,12 @@
         --teal: #8cc8cf;
         --blue: #6ea6c4;
         --cream: #fff8e8;
+        --design-tab-bg: #102819;
+        --home-tab-bg: #0b2730;
+        --art-tab-bg: #071b45;
         --home-overlay: rgba(4, 15, 20, 0.5);
-        --work-bg: #081921;
-        --header-bg: rgba(11, 31, 40, 0.9);
+        --work-bg: var(--paper);
+        --header-bg: rgba(11, 39, 48, 0.9);
         --shadow: 0 22px 58px rgba(0, 0, 0, 0.32);
         --display-font:
           "Akzidenz-Grotesk", "Akzidenz Grotesk",
@@ -49,8 +52,8 @@
       }
 
       body[data-work-theme="design"] {
-        --active-tab-bg: #142719;
-        --paper: #142719;
+        --active-tab-bg: var(--design-tab-bg);
+        --paper: #102819;
         --panel: #21402b;
         --panel-strong: #284f35;
         --home-overlay: rgba(11, 25, 14, 0.56);
@@ -59,8 +62,8 @@
       }
 
       body[data-work-theme="art"] {
-        --active-tab-bg: #06133a;
-        --paper: #06133a;
+        --active-tab-bg: var(--art-tab-bg);
+        --paper: #071b45;
         --panel: #102a5e;
         --panel-strong: #173873;
         --home-overlay: rgba(2, 8, 35, 0.56);
@@ -206,9 +209,11 @@
         position: relative;
         display: grid;
         grid-template-columns: minmax(0, 1fr) clamp(52px, 7vw, 78px) minmax(0, 1fr);
-        gap: 0;
-        border-top: 1px solid rgba(255, 248, 232, 0.2);
-        background: rgba(255, 248, 232, 0.82);
+        gap: clamp(5px, 0.8vw, 10px);
+        padding: clamp(8px, 1.2vw, 14px) var(--home-pad-x) 0;
+        background:
+          var(--home-overlay),
+          url("assets/portfolio/images/projector-sketch-scan.jpg") center bottom / cover no-repeat;
       }
 
       .home-entry-tile,
@@ -219,11 +224,12 @@
         justify-content: space-between;
         min-height: 0;
         overflow: hidden;
-        padding: 13px var(--home-pad-x) 15px;
-        border: 0;
-        border-radius: 0;
-        background: transparent;
-        color: #06131a;
+        padding: 15px clamp(18px, 3vw, 34px) 17px;
+        border: 1px solid rgba(255, 248, 232, 0.18);
+        border-bottom: 0;
+        border-radius: 8px 8px 0 0;
+        background: var(--home-tab-bg);
+        color: var(--cream);
         cursor: pointer;
         font: inherit;
         text-align: left;
@@ -236,14 +242,14 @@
 
       .home-entry-tile::after {
         position: absolute;
-        right: var(--home-pad-x);
+        right: clamp(18px, 3vw, 34px);
         bottom: 8px;
-        left: var(--home-pad-x);
+        left: clamp(18px, 3vw, 34px);
         height: 2px;
         background: currentColor;
         content: "";
-        opacity: 0.2;
-        transform: scaleX(0.28);
+        opacity: 0.28;
+        transform: scaleX(0.34);
         transform-origin: left center;
         transition:
           opacity 180ms ease,
@@ -253,13 +259,14 @@
       .home-reset-tile {
         justify-content: center;
         padding: 0;
-        border-right: 1px solid rgba(4, 15, 20, 0.14);
-        border-left: 1px solid rgba(4, 15, 20, 0.14);
       }
 
-      body:not([data-work-theme]) .home-reset-tile {
-        background: var(--paper);
-        color: #ffffff;
+      .home-entry-tile[data-work-tab="design"] {
+        background: var(--design-tab-bg);
+      }
+
+      .home-entry-tile[data-work-tab="art"] {
+        background: var(--art-tab-bg);
       }
 
       .home-reset-tile::before {
@@ -295,7 +302,7 @@
       .home-reset-tile:hover,
       .home-reset-tile:focus-visible {
         outline: 0;
-        filter: brightness(1.18);
+        filter: brightness(1.12);
       }
 
       .home-entry-tile:hover::after,
@@ -316,6 +323,20 @@
       .home-entry-tile.is-active {
         background: var(--active-tab-bg);
         color: #ffffff;
+      }
+
+      body:not([data-work-theme]) .home-reset-tile,
+      .home-entry-tile.is-active {
+        z-index: 2;
+        box-shadow:
+          0 2px 0 var(--active-tab-bg, var(--paper)),
+          0 -1px 0 rgba(255, 248, 232, 0.12) inset;
+        transform: translateY(2px);
+      }
+
+      body[data-work-theme] .home-reset-tile,
+      .home-entry-tile:not(.is-active) {
+        opacity: 0.78;
       }
 
       .media-tile.is-full-crop {
@@ -390,7 +411,7 @@
         align-content: start;
         scroll-margin-top: 57px;
         padding: clamp(32px, 5vw, 72px) clamp(18px, 5vw, 72px);
-        border-top: 1px solid var(--line);
+        border-top: 0;
         background: var(--work-bg);
         transition: background-color 260ms ease;
       }
@@ -1026,10 +1047,12 @@
 
         .home-entry-tiles {
           grid-template-columns: minmax(0, 1fr) 54px minmax(0, 1fr);
+          gap: 5px;
+          padding: 8px var(--home-pad-x) 0;
         }
 
         .home-entry-tile {
-          padding: 10px var(--home-pad-x);
+          padding: 12px 14px 14px;
         }
 
         .home-entry-tile strong {
