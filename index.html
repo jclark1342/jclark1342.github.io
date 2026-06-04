@@ -690,22 +690,13 @@
       }
 
       .reel-gallery {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .reel-gallery .media-tile,
       .reel-gallery .media-tile.is-wide,
       .reel-gallery .media-tile.is-landscape {
         grid-column: span 1;
-        aspect-ratio: 4 / 3;
-      }
-
-      .reel-gallery .media-tile.is-process-board {
-        grid-column: span 2;
-        aspect-ratio: 4 / 3;
-      }
-
-      .reel-gallery .media-tile.is-orthographic {
         aspect-ratio: 4 / 3;
       }
 
@@ -786,6 +777,15 @@
         aspect-ratio: 1;
       }
 
+      #work-art .landscape-gallery {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      #work-art .landscape-gallery .media-tile.is-feature {
+        grid-column: span 2;
+        aspect-ratio: 1;
+      }
+
       .media-tile img {
         display: block;
         width: 100%;
@@ -809,6 +809,10 @@
         transform: rotate(90deg) scale(1.34);
       }
 
+      .media-tile.is-rotated-180 img {
+        transform: rotate(180deg) scale(var(--image-scale, 1));
+      }
+
       .media-tile.is-side-crop img {
         width: auto;
         height: 100%;
@@ -826,6 +830,11 @@
       .media-tile.is-rotated:hover img,
       .media-tile.is-rotated:focus-visible img {
         transform: rotate(90deg) scale(1.38);
+      }
+
+      .media-tile.is-rotated-180:hover img,
+      .media-tile.is-rotated-180:focus-visible img {
+        transform: rotate(180deg) scale(var(--image-hover-scale, 1.035));
       }
 
       .media-tile.is-side-crop:hover img,
@@ -1204,6 +1213,14 @@
           grid-column: span 1;
         }
 
+        #work-art .landscape-gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        #work-art .landscape-gallery .media-tile.is-feature {
+          grid-column: span 2;
+        }
+
         .media-tile.is-wide {
           grid-column: span 1;
         }
@@ -1237,8 +1254,7 @@
         }
 
         .hairdryer-gallery .media-tile.is-story,
-        .hairdryer-gallery .media-tile.is-process,
-        .reel-gallery .media-tile.is-process-board {
+        .hairdryer-gallery .media-tile.is-process {
           grid-column: span 2;
         }
 
@@ -1331,15 +1347,15 @@
                       <li>Brand language</li>
                       <li>Handheld proportions</li>
                       <li>CAD construction</li>
-                      <li>Context rendering</li>
+                      <li>Orthographic linework</li>
                     </ul>
                   </div>
                   <div class="compact-gallery hairdryer-gallery">
                     <button class="media-tile is-story" type="button" aria-label="Expand hair dryer front render">
                       <img src="assets/portfolio/images/hair-dryer-front-render.jpg" alt="Hair dryer product render with the form centered on a gray background.">
                     </button>
-                    <button class="media-tile is-story" type="button" style="--image-position: center 54%;" aria-label="Expand hair dryer context render">
-                      <img src="assets/portfolio/images/hair-dryer-context-render.jpg" alt="Hair dryer concept render in a moody bathroom setting.">
+                    <button class="media-tile is-story is-fit" type="button" style="--tile-bg: #ffffff; --image-scale: 1.04; --image-hover-scale: 1.08;" aria-label="Expand hair dryer orthographic linework">
+                      <img src="assets/portfolio/images/hair-dryer-orthographics.jpg" alt="Hair dryer orthographic linework with front, side, and top dimensions.">
                     </button>
                     <button class="media-tile is-process is-fit" type="button" style="--tile-bg: #ffffff;" aria-label="Expand hair dryer render">
                       <img src="assets/portfolio/images/hair-dryer-render.jpg" alt="Hair dryer product render on a blue background.">
@@ -1371,17 +1387,11 @@
                     <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff; --image-scale: 1.22; --image-hover-scale: 1.26; --image-position: center 46%;" aria-label="Expand projector sketch scan">
                       <img src="assets/portfolio/images/projector-sketch-scan.jpg" alt="Scanned projector sketch sheet for the reel display console.">
                     </button>
-                    <button class="media-tile is-process-board" type="button" style="--image-position: center 67%; --image-scale: 1.06; --image-hover-scale: 1.1;" aria-label="Expand projector process board">
-                      <img src="assets/portfolio/images/projector-process-board.jpg" alt="Projector process board showing sketches, room context, exploded parts, and final render.">
-                    </button>
                     <button class="media-tile is-landscape" type="button" aria-label="Expand projector room render image">
                       <img src="assets/portfolio/images/projector-room.png" alt="Projector concept render in a room.">
                     </button>
                     <button class="media-tile is-wide is-fit" type="button" style="--tile-bg: #ffffff; --image-shift-x: -5%; --image-scale: 1.04; --image-hover-scale: 1.075;" aria-label="Expand projector exploded assembly render">
                       <img src="assets/portfolio/images/projector-exploded-render.jpg" alt="Exploded assembly render of the reel display console components.">
-                    </button>
-                    <button class="media-tile is-orthographic is-fit" type="button" style="--tile-bg: #ffffff; --image-scale: 1.08; --image-hover-scale: 1.12;" aria-label="Expand projector CAD four-view study">
-                      <img src="assets/portfolio/images/cad-four-view.jpg" alt="CAD four-view study for the projector console massing.">
                     </button>
                   </div>
                 </section>
@@ -1393,12 +1403,12 @@
                   </div>
                   <div class="compact-gallery vessel-gallery">
                     <button class="media-tile is-wide is-fit is-process" type="button" style="--tile-bg: #ffffff;" aria-label="Expand vessel sketch sheet">
-                      <img src="assets/portfolio/images/vessel-sketch-page-2.jpg" alt="Vessel sketch sheet with bowl, branch, and repeated tube form studies.">
+                      <img src="assets/portfolio/images/vessel-sketch-page-2-clean.jpg" alt="Vessel sketch sheet with bowl, branch, and repeated tube form studies.">
                     </button>
                     <button class="media-tile is-wide is-fit is-process" type="button" style="--tile-bg: #ffffff; --image-shift-y: 5%;" aria-label="Expand vessel use silhouettes">
                       <img src="assets/portfolio/images/vessel-uses.jpg" alt="Silhouette sheet showing vessel use objects, utensils, plants, and produce.">
                     </button>
-                    <button class="media-tile is-fit is-study" type="button" style="--tile-bg: #ffffff; --image-shift-y: -17%; --image-scale: 2.45; --image-hover-scale: 2.54;" aria-label="Expand white vessel study front view">
+                    <button class="media-tile is-fit is-study" type="button" style="--tile-bg: #ffffff; --image-shift-y: -27%; --image-scale: 2.08; --image-hover-scale: 2.15;" aria-label="Expand white vessel study front view">
                       <img src="assets/portfolio/images/vessel-study-4531.jpg" alt="White rounded vessel study with repeated tube forms.">
                     </button>
                     <button class="media-tile is-fit is-study" type="button" style="--tile-bg: #ffffff; --image-shift-y: -17%; --image-scale: 2.45; --image-hover-scale: 2.54;" aria-label="Expand white vessel study angled view">
@@ -1434,10 +1444,10 @@
                     <p>Bottle silhouettes studied through cap, body, color, and translucency.</p>
                   </div>
                   <div class="compact-gallery fragrance-gallery">
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ff5c5d;" aria-label="Expand coral bottle study">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #ff5c5d; --image-shift-x: -2%;" aria-label="Expand coral bottle study">
                       <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/coral-nozzle-bottle.jpg" alt="Fragrance bottle study on a coral red background.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #69c7d0;" aria-label="Expand teal bottle study">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #69c7d0; --image-shift-x: -2%;" aria-label="Expand teal bottle study">
                       <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/teal-nozzle-bottle.jpg" alt="Fragrance bottle study on a teal background.">
                     </button>
                     <button class="media-tile is-contained" type="button" style="--tile-bg: #234c74;" aria-label="Expand round blue bottle study">
@@ -1461,7 +1471,7 @@
                 <section class="work-subsection">
                   <div class="work-section-head">
                     <h3>Drapery</h3>
-                    <p>Folded translucent object studies with fabric-like volume.</p>
+                    <p>Bed canopy studies exploring folded translucency, suspended volume, and fabric-like structure.</p>
                   </div>
                   <div class="compact-gallery drapery-gallery">
                     <button class="media-tile is-contained" type="button" style="--tile-bg: #b0b3ba;" aria-label="Expand amber drapery study">
@@ -1527,7 +1537,7 @@
                     <button class="media-tile is-contained" type="button" style="--tile-bg: #f3f2f6;" aria-label="Expand stool structure sketch four">
                       <img src="assets/portfolio/images/stool-study-4.jpg" alt="Stool construction sketch with seat and base details.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #f3f2f6;" aria-label="Expand stool structure sketch five">
+                    <button class="media-tile is-contained is-rotated-180" type="button" style="--tile-bg: #f3f2f6;" aria-label="Expand stool structure sketch five">
                       <img src="assets/portfolio/images/stool-study-5.jpg" alt="Stool form sketch with structural leg studies.">
                     </button>
                     <button class="media-tile is-contained" type="button" style="--tile-bg: #f3f2f6;" aria-label="Expand stool structure sketch six">
@@ -1555,21 +1565,21 @@
                     <h3>Landscape</h3>
                     <p>Forests, coasts, hills, and architecture explored through color and atmosphere.</p>
                   </div>
-                  <div class="compact-gallery">
-                    <button class="media-tile is-side-crop" type="button" aria-label="Expand dark forest painting">
+                  <div class="compact-gallery landscape-gallery">
+                    <button class="media-tile is-side-crop is-feature" type="button" aria-label="Expand dark forest painting">
                       <img src="assets/portfolio/images/digital-paintings/landscape-dark-forest.jpg" alt="Dark digital forest painting with tall trunks and a narrow stream.">
+                    </button>
+                    <button class="media-tile is-side-crop is-feature" type="button" aria-label="Expand hill path painting">
+                      <img src="assets/portfolio/images/digital-paintings/landscape-hill-path.jpg" alt="Digital painting of a green hill path at sunset.">
+                    </button>
+                    <button class="media-tile is-side-crop is-feature" type="button" aria-label="Expand forest path painting">
+                      <img src="assets/portfolio/images/digital-paintings/landscape-forest-path.jpg" alt="Digital painting of a green forest path.">
                     </button>
                     <button class="media-tile is-side-crop" type="button" aria-label="Expand night hills painting">
                       <img src="assets/portfolio/images/digital-paintings/landscape-night-hills.jpg" alt="Digital landscape painting with red hills under a blue night sky.">
                     </button>
                     <button class="media-tile is-side-crop" type="button" aria-label="Expand coast painting">
                       <img src="assets/portfolio/images/digital-paintings/landscape-coast.jpg" alt="Digital painting of waves and coastline.">
-                    </button>
-                    <button class="media-tile is-side-crop" type="button" aria-label="Expand hill path painting">
-                      <img src="assets/portfolio/images/digital-paintings/landscape-hill-path.jpg" alt="Digital painting of a green hill path at sunset.">
-                    </button>
-                    <button class="media-tile is-side-crop" type="button" aria-label="Expand forest path painting">
-                      <img src="assets/portfolio/images/digital-paintings/landscape-forest-path.jpg" alt="Digital painting of a green forest path.">
                     </button>
                     <button class="media-tile is-side-crop" type="button" aria-label="Expand meadow painting">
                       <img src="assets/portfolio/images/digital-paintings/landscape-meadow.jpg" alt="Digital painting of a pale meadow landscape.">
@@ -1764,7 +1774,7 @@
 
       const openLightbox = (tile) => {
         const gallery = tile.closest(".work-subsection") || tile.closest(".compact-gallery");
-        activeGallery = [...gallery.querySelectorAll(".media-tile")];
+        activeGallery = [...gallery.querySelectorAll(".media-tile")].filter((galleryTile) => galleryTile.querySelector("img"));
         activeIndex = activeGallery.indexOf(tile);
         showImage(activeIndex);
         lightbox.hidden = false;
@@ -1772,6 +1782,10 @@
       };
 
       document.querySelectorAll(".media-tile").forEach((tile) => {
+        if (!tile.querySelector("img")) {
+          return;
+        }
+
         tile.addEventListener("click", () => {
           openLightbox(tile);
         });
