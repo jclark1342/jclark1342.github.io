@@ -274,6 +274,7 @@
         width: var(--home-button-size);
         height: var(--home-button-size);
         min-height: var(--home-button-size);
+        aspect-ratio: 1;
         align-self: end;
         justify-content: center;
         padding: 0;
@@ -611,6 +612,33 @@
         border-top: 1px solid var(--line);
       }
 
+      .work-process-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px clamp(14px, 2vw, 24px);
+        margin: 14px 0 0;
+        padding: 0;
+        color: var(--muted);
+        font-family: var(--serif-font);
+        font-size: 0.82rem;
+        font-weight: var(--serif-weight);
+        font-synthesis-weight: none;
+        list-style: none;
+      }
+
+      .work-process-list li {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .work-process-list li::before {
+        width: 5px;
+        height: 5px;
+        background: var(--clay);
+        content: "";
+      }
+
       .compact-gallery {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
@@ -647,6 +675,20 @@
         padding: clamp(8px, 1vw, 14px);
       }
 
+      .hairdryer-gallery {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .hairdryer-gallery .media-tile.is-story {
+        grid-column: span 2;
+        aspect-ratio: 4 / 3;
+      }
+
+      .hairdryer-gallery .media-tile.is-process {
+        grid-column: span 2;
+        aspect-ratio: 16 / 9;
+      }
+
       .reel-gallery {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
@@ -655,6 +697,15 @@
       .reel-gallery .media-tile.is-wide,
       .reel-gallery .media-tile.is-landscape {
         grid-column: span 1;
+        aspect-ratio: 4 / 3;
+      }
+
+      .reel-gallery .media-tile.is-process-board {
+        grid-column: span 2;
+        aspect-ratio: 4 / 3;
+      }
+
+      .reel-gallery .media-tile.is-orthographic {
         aspect-ratio: 4 / 3;
       }
 
@@ -699,9 +750,24 @@
         object-position: center 58%;
       }
 
+      .fragrance-gallery .media-tile {
+        --image-shift-y: 8%;
+        --image-scale: 1.1;
+        --image-hover-scale: 1.14;
+        border: 0;
+        padding: 0;
+      }
+
+      .fragrance-gallery .media-tile img {
+        object-fit: contain;
+        object-position: center bottom;
+        transform-origin: center bottom;
+      }
+
       .drapery-gallery .media-tile {
-        --image-hover-scale: 1.1;
-        --image-scale: 1.06;
+        --image-hover-scale: 1.06;
+        --image-scale: 1.02;
+        --image-shift-y: 4%;
         border: 0;
         padding: 0;
       }
@@ -727,7 +793,7 @@
         object-fit: cover;
         object-position: var(--image-position, center);
         background: var(--tile-bg, #102836);
-        transform: translateX(var(--image-shift-x, 0)) scale(var(--image-scale, 1));
+        transform: translate(var(--image-shift-x, 0), var(--image-shift-y, 0)) scale(var(--image-scale, 1));
         transition: transform 160ms ease;
       }
 
@@ -754,7 +820,7 @@
 
       .media-tile:hover img,
       .media-tile:focus-visible img {
-        transform: translateX(var(--image-shift-x, 0)) scale(var(--image-hover-scale, 1.035));
+        transform: translate(var(--image-shift-x, 0), var(--image-shift-y, 0)) scale(var(--image-hover-scale, 1.035));
       }
 
       .media-tile.is-rotated:hover img,
@@ -1046,7 +1112,7 @@
         .home {
           --home-pad-x: 22px;
           --home-pad-top: 28px;
-          --tab-overlap: 62px;
+          --tab-overlap: clamp(52px, 12vw, 62px);
         }
 
         .intro,
@@ -1089,7 +1155,7 @@
 
         .home-entry-tiles {
           --tab-height: var(--tab-overlap);
-          --home-button-size: 52px;
+          --home-button-size: var(--tab-height);
           grid-template-columns: minmax(0, 1fr) var(--home-button-size) minmax(0, 1fr);
           gap: 0;
           margin-top: calc(-1 * var(--tab-overlap));
@@ -1165,6 +1231,17 @@
       }
 
       @media (max-width: 480px) {
+        .hairdryer-gallery,
+        .reel-gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .hairdryer-gallery .media-tile.is-story,
+        .hairdryer-gallery .media-tile.is-process,
+        .reel-gallery .media-tile.is-process-board {
+          grid-column: span 2;
+        }
+
         .vessel-gallery {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -1249,22 +1326,31 @@
                 <section class="work-subsection">
                   <div class="work-section-head">
                     <h3>Braun Hairdryer Concept</h3>
-                    <p>Brand-led appliance concept shown through renderings, sketches, and construction studies.</p>
+                    <p>A Braun-informed appliance study moving from form ideation into ergonomic sketching, CAD construction, and rendered presentation.</p>
+                    <ul class="work-process-list" aria-label="Hairdryer process">
+                      <li>Brand language</li>
+                      <li>Handheld proportions</li>
+                      <li>CAD construction</li>
+                      <li>Context rendering</li>
+                    </ul>
                   </div>
-                  <div class="compact-gallery">
-                    <button class="media-tile is-wide" type="button" aria-label="Expand hair dryer front render">
+                  <div class="compact-gallery hairdryer-gallery">
+                    <button class="media-tile is-story" type="button" aria-label="Expand hair dryer front render">
                       <img src="assets/portfolio/images/hair-dryer-front-render.jpg" alt="Hair dryer product render with the form centered on a gray background.">
                     </button>
-                    <button class="media-tile is-wide is-fit" type="button" style="--tile-bg: #ffffff;" aria-label="Expand hair dryer render">
+                    <button class="media-tile is-story" type="button" style="--image-position: center 54%;" aria-label="Expand hair dryer context render">
+                      <img src="assets/portfolio/images/hair-dryer-context-render.jpg" alt="Hair dryer concept render in a moody bathroom setting.">
+                    </button>
+                    <button class="media-tile is-process is-fit" type="button" style="--tile-bg: #ffffff;" aria-label="Expand hair dryer render">
                       <img src="assets/portfolio/images/hair-dryer-render.jpg" alt="Hair dryer product render on a blue background.">
                     </button>
-                    <button class="media-tile is-wide is-fit" type="button" style="--tile-bg: #ffffff;" aria-label="Expand hair dryer sketch page one">
+                    <button class="media-tile is-process is-fit" type="button" style="--tile-bg: #ffffff;" aria-label="Expand hair dryer sketch page one">
                       <img src="assets/portfolio/images/hair-dryer-sketch-page-1.jpg" alt="Hair dryer concept sketch page with many form studies.">
                     </button>
-                    <button class="media-tile is-wide is-fit" type="button" style="--tile-bg: #ffffff;" aria-label="Expand hair dryer sketch page two">
+                    <button class="media-tile is-process is-fit" type="button" style="--tile-bg: #ffffff;" aria-label="Expand hair dryer sketch page two">
                       <img src="assets/portfolio/images/hair-dryer-sketch-page-2.jpg" alt="Hair dryer concept sketch page with translucent construction drawings.">
                     </button>
-                    <button class="media-tile is-wide is-fit" type="button" style="--tile-bg: #ffffff;" aria-label="Expand hair dryer construction study">
+                    <button class="media-tile is-process is-fit" type="button" style="--tile-bg: #ffffff;" aria-label="Expand hair dryer construction study">
                       <img src="assets/portfolio/images/hair-dryer-screenshot-study.jpg" alt="Transparent hair dryer construction study render.">
                     </button>
                   </div>
@@ -1273,17 +1359,29 @@
                 <section class="work-subsection">
                   <div class="work-section-head">
                     <h3>REEL Projector Concept</h3>
-                    <p>Projector concept shown through sketches, assembly, and room context.</p>
+                    <p>An entertainment display console developed through room-scale use scenarios, sketch iteration, component planning, and CAD assembly.</p>
+                    <ul class="work-process-list" aria-label="Projector process">
+                      <li>Viewing context</li>
+                      <li>Object language</li>
+                      <li>Exploded assembly</li>
+                      <li>Rendered proposal</li>
+                    </ul>
                   </div>
                   <div class="compact-gallery reel-gallery">
                     <button class="media-tile is-contained" type="button" style="--tile-bg: #ffffff; --image-scale: 1.22; --image-hover-scale: 1.26; --image-position: center 46%;" aria-label="Expand projector sketch scan">
                       <img src="assets/portfolio/images/projector-sketch-scan.jpg" alt="Scanned projector sketch sheet for the reel display console.">
+                    </button>
+                    <button class="media-tile is-process-board" type="button" style="--image-position: center 67%; --image-scale: 1.06; --image-hover-scale: 1.1;" aria-label="Expand projector process board">
+                      <img src="assets/portfolio/images/projector-process-board.jpg" alt="Projector process board showing sketches, room context, exploded parts, and final render.">
                     </button>
                     <button class="media-tile is-landscape" type="button" aria-label="Expand projector room render image">
                       <img src="assets/portfolio/images/projector-room.png" alt="Projector concept render in a room.">
                     </button>
                     <button class="media-tile is-wide is-fit" type="button" style="--tile-bg: #ffffff; --image-shift-x: -5%; --image-scale: 1.04; --image-hover-scale: 1.075;" aria-label="Expand projector exploded assembly render">
                       <img src="assets/portfolio/images/projector-exploded-render.jpg" alt="Exploded assembly render of the reel display console components.">
+                    </button>
+                    <button class="media-tile is-orthographic is-fit" type="button" style="--tile-bg: #ffffff; --image-scale: 1.08; --image-hover-scale: 1.12;" aria-label="Expand projector CAD four-view study">
+                      <img src="assets/portfolio/images/cad-four-view.jpg" alt="CAD four-view study for the projector console massing.">
                     </button>
                   </div>
                 </section>
@@ -1297,13 +1395,13 @@
                     <button class="media-tile is-wide is-fit is-process" type="button" style="--tile-bg: #ffffff;" aria-label="Expand vessel sketch sheet">
                       <img src="assets/portfolio/images/vessel-sketch-page-2.jpg" alt="Vessel sketch sheet with bowl, branch, and repeated tube form studies.">
                     </button>
-                    <button class="media-tile is-wide is-fit is-process" type="button" style="--tile-bg: #ffffff;" aria-label="Expand vessel use silhouettes">
+                    <button class="media-tile is-wide is-fit is-process" type="button" style="--tile-bg: #ffffff; --image-shift-y: 5%;" aria-label="Expand vessel use silhouettes">
                       <img src="assets/portfolio/images/vessel-uses.jpg" alt="Silhouette sheet showing vessel use objects, utensils, plants, and produce.">
                     </button>
-                    <button class="media-tile is-fit is-study" type="button" style="--tile-bg: #ffffff; --image-scale: 2.45; --image-hover-scale: 2.54;" aria-label="Expand white vessel study front view">
+                    <button class="media-tile is-fit is-study" type="button" style="--tile-bg: #ffffff; --image-shift-y: -17%; --image-scale: 2.45; --image-hover-scale: 2.54;" aria-label="Expand white vessel study front view">
                       <img src="assets/portfolio/images/vessel-study-4531.jpg" alt="White rounded vessel study with repeated tube forms.">
                     </button>
-                    <button class="media-tile is-fit is-study" type="button" style="--tile-bg: #ffffff; --image-scale: 2.45; --image-hover-scale: 2.54;" aria-label="Expand white vessel study angled view">
+                    <button class="media-tile is-fit is-study" type="button" style="--tile-bg: #ffffff; --image-shift-y: -17%; --image-scale: 2.45; --image-hover-scale: 2.54;" aria-label="Expand white vessel study angled view">
                       <img src="assets/portfolio/images/vessel-study-4532.jpg" alt="White rounded vessel study viewed from a slight angle.">
                     </button>
                     <button class="media-tile is-wide is-feature" type="button" aria-label="Expand vessel render with utensil studies">
@@ -1335,7 +1433,7 @@
                     <h3>Fragrance Bottles</h3>
                     <p>Bottle silhouettes studied through cap, body, color, and translucency.</p>
                   </div>
-                  <div class="compact-gallery">
+                  <div class="compact-gallery fragrance-gallery">
                     <button class="media-tile is-contained" type="button" style="--tile-bg: #ff5c5d;" aria-label="Expand coral bottle study">
                       <img src="assets/portfolio/images/digital-paintings/fragrance-bottles/coral-nozzle-bottle.jpg" alt="Fragrance bottle study on a coral red background.">
                     </button>
@@ -1375,7 +1473,7 @@
                     <button class="media-tile is-contained" type="button" style="--tile-bg: #c1d2ca;" aria-label="Expand green cap drapery study">
                       <img src="assets/portfolio/images/digital-paintings/object-studies/green-cap-drapery-form.jpg" alt="Green capped drapery form study.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #95a7c9; --image-shift-x: -8%;" aria-label="Expand lilac block drapery study">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #95a7c9; --image-shift-x: -3%; --image-scale: 1.22; --image-hover-scale: 1.26;" aria-label="Expand lilac block drapery study">
                       <img src="assets/portfolio/images/digital-paintings/object-studies/lilac-block-drapery-form.jpg" alt="Lilac block drapery form study.">
                     </button>
                     <button class="media-tile is-contained" type="button" style="--tile-bg: #8b8db4;" aria-label="Expand tall lilac drapery study">
@@ -1396,13 +1494,13 @@
                     <p>Wood table work shown through shop assembly and finished form.</p>
                   </div>
                   <div class="compact-gallery">
-                    <button class="media-tile" type="button" style="--image-position: center 18%;" aria-label="Expand table construction image">
-                      <img src="assets/portfolio/images/furniture-table.jpg" alt="Wood table under construction in a shop.">
-                    </button>
                     <button class="media-tile" type="button" aria-label="Expand furniture clamping image">
                       <img src="assets/portfolio/images/furniture-clamps.jpg" alt="Wood furniture parts clamped together in progress.">
                     </button>
-                    <button class="media-tile is-full-crop" type="button" style="--image-position: center 13%; --image-scale: 1.48; --image-hover-scale: 1.53;" aria-label="Expand finished table in living room">
+                    <button class="media-tile" type="button" style="--image-position: center 18%;" aria-label="Expand table construction image">
+                      <img src="assets/portfolio/images/furniture-table.jpg" alt="Wood table under construction in a shop.">
+                    </button>
+                    <button class="media-tile is-full-crop" type="button" style="--image-position: center 73%; --image-scale: 1.78; --image-hover-scale: 1.84;" aria-label="Expand finished table in living room">
                       <img src="assets/portfolio/images/table-construction-4493.jpg" alt="Finished wood table in a living room setting.">
                     </button>
                     <button class="media-tile is-full-crop" type="button" style="--image-position: center 28%; --image-scale: 1.14; --image-hover-scale: 1.18;" aria-label="Expand finished table close view">
