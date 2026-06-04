@@ -9,6 +9,8 @@
       content="My art and design portfolio with objects, drawings, digital paintings, photography, product concepts, and sculptural studies."
     >
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,200&display=swap");
+
       :root {
         color-scheme: dark;
         --paper: #0b2730;
@@ -34,8 +36,9 @@
           "Berthold Akzidenz Grotesk", "Helvetica Neue", Helvetica, Arial,
           sans-serif;
         --serif-font:
-          "Roboto Slab", "Rockwell", "Egyptian Slate", "Clarendon",
-          "Courier Prime", Georgia, serif;
+          "Source Serif 4", ui-serif, "New York", "New York Small",
+          "Iowan Old Style", Georgia, serif;
+        --serif-weight: 200;
       }
 
       * {
@@ -183,7 +186,8 @@
         color: rgba(255, 248, 232, 0.82);
         font-family: var(--serif-font);
         font-size: clamp(1rem, 1.8vw, 1.28rem);
-        font-weight: 200;
+        font-weight: var(--serif-weight);
+        font-synthesis-weight: none;
         line-height: 1.55;
       }
 
@@ -214,10 +218,11 @@
 
       .home-entry-tiles {
         --tab-height: var(--tab-overlap);
+        --home-button-size: var(--tab-height);
         position: relative;
         z-index: 3;
         display: grid;
-        grid-template-columns: minmax(0, 1fr) clamp(56px, 6vw, 78px) minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr) var(--home-button-size) minmax(0, 1fr);
         align-items: stretch;
         gap: 0;
         margin-top: calc(-1 * var(--tab-overlap));
@@ -266,6 +271,10 @@
       }
 
       .home-reset-tile {
+        width: var(--home-button-size);
+        height: var(--home-button-size);
+        min-height: var(--home-button-size);
+        align-self: end;
         justify-content: center;
         padding: 0;
         border-right: 1px solid rgba(255, 248, 232, 0.16);
@@ -387,7 +396,8 @@
         color: var(--cream);
         font-family: var(--serif-font);
         font-size: clamp(1rem, 1.7vw, 1.2rem);
-        font-weight: 200;
+        font-weight: var(--serif-weight);
+        font-synthesis-weight: none;
         line-height: 1.5;
       }
 
@@ -482,7 +492,8 @@
         color: var(--muted);
         font-family: var(--serif-font);
         font-size: clamp(1rem, 1.7vw, 1.24rem);
-        font-weight: 200;
+        font-weight: var(--serif-weight);
+        font-synthesis-weight: none;
         line-height: 1.45;
       }
 
@@ -507,7 +518,8 @@
         color: var(--muted);
         font-family: var(--serif-font);
         font-size: clamp(0.86rem, 1.3vw, 1rem);
-        font-weight: 200;
+        font-weight: var(--serif-weight);
+        font-synthesis-weight: none;
         line-height: 1.5;
       }
 
@@ -583,7 +595,8 @@
         color: var(--muted);
         font-family: var(--serif-font);
         font-size: 0.92rem;
-        font-weight: 200;
+        font-weight: var(--serif-weight);
+        font-synthesis-weight: none;
       }
 
       .work-subsections {
@@ -656,18 +669,34 @@
 
       .vessel-gallery .media-tile.is-feature {
         grid-column: span 2;
-        aspect-ratio: 16 / 9;
+        aspect-ratio: 4 / 3;
+      }
+
+      .vessel-gallery {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
       .vessel-gallery .media-tile.is-process,
       .vessel-gallery .media-tile.is-study {
+        aspect-ratio: 4 / 3;
+      }
+
+      .vessel-gallery .media-tile.is-process {
+        grid-column: span 2;
+      }
+
+      .vessel-gallery .media-tile.is-study {
         grid-column: span 1;
-        aspect-ratio: 16 / 9;
       }
 
       .vessel-gallery .media-tile.is-study {
         border: 0;
         padding: 0;
+      }
+
+      .vessel-gallery .media-tile.is-study img {
+        object-fit: contain;
+        object-position: center 58%;
       }
 
       .drapery-gallery .media-tile {
@@ -900,7 +929,8 @@
         color: var(--muted);
         font-family: var(--serif-font);
         font-size: 0.92rem;
-        font-weight: 200;
+        font-weight: var(--serif-weight);
+        font-synthesis-weight: none;
       }
 
       .contact-link {
@@ -1059,7 +1089,8 @@
 
         .home-entry-tiles {
           --tab-height: var(--tab-overlap);
-          grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1fr);
+          --home-button-size: 52px;
+          grid-template-columns: minmax(0, 1fr) var(--home-button-size) minmax(0, 1fr);
           gap: 0;
           margin-top: calc(-1 * var(--tab-overlap));
         }
@@ -1111,7 +1142,15 @@
           grid-column: span 1;
         }
 
+        .vessel-gallery {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
         .vessel-gallery .media-tile.is-process,
+        .vessel-gallery .media-tile.is-feature {
+          grid-column: span 2;
+        }
+
         .vessel-gallery .media-tile.is-study {
           grid-column: span 1;
         }
@@ -1122,6 +1161,17 @@
 
         .work-tabs {
           scroll-margin-top: 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .vessel-gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .vessel-gallery .media-tile.is-process,
+        .vessel-gallery .media-tile.is-feature {
+          grid-column: span 2;
         }
       }
     </style>
@@ -1136,8 +1186,8 @@
         <div class="intro">
           <div class="intro-copy">
             <p class="eyebrow">Portfolio 2026</p>
-            <h1 id="page-title">Form, image, and design work.</h1>
-            <p class="lede">A portfolio of art, design, drawing, photography, and form studies.</p>
+            <h1 id="page-title">Drawing-led object and design work.</h1>
+            <p class="lede">Ideation, sketching, 3D modeling, product, and form studies.</p>
           </div>
 
           <div class="money-shot">
@@ -1178,7 +1228,7 @@
 
         <div class="home-contact" id="contact" aria-label="Contact and availability">
           <span class="status">Open to work</span>
-          <p>New York City-based and available for ideation, design, fabrication, prototyping, visual, and studio opportunities.</p>
+          <p>New York City-based and available for drawing ideation, 3D modeling, jewelry, product, object, and studio opportunities.</p>
           <div class="home-contact-links" aria-label="Contact links">
             <a href="mailto:jackjamesclark@gmail.com">jackjamesclark@gmail.com</a>
             <a href="tel:+19857058668">(985) 705-8668</a>
@@ -1193,7 +1243,7 @@
             <section class="work-content" id="work-design" data-work-panel="design" hidden>
               <div class="work-content-head">
                 <h2>Design</h2>
-                <p>Appliance, projector, vessel, utensil, bottle, drapery, and furniture studies.</p>
+                <p>Drawing, CAD, product, jewelry-adjacent object, vessel, utensil, bottle, and furniture studies.</p>
               </div>
               <div class="work-subsections">
                 <section class="work-subsection">
@@ -1240,7 +1290,7 @@
 
                 <section class="work-subsection">
                   <div class="work-section-head">
-                    <h3>Vessel Studies</h3>
+                    <h3>Vessel Study</h3>
                     <p>Vessel concepts explored through sketches, use studies, and rendered forms.</p>
                   </div>
                   <div class="compact-gallery vessel-gallery">
@@ -1250,10 +1300,10 @@
                     <button class="media-tile is-wide is-fit is-process" type="button" style="--tile-bg: #ffffff;" aria-label="Expand vessel use silhouettes">
                       <img src="assets/portfolio/images/vessel-uses.jpg" alt="Silhouette sheet showing vessel use objects, utensils, plants, and produce.">
                     </button>
-                    <button class="media-tile is-fit is-study" type="button" style="--tile-bg: #ffffff; --image-scale: 1.55; --image-hover-scale: 1.62;" aria-label="Expand white vessel study front view">
+                    <button class="media-tile is-fit is-study" type="button" style="--tile-bg: #ffffff; --image-scale: 2.45; --image-hover-scale: 2.54;" aria-label="Expand white vessel study front view">
                       <img src="assets/portfolio/images/vessel-study-4531.jpg" alt="White rounded vessel study with repeated tube forms.">
                     </button>
-                    <button class="media-tile is-fit is-study" type="button" style="--tile-bg: #ffffff; --image-scale: 1.55; --image-hover-scale: 1.62;" aria-label="Expand white vessel study angled view">
+                    <button class="media-tile is-fit is-study" type="button" style="--tile-bg: #ffffff; --image-scale: 2.45; --image-hover-scale: 2.54;" aria-label="Expand white vessel study angled view">
                       <img src="assets/portfolio/images/vessel-study-4532.jpg" alt="White rounded vessel study viewed from a slight angle.">
                     </button>
                     <button class="media-tile is-wide is-feature" type="button" aria-label="Expand vessel render with utensil studies">
@@ -1325,7 +1375,7 @@
                     <button class="media-tile is-contained" type="button" style="--tile-bg: #c1d2ca;" aria-label="Expand green cap drapery study">
                       <img src="assets/portfolio/images/digital-paintings/object-studies/green-cap-drapery-form.jpg" alt="Green capped drapery form study.">
                     </button>
-                    <button class="media-tile is-contained" type="button" style="--tile-bg: #95a7c9;" aria-label="Expand lilac block drapery study">
+                    <button class="media-tile is-contained" type="button" style="--tile-bg: #95a7c9; --image-shift-x: -8%;" aria-label="Expand lilac block drapery study">
                       <img src="assets/portfolio/images/digital-paintings/object-studies/lilac-block-drapery-form.jpg" alt="Lilac block drapery form study.">
                     </button>
                     <button class="media-tile is-contained" type="button" style="--tile-bg: #8b8db4;" aria-label="Expand tall lilac drapery study">
@@ -1352,7 +1402,7 @@
                     <button class="media-tile" type="button" aria-label="Expand furniture clamping image">
                       <img src="assets/portfolio/images/furniture-clamps.jpg" alt="Wood furniture parts clamped together in progress.">
                     </button>
-                    <button class="media-tile is-full-crop" type="button" style="--image-position: center 28%; --image-scale: 1.14; --image-hover-scale: 1.18;" aria-label="Expand finished table in living room">
+                    <button class="media-tile is-full-crop" type="button" style="--image-position: center 13%; --image-scale: 1.48; --image-hover-scale: 1.53;" aria-label="Expand finished table in living room">
                       <img src="assets/portfolio/images/table-construction-4493.jpg" alt="Finished wood table in a living room setting.">
                     </button>
                     <button class="media-tile is-full-crop" type="button" style="--image-position: center 28%; --image-scale: 1.14; --image-hover-scale: 1.18;" aria-label="Expand finished table close view">

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,200&display=swap");
+
 :root {
   color-scheme: dark;
   --paper: #0f2630;
@@ -15,8 +17,9 @@
     "Akzidenz-Grotesk BQ", "Berthold Akzidenz Grotesk",
     "Helvetica Neue", Helvetica, Arial, sans-serif;
   --serif-font:
-    "Roboto Slab", "Rockwell", "Egyptian Slate", "Clarendon",
-    "Courier Prime", Georgia, serif;
+    "Source Serif 4", ui-serif, "New York", "New York Small",
+    "Iowan Old Style", Georgia, serif;
+  --serif-weight: 200;
 }
 
 * {
@@ -126,7 +129,8 @@ p {
 
 p {
   font-family: var(--serif-font);
-  font-weight: 200;
+  font-weight: var(--serif-weight);
+  font-synthesis-weight: none;
 }
 
 h1 {
