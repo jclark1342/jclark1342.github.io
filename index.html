@@ -108,16 +108,17 @@
       }
 
       main {
-        min-height: calc((100vh - 57px) / 2);
+        min-height: calc(100svh - 57px);
       }
 
       .home {
         --home-pad-x: clamp(24px, 7vw, 112px);
-        --home-pad-top: clamp(48px, 7vw, 96px);
+        --home-pad-top: clamp(56px, 7vw, 104px);
+        --tab-overlap: clamp(70px, 6vw, 86px);
         display: grid;
-        min-height: 0;
         grid-template-columns: minmax(0, 1fr);
         border-bottom: 1px solid var(--line);
+        background: var(--paper);
       }
 
       .intro {
@@ -125,16 +126,22 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        min-height: clamp(620px, calc(100vh - 57px), 860px);
+        min-height: calc(100svh - 57px);
         overflow: hidden;
-        padding: var(--home-pad-top) var(--home-pad-x) clamp(96px, 12vw, 158px);
+        padding: var(--home-pad-top) var(--home-pad-x) calc(var(--tab-overlap) + clamp(58px, 9vw, 124px));
       }
 
       .intro::before {
         position: absolute;
         inset: 0;
         z-index: 1;
-        background: var(--home-overlay);
+        background:
+          linear-gradient(
+            90deg,
+            rgba(4, 15, 20, 0.78) 0%,
+            var(--home-overlay) 48%,
+            rgba(4, 15, 20, 0.32) 100%
+          );
         content: "";
         transition: background-color 260ms ease;
       }
@@ -206,18 +213,18 @@
       }
 
       .home-entry-tiles {
-        --tab-height: clamp(58px, 6vw, 76px);
+        --tab-height: var(--tab-overlap);
         position: relative;
         z-index: 3;
         display: grid;
-        grid-template-columns: minmax(0, 1fr) clamp(58px, 7vw, 84px) minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr) clamp(56px, 6vw, 78px) minmax(0, 1fr);
         align-items: stretch;
-        gap: clamp(10px, 1.8vw, 24px);
-        margin-right: calc(-1 * var(--home-pad-x));
-        margin-left: calc(-1 * var(--home-pad-x));
-        margin-top: calc(-1 * clamp(62px, 6.2vw, 82px));
-        padding: clamp(8px, 1.2vw, 14px) 0 0;
-        background: transparent;
+        gap: 0;
+        margin-top: calc(-1 * var(--tab-overlap));
+        border-top: 1px solid rgba(255, 248, 232, 0.24);
+        border-bottom: 1px solid rgba(255, 248, 232, 0.16);
+        background: var(--home-tab-bg);
+        box-shadow: 0 -28px 62px rgba(0, 0, 0, 0.28);
       }
 
       .home-entry-tile,
@@ -228,9 +235,8 @@
         justify-content: space-between;
         min-height: var(--tab-height);
         overflow: hidden;
-        padding: 15px clamp(18px, 3vw, 34px) 17px;
+        padding: 16px clamp(18px, 3vw, 34px) 18px;
         border: 0;
-        border-radius: 8px 8px 0 0;
         background: var(--home-tab-bg);
         color: var(--cream);
         cursor: pointer;
@@ -245,15 +251,15 @@
 
       .home-entry-tile::after {
         position: absolute;
-        right: clamp(18px, 3vw, 34px);
-        bottom: 8px;
-        left: clamp(18px, 3vw, 34px);
-        height: 2px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 4px;
         background: currentColor;
         content: "";
-        opacity: 0.28;
-        transform: scaleX(0.34);
-        transform-origin: left center;
+        opacity: 0;
+        transform: scaleX(0.7);
+        transform-origin: center;
         transition:
           opacity 180ms ease,
           transform 180ms ease;
@@ -262,21 +268,20 @@
       .home-reset-tile {
         justify-content: center;
         padding: 0;
-        border-radius: 8px 8px 0 0;
+        border-right: 1px solid rgba(255, 248, 232, 0.16);
+        border-left: 1px solid rgba(255, 248, 232, 0.16);
         background: var(--home-tab-bg);
       }
 
       .home-entry-tile[data-work-tab="design"] {
         padding-left: calc(var(--home-pad-x) + clamp(18px, 3vw, 34px));
         background: var(--design-tab-bg);
-        clip-path: polygon(0 0, calc(100% - clamp(24px, 3.2vw, 40px)) 0, calc(100% - clamp(14px, 1.8vw, 22px)) clamp(8px, 1vw, 12px), 100% 100%, 0 100%);
       }
 
       .home-entry-tile[data-work-tab="art"] {
         padding-left: clamp(28px, 4.4vw, 54px);
         padding-right: calc(var(--home-pad-x) + clamp(18px, 3vw, 34px));
         background: var(--art-tab-bg);
-        clip-path: polygon(clamp(24px, 3.2vw, 40px) 0, 100% 0, 100% 100%, 0 100%, clamp(14px, 1.8vw, 22px) clamp(8px, 1vw, 12px));
       }
 
       .home-reset-tile::before {
@@ -333,6 +338,7 @@
       .home-entry-tile.is-active {
         background: var(--active-tab-bg);
         color: #ffffff;
+        opacity: 1;
       }
 
       .home-entry-tile.is-active {
@@ -341,7 +347,7 @@
 
       body[data-work-theme] .home-reset-tile,
       .home-entry-tile:not(.is-active) {
-        opacity: 0.78;
+        opacity: 0.86;
       }
 
       .media-tile.is-full-crop {
@@ -404,18 +410,18 @@
         width: 100%;
         height: 100%;
         object-fit: var(--hero-image-fit, cover);
-        object-position: var(--hero-image-position, center);
-        transform: scale(var(--hero-image-scale, 1));
+        object-position: var(--hero-image-position, center 42%);
+        transform: scale(var(--hero-image-scale, 1.04));
         transform-origin: center;
       }
 
       .work-tabs {
         display: grid;
         gap: 18px;
-        min-height: 34vh;
+        min-height: 46vh;
         align-content: start;
         scroll-margin-top: 57px;
-        padding: clamp(32px, 5vw, 72px) clamp(18px, 5vw, 72px);
+        padding: clamp(38px, 5vw, 78px) clamp(18px, 5vw, 72px) clamp(64px, 8vw, 112px);
         border-top: 0;
         background: var(--work-bg);
         transition: background-color 260ms ease;
@@ -1009,7 +1015,8 @@
 
         .home {
           --home-pad-x: 22px;
-          --home-pad-top: 24px;
+          --home-pad-top: 28px;
+          --tab-overlap: 62px;
         }
 
         .intro,
@@ -1020,9 +1027,9 @@
         .intro {
           --hero-image-fit: cover;
           --hero-image-position: center 32%;
-          --hero-image-scale: 1.06;
-          padding: var(--home-pad-top) var(--home-pad-x) 96px;
-          min-height: clamp(520px, 100vw, 640px);
+          --hero-image-scale: 1.1;
+          padding: var(--home-pad-top) var(--home-pad-x) calc(var(--tab-overlap) + 74px);
+          min-height: calc(100svh - 74px);
         }
 
         .intro h1 {
@@ -1051,13 +1058,10 @@
         }
 
         .home-entry-tiles {
-          --tab-height: 58px;
-          grid-template-columns: minmax(0, 1fr) 54px minmax(0, 1fr);
-          gap: 8px;
-          margin-right: calc(-1 * var(--home-pad-x));
-          margin-left: calc(-1 * var(--home-pad-x));
-          margin-top: -58px;
-          padding: 8px 0 0;
+          --tab-height: var(--tab-overlap);
+          grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1fr);
+          gap: 0;
+          margin-top: calc(-1 * var(--tab-overlap));
         }
 
         .home-entry-tile {
