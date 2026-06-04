@@ -602,14 +602,66 @@
 
       .work-subsections {
         display: grid;
-        gap: clamp(38px, 6vw, 82px);
+        gap: 0;
+        border-top: 1px solid var(--line);
       }
 
       .work-subsection {
         display: grid;
+        gap: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .work-section-head {
+        position: relative;
+        display: grid;
+        gap: 10px;
+        padding: clamp(18px, 3vw, 32px) clamp(34px, 5vw, 72px) clamp(18px, 3vw, 32px) 0;
+        cursor: pointer;
+      }
+
+      .work-section-head::after {
+        position: absolute;
+        top: clamp(20px, 3vw, 34px);
+        right: 0;
+        display: grid;
+        place-items: center;
+        width: 22px;
+        height: 22px;
+        border: 1px solid var(--line);
+        color: var(--cream);
+        content: "+";
+        font-family: var(--display-font);
+        font-size: 1rem;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .work-subsection.is-open .work-section-head::after {
+        content: "-";
+      }
+
+      .work-section-head:focus-visible {
+        outline: 2px solid var(--clay);
+        outline-offset: 6px;
+      }
+
+      .work-section-head h3 {
+        margin-bottom: 0;
+      }
+
+      .work-section-head p {
+        max-width: 760px;
+      }
+
+      .work-section-body {
+        display: grid;
         gap: clamp(18px, 3vw, 32px);
-        padding-top: clamp(26px, 4vw, 52px);
-        border-top: 1px solid var(--line);
+        padding-bottom: clamp(26px, 4vw, 52px);
+      }
+
+      .work-section-body[hidden] {
+        display: none;
       }
 
       .work-process-list {
@@ -1688,6 +1740,47 @@
       const workPanels = document.querySelectorAll("[data-work-panel]");
       const entryTileGroup = document.querySelector(".home-entry-tiles");
       const homeReset = document.querySelector("[data-work-home]");
+      const workSections = document.querySelectorAll(".work-subsection");
+
+      workSections.forEach((section, index) => {
+        const head = section.querySelector(".work-section-head");
+        const body = document.createElement("div");
+        const bodyId = `work-section-body-${index + 1}`;
+
+        body.className = "work-section-body";
+        body.id = bodyId;
+
+        [...section.children].forEach((child) => {
+          if (child !== head) {
+            body.appendChild(child);
+          }
+        });
+
+        section.appendChild(body);
+        section.classList.remove("is-open");
+        body.hidden = true;
+
+        head.setAttribute("role", "button");
+        head.setAttribute("tabindex", "0");
+        head.setAttribute("aria-expanded", "false");
+        head.setAttribute("aria-controls", bodyId);
+
+        const toggleSection = () => {
+          const isOpen = section.classList.toggle("is-open");
+          body.hidden = !isOpen;
+          head.setAttribute("aria-expanded", String(isOpen));
+        };
+
+        head.addEventListener("click", toggleSection);
+        head.addEventListener("keydown", (event) => {
+          if (event.key !== "Enter" && event.key !== " ") {
+            return;
+          }
+
+          event.preventDefault();
+          toggleSection();
+        });
+      });
 
       const selectWorkTab = (name) => {
         if (name) {
