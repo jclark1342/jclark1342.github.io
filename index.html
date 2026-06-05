@@ -121,7 +121,7 @@
         --tab-overlap: clamp(102px, 9vw, 132px);
         display: grid;
         grid-template-columns: minmax(0, 1fr);
-        border-bottom: 1px solid var(--line);
+        border-bottom: 0;
         background: var(--paper);
       }
 
@@ -347,6 +347,7 @@
       body[data-work-theme] .home-entry-tiles {
         border-color: var(--active-tab-bg);
         background: var(--active-tab-bg);
+        box-shadow: none;
       }
 
       body[data-work-theme] .home-reset-tile {
@@ -435,6 +436,12 @@
 
       body:not([data-work-theme]) .work-tabs {
         display: none;
+      }
+
+      body[data-work-theme] .work-tabs {
+        position: relative;
+        z-index: 4;
+        margin-top: -1px;
       }
 
       .work-tabs-inner {
