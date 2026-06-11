@@ -1399,7 +1399,7 @@
       <section class="home" aria-labelledby="page-title">
         <div class="intro">
           <div class="intro-copy">
-            <p class="eyebrow">Portfolio 2026</p>
+            <p class="eyebrow">Portfolio · <time data-current-time>Current date and time</time></p>
             <h1 id="page-title">A designer and artist led by drawing.</h1>
             <p class="lede">I use sketching, CAD, research, prototyping, digital painting, and film photography to study form, atmosphere, and how objects feel.</p>
           </div>
@@ -1799,6 +1799,28 @@
       const entryTileGroup = document.querySelector(".home-entry-tiles");
       const homeReset = document.querySelector("[data-work-home]");
       const workSections = document.querySelectorAll(".work-subsection");
+      const currentTime = document.querySelector("[data-current-time]");
+
+      const updateCurrentTime = () => {
+        if (!currentTime) {
+          return;
+        }
+
+        const now = new Date();
+        currentTime.dateTime = now.toISOString();
+        currentTime.textContent = new Intl.DateTimeFormat(undefined, {
+          weekday: "short",
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+          hour: "numeric",
+          minute: "2-digit",
+          second: "2-digit",
+        }).format(now);
+      };
+
+      updateCurrentTime();
+      window.setInterval(updateCurrentTime, 1000);
 
       workSections.forEach((section, index) => {
         const head = section.querySelector(".work-section-head");
