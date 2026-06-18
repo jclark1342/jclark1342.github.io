@@ -1,17 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,200&display=swap");
 
 :root {
-  color-scheme: dark;
-  --paper: #0f2630;
-  --ink: #fff8e8;
-  --muted: #b5cad0;
-  --line: rgba(255, 248, 232, 0.18);
-  --clay: #f28445;
-  --teal: #8cc8cf;
-  --sage: #c8d7b9;
-  --blue: #6ea6c4;
-  --cream: #fff8e8;
-  --shadow: 0 22px 58px rgba(0, 0, 0, 0.32);
+  color-scheme: light;
+  --paper: #e9dfca;
+  --ink: #26241e;
+  --muted: #635e52;
+  --line: rgba(50, 43, 33, 0.2);
+  --clay: #a9572f;
+  --teal: #406f75;
+  --sage: #9fae7c;
+  --blue: #506f89;
+  --cream: #f7f1e4;
+  --paper-texture:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.34) 0 0.55px, transparent 0.65px),
+    radial-gradient(circle at 76% 36%, rgba(63, 50, 35, 0.16) 0 0.45px, transparent 0.6px),
+    radial-gradient(circle at 41% 74%, rgba(255, 255, 255, 0.18) 0 0.4px, transparent 0.55px),
+    radial-gradient(circle at 62% 86%, rgba(70, 54, 38, 0.1) 0 0.65px, transparent 0.8px);
+  --paper-texture-size: 19px 23px, 31px 29px, 47px 43px, 73px 67px;
+  --shadow: 0 22px 58px rgba(48, 38, 25, 0.2);
   --display-font:
     "Akzidenz-Grotesk", "Akzidenz Grotesk", "AkzidenzGroteskBQ",
     "Akzidenz-Grotesk BQ", "Berthold Akzidenz Grotesk",
@@ -32,17 +38,31 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper);
+  background-color: var(--paper);
+  background-image: var(--paper-texture);
   color: var(--ink);
   font-family: var(--display-font);
   line-height: 1.5;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background-image: var(--paper-texture);
+  background-position: 0 0, 7px 11px, 17px 5px, 29px 23px;
+  background-size: var(--paper-texture-size);
+  content: "";
+  mix-blend-mode: multiply;
+  opacity: 0.34;
+  pointer-events: none;
 }
 
 img {
   display: block;
   width: 100%;
   max-width: 100%;
-  background: #d2dddc;
+  background: var(--cream);
 }
 
 a {
@@ -60,7 +80,8 @@ a {
   gap: 24px;
   padding: 14px clamp(18px, 4vw, 56px);
   border-bottom: 1px solid var(--line);
-  background: rgba(15, 38, 48, 0.9);
+  background-color: rgba(238, 229, 210, 0.86);
+  background-image: var(--paper-texture);
   backdrop-filter: blur(14px);
 }
 
@@ -105,8 +126,12 @@ a {
   grid-template-columns: minmax(220px, 0.52fr) minmax(0, 1fr);
   gap: 38px;
   align-items: end;
-  padding: 78px clamp(18px, 4vw, 56px) 42px;
-  border-bottom: 1px solid var(--line);
+  margin: clamp(28px, 4vw, 56px) clamp(18px, 4vw, 56px) 0;
+  padding: clamp(44px, 6vw, 78px) clamp(28px, 5vw, 64px) clamp(32px, 4vw, 48px);
+  border: 1px solid var(--line);
+  border-radius: clamp(30px, 5vw, 68px);
+  background-color: rgba(247, 241, 228, 0.28);
+  background-image: var(--paper-texture);
 }
 
 .page-hero > * {
@@ -146,6 +171,10 @@ h1 {
   margin: 0;
   color: var(--muted);
   font-size: 0.96rem;
+}
+
+.gallery-section .page-hero {
+  margin: 0 0 clamp(28px, 4vw, 52px);
 }
 
 .gallery-section {
@@ -190,7 +219,7 @@ h1 {
   height: auto;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #142f3a;
+  background: var(--cream);
   box-shadow: var(--shadow);
 }
 
@@ -307,8 +336,8 @@ body.is-lightbox-open {
   border-radius: 8px;
   background: var(--tile-bg, var(--cream));
   box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.24),
-    0 0 0 1px rgba(255, 248, 232, 0.08);
+    0 18px 42px rgba(48, 38, 25, 0.18),
+    0 0 0 1px rgba(50, 43, 33, 0.08);
   transition:
     box-shadow 180ms ease,
     transform 180ms ease;
@@ -333,12 +362,12 @@ body.is-lightbox-open {
 .gallery-lightbox {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 80;
   display: none;
   align-items: center;
   justify-content: center;
   padding: clamp(18px, 4vw, 56px);
-  background: rgba(16, 40, 54, 0.92);
+  background: rgba(38, 30, 22, 0.88);
 }
 
 .gallery-lightbox.is-open {
@@ -366,8 +395,8 @@ body.is-lightbox-open {
   height: 44px;
   padding: 0;
   border: 0;
-  border-radius: 8px;
-  background: rgba(255, 248, 232, 0.26);
+  border-radius: 999px;
+  background: rgba(247, 241, 228, 0.3);
   color: var(--ink);
   cursor: pointer;
   font: inherit;
@@ -378,7 +407,7 @@ body.is-lightbox-open {
 
 .gallery-lightbox-close:hover,
 .gallery-lightbox-close:focus-visible {
-  background: rgba(255, 248, 232, 0.38);
+  background: rgba(247, 241, 228, 0.46);
   outline: 0;
 }
 
@@ -390,8 +419,8 @@ body.is-lightbox-open {
   min-width: 56px;
   padding: 10px 12px;
   border: 0;
-  border-radius: 8px;
-  background: rgba(255, 248, 232, 0.26);
+  border-radius: 999px;
+  background: rgba(247, 241, 228, 0.3);
   color: var(--ink);
   font-family: var(--display-font);
   font-size: 0.82rem;
@@ -405,8 +434,8 @@ body.is-lightbox-open {
   width: 44px;
   height: 44px;
   border: 0;
-  border-radius: 8px;
-  background: rgba(255, 248, 232, 0.26);
+  border-radius: 999px;
+  background: rgba(247, 241, 228, 0.3);
   color: var(--ink);
   cursor: pointer;
   font: inherit;
@@ -428,7 +457,7 @@ body.is-lightbox-open {
 
 .lightbox-nav:hover,
 .lightbox-nav:focus-visible {
-  background: rgba(255, 248, 232, 0.38);
+  background: rgba(247, 241, 228, 0.46);
   outline: 0;
 }
 
@@ -470,7 +499,7 @@ body.is-lightbox-open {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #102836;
+  background: var(--cream);
   box-shadow: var(--shadow);
 }
 
@@ -485,7 +514,7 @@ body.is-lightbox-open {
 .photo-piece img {
   height: auto;
   object-fit: contain;
-  background: #102836;
+  background: var(--cream);
 }
 
 .page-footer {

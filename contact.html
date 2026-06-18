@@ -70,20 +70,22 @@
 
       .contact-button {
         display: inline-flex;
-        min-height: auto;
+        width: fit-content;
+        min-height: 38px;
         align-items: center;
-        justify-content: flex-start;
-        border: 0;
-        border-radius: 0;
+        justify-content: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
         color: var(--muted);
         font-weight: 900;
+        padding: 0 18px;
         text-decoration: none;
       }
 
       .contact-button.primary {
-        border: 0;
-        background: transparent;
-        color: var(--clay);
+        border-color: var(--clay);
+        background: var(--clay);
+        color: var(--cream);
       }
 
       .contact-button:hover,
