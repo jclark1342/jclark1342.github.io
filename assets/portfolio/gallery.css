@@ -181,6 +181,39 @@ h1 {
   padding: clamp(48px, 7vw, 96px) clamp(18px, 4vw, 56px);
 }
 
+.gallery-subsection {
+  display: grid;
+  gap: clamp(22px, 3vw, 38px);
+}
+
+.gallery-subsection + .gallery-subsection {
+  margin-top: clamp(56px, 8vw, 112px);
+  padding-top: clamp(34px, 5vw, 72px);
+  border-top: 1px solid var(--line);
+}
+
+.gallery-subsection-head {
+  display: grid;
+  gap: 10px;
+  max-width: 760px;
+}
+
+.gallery-subsection-head h2 {
+  margin: 0;
+  font-family: var(--display-font);
+  font-size: clamp(1.55rem, 3.2vw, 3rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.gallery-subsection-head p {
+  max-width: 640px;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(0.9rem, 1.35vw, 1rem);
+  line-height: 1.45;
+}
+
 .gallery-shell {
   max-width: 1440px;
   margin: 0 auto;
